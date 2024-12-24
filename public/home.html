@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div id="navbar">
+        <button id="loginButton" onclick="location.href='login.html'">Log In</button>
+        <button id="aboutUsButton" onclick="location.href='about.html'">About Us</button>
+    </div>
+    <h1 id="welcomeMessage">Welcome to Life Balance</h1>
+    <script>
+        const user = localStorage.getItem('user');
+        if (user) {
+            const parsedUser = JSON.parse(user); 
+            document.getElementById('welcomeMessage').textContent = `Hello, ${parsedUser.firstName}`;
+        }
+    </script>
+</body>
+</html>
