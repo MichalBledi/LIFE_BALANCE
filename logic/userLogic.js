@@ -12,7 +12,7 @@ export const getUsers = (callback) => {
 
 export const addUser = (username, firstName, lastName, password, birthDate, callback) => {
     db.query(
-        'INSERT INTO users (username, first_name, last_name, password, birth_date) VALUES (?, ?, ?, ?, ?)',
+        'INSERT INTO users (username, firstName, lastName, password, birthDate) VALUES (?, ?, ?, ?, ?)',
         [username, firstName, lastName, password, birthDate],
         (err, results) => {
             if (err) {
