@@ -5,14 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="navbar.css">
 </head>
 <body>
-    <div id="navbar">
-        <button id="loginButton" onclick="location.href='login.html'">Log In</button>
-        <button id="aboutUsButton" onclick="location.href='about.html'">About Us</button>
-    </div>
-    <h1 id="welcomeMessage">Welcome to Life Balance</h1>
+    <!-- סרגל הניווט יוטען כאן -->
+    <header>
+        <div id="navbar"></div>
+    </header>
+
+    <!-- תוכן עמוד הבית -->
+    <main>
+        <h1 id="welcomeMessage">Welcome to Life Balance</h1>
+    </main>
+
+    <!-- סקריפטים -->
     <script>
+        // טעינת ה-NAVBAR
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar').innerHTML = html;
+            })
+            .catch(err => console.error('Failed to load navbar:', err));
+
+        // הודעת ברוכים הבאים
         window.addEventListener('beforeunload', () => {
             localStorage.removeItem('user');
         });
