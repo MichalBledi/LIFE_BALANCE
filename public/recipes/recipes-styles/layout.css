@@ -1,0 +1,36 @@
+.title {
+    color: #515c5d; /* אפור עכבר */
+    text-align: left; /* מיושר לשמאל */
+    font-size: 2.5rem; /* גודל הכותרת */
+    margin-top: 10px; /* רווח מעל הכותרת */
+    margin-left: 50px; /* הזזה ימינה */
+    font-family: 'Arial', sans-serif;
+}
+
+.description {
+    color: #606060; /* אפור כהה יותר */
+    text-align: left; /* מיושר לשמאל */
+    font-size: 1.2rem;
+    margin-left: 50px;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.5; /* שיפור קריאות */
+}
+
+.categories {
+    margin-top: 30px;
+    margin-left: 50px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.category-title {
+    font-size: 1.8rem;
+    color: #606060; /* אפור כהה */
+    margin-bottom: 15px;
+    font-family: 'Arial', sans-serif;
+}
+
+.recipes-section {
+    margin-top: 30px;
+    margin-left: 50px;
+}

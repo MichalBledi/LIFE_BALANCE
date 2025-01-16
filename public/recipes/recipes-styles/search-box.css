@@ -1,0 +1,31 @@
+.search-box {
+    display: flex; /* למיקום האלמנטים בשורה */
+    align-items: center; /* יישור אנכי */
+    margin-top: 20px; /* ריווח מעל */
+    margin-left: 50px; /* יישור עם הכותרת */
+}
+
+.search-input {
+    width: 300px; /* רוחב שדה החיפוש */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Arial', sans-serif;
+    margin-right: 10px; /* ריווח מהכפתור */
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #6a7a5c; /* ירוק זית */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+}
+
+.search-button:hover {
+    background-color: #556b2f; /* צבע כהה יותר בריחוף */
+}
