@@ -23,6 +23,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('allergies', selectedAllergies.join(', '));
             }
         });
+
+        const cancelBtn = document.getElementById('cancel-button');
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', () => {
+            if (confirm("Are you sure you want to cancel?")) {
+                window.location.href = '../../../home/home.html'; // שנה לכתובת הרצויה
+            }
+        });
+    }
+
     });
 
     // טעינת בחירות שמורות (אם קיימות)

@@ -21,4 +21,13 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     } else {
         alert(data.message);
     }
+
+    const cancelBtn = document.getElementById('cancel-button');
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', () => {
+            if (confirm("Are you sure you want to cancel?")) {
+                window.location.href = '../../../home/home.html'; // שנה לכתובת הרצויה
+            }
+        });
+    }
 });
