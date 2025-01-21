@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif; /* שינוי לפונט אריאל */
+    background-color: #f3f5ed; /* התאמת צבע רקע */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.container {
+    width: 500px;
+    height: 350px;
+    text-align: center;
+    background: #f3f5ed;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+label {
+    display: block; /* יישור כל תגית לתחילת שורה */
+    margin-bottom: 5px; /* ריווח אחיד בין התגית לשדה הקלט */
+    font-size: 14px;
+    color: #333;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0; /* מרווח אחיד בין כל שדות הקלט */
+    border: 1px solid #ccc; /* התאמת קו קלט */
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+
+button {
+    width: 100%;
+    padding: 15px; /* התאמת ריווח כפתור */
+    background-color: #94c9a8; /* צבע ירוק */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #78b593; /* צבע ירוק כהה יותר במעט */
+}
+
+
+.register {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+.register a {
+    color: #615ae7;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.register a:hover {
+    text-decoration: underline;
+}

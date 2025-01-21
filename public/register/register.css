@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f5ed;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 660px;
+    height: 592px;
+    text-align: center;
+    background: #f3f5ed;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+
+.progress-bar-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    height: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #94c9a8;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* כותרת משנה */
+.subtitle {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* עיצוב הטופס */
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* עיצוב שדה קלט */
+.input-container {
+    text-align: left;
+}
+
+label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border-color: #94c9a8; /* צבע ירוק עדין */
+    box-shadow: 0 0 5px rgba(148, 201, 168, 0.5);
+}
+
+/* עיצוב כפתור סיום */
+.done-button {
+    padding: 10px 20px;
+    background-color: #94c9a8; /* צבע ירוק */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.done-button:hover {
+    background-color: #78b593; /* צבע ירוק כהה יותר במעט */
+}

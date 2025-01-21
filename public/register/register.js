@@ -17,7 +17,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     if (response.ok) {
         localStorage.setItem('user', JSON.stringify({ username, firstName, lastName }));
         alert('User registered successfully!');
-        window.location.href = 'home.html';
+        window.location.href = '../home/home.html';
     } else {
         alert(data.message);
     }

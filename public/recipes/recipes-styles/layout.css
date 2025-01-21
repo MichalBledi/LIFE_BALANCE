@@ -8,12 +8,12 @@
 }
 
 .description {
-    color: #606060; /* אפור כהה יותר */
-    text-align: left; /* מיושר לשמאל */
+    color: #606060;
+    text-align: left;
     font-size: 1.2rem;
     margin-left: 50px;
     font-family: 'Arial', sans-serif;
-    line-height: 1.5; /* שיפור קריאות */
+    line-height: 1.5;
 }
 
 .categories {

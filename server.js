@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.sendFile('home.html', { root: 'public' });
+    res.sendFile('home.html', { root: 'public/home' });
 });
 
 app.use('/api', userRoutes);
