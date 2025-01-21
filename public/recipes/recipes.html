@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Page</title>
+    <link rel="stylesheet" href="recipes-styles/base.css">
+    <link rel="stylesheet" href="recipes-styles/layout.css">
+    <link rel="stylesheet" href="recipes-styles/category-buttons.css">
+    <link rel="stylesheet" href="recipes-styles/search-box.css">
+    <link rel="stylesheet" href="recipes-styles/recipes-section.css">
+    <link rel="stylesheet" href="../navbar/navbar.css">
+
+    <script src="../navbar/navbar.js" defer></script>
+    <script src="recipes.js" defer></script>
+</head>
+<body>
+    <header>
+        <div id="navbar"></div>
+    </header>
+    
+    <main>
+        <h1 class="title">Healthy Recipes</h1>
+        <p class="description">Discover nutrition and delicious meals for your balanced lifestyle</p>
+        <div class="search-box">
+            <input type="text" placeholder="Search for recipes..." class="search-input">
+            <button type="button" class="search-button">Search</button> 
+        </div>
+        <div class="categories">
+            <ul class="category-list">
+                <li class="category-item">
+                    <button class="category-button" aria-selected="true" data-category="Our Best">Our Best</button>
+                </li>
+                <li class="category-item">
+                    <button class="category-button" aria-selected="false" data-category="Breakfast">Breakfast</button>
+                </li>
+                <li class="category-item">
+                    <button class="category-button" aria-selected="false" data-category="Lunch">Lunch</button>
+                </li>
+                <li class="category-item">
+                    <button class="category-button" aria-selected="false" data-category="Dinner">Dinner</button>
+                </li>
+                <li class="category-item">
+                    <button class="category-button" aria-selected="false" data-category="Desserts">Desserts</button>
+                </li>
+            </ul>
+        </div>        
+        <div class="recipes-section">
+            <h2 class="category-title">Our Best</h2>
+            <div class="recipe-carousel">
+                <ul class="recipe-list"></ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

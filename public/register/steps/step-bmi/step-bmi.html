@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate BMI</title>
+    <link rel="stylesheet" href="../step-bmi/step-bmi.css">
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 40%;"></div>
+        </div> 
+        <h1 class="title">Calculate Your BMI</h1>
+
+        <!-- מתג יחידות -->
+        <div class="unit-switch">
+            <button class="unit-button active" onclick="setUnit('metric')">kg, cm</button>
+            <button class="unit-button" onclick="setUnit('imperial')">lb, ft</button>
+        </div>
+
+        <!-- קלטים -->
+        <div class="input-container">
+            <label for="height">Height (<span id="height-unit">cm</span>)</label>
+            <input type="number" id="height" placeholder="Enter height">
+        </div>
+
+        <div class="input-container">
+            <label for="weight">Weight (<span id="weight-unit">kg</span>)</label>
+            <input type="number" id="weight" placeholder="Enter weight">
+        </div>
+
+        <!-- תוצאה -->
+        <div class="info-box">
+            <strong>Your BMI:</strong> <span id="bmi-result">N/A</span><br>
+            <span id="bmi-message"></span>
+        </div>
+
+        <!-- כפתורים -->
+        <div class="button-group">
+            <!-- הקצנו לכל כפתור ID תואם לקוד JS -->
+            <button id="back-button" class="button-back">Back</button>
+            <button id="continue-button" class="button-continue">Continue</button>
+        </div>                     
+    </div>
+
+    <script src="../step-bmi/step-bmi.js"></script>
+</body>
+</html>

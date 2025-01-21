@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f5ed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background: #f3f5ed;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+}
+
+.progress-bar-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    height: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #94c9a8;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.gender-selection {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.gender-option {
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.gender-option:hover {
+    transform: scale(1.1);
+}
+
+.gender-option.selected .gender-image {
+    border: 3px solid #94c9a8; /* צבע ירוק עדין למסגרת */
+    border-radius: 50%; /* מסגרת עגולה */
+    padding: 5px; /* ריווח קטן בתוך המסגרת */
+    box-shadow: 0 0 5px rgba(148, 201, 168, 0.3); /* אפקט זוהר קל יותר */
+    transition: all 0.3s ease; /* אפקט מעבר חלק */
+}
+
+
+
+.gender-image {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+
+.gender-label {
+    font-size: 16px;
+    color: #444;
+    text-transform: capitalize;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.button-back,
+.button-continue {
+    flex: 1;
+    padding: 10px 20px;
+    background-color: #94c9a8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.button-back:hover,
+.button-continue:hover {
+    background-color: #78b593;
+}

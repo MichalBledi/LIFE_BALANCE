@@ -1,0 +1,56 @@
+.container {
+    text-align: center;
+    background: #f3f5ed;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.subtitle {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.advantages {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.advantage {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 250px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.advantage h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.advantage p {
+    font-size: 16px;
+    color: #555;
+}
+
+.icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #bbb;
+}

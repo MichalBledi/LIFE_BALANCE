@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f5ed;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background: #f3f5ed;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+}
+
+/* פס התקדמות */
+.progress-bar-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    height: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #94c9a8;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+/* כותרת */
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* אפשרויות פעילות (לפי הצורך) */
+.activity-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.activity-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.activity-option:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.02);
+}
+
+.activity-label {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+.activity-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.activity-option.selected {
+    border: 2px solid #b2d8c3; /* מסגרת ירוקה עדינה יותר */
+    box-shadow: 0 0 5px rgba(148, 201, 168, 0.3); /* אפקט זוהר קל יותר */
+    background-color: #eaf7ed; /* רקע ירקרק עדין */
+    transform: scale(1.03); /* הגדלה פחות דרמטית */
+    transition: all 0.3s ease; /* מעבר חלק */
+}
+
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button-back,
+.button-continue {
+    flex: 1;
+    padding: 10px 20px;
+    background-color: #94c9a8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.button-back:hover,
+.button-continue:hover {
+    background-color: #78b593;
+}
+
+
+

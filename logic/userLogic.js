@@ -1,4 +1,4 @@
-import db from '../database/db.js';
+/*import db from '../database/db.js';*/
 
 export const getUsers = (callback) => {
     db.query('SELECT * FROM users', (err, results) => {

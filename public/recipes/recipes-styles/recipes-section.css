@@ -1,0 +1,81 @@
+.recipe-carousel {
+    overflow-x: auto; /* גלילה אופקית */
+    white-space: nowrap; /* פריסה בשורה אחת */
+    padding-bottom: 10px; /* מקום מתחת למתכונים */
+    margin-right: 20px;
+}
+
+.recipe-list {
+    display: flex;
+    gap: 15px; /* ריווח בין הכרטיסים */
+    padding: 0;
+    list-style: none; /* ללא עיגולים */
+    margin: 0;
+}
+
+/* Import fonts */
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+/* Global elements */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: url("https://wallpaperscraft.com/image/coffee_coffee_beans_cupcake_candy_93301_1920x1080.jpg") no-repeat center;
+}
+
+img {
+  max-width: 100%;
+  height: 10px;
+}
+
+/* Card container */
+.card {
+  position: relative;
+  background: #fff;
+  width: 200px;
+  height: 300px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+/* Card header */
+.card .header {
+  background: url("http://img.taste.com.au/UZVXAdo7/taste/2016/11/chinese-egg-noodle-and-vegetable-stir-fry-94186-1.jpeg") no-repeat center;
+  background-size: cover;
+  height: 100px;
+}
+
+/* Text content */
+.card .text .food {
+  color: #212129;
+  text-align: left;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.card .text .fa-clock-o {
+  color: #9b9b9b;
+  margin: 0 30px;
+}
+
+.card .text .fa-users {
+  color: #9b9b9b;
+}
+
+/* Rating stars */
+.card .stars {
+  margin: 10px 30px;
+}
+
+.card .stars li a i {
+  color: #ffe500;
+}
+
+/* Additional info */
+.card .info {
+  margin: 10px 30px;
+}

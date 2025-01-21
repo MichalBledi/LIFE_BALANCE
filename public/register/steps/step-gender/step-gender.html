@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Gender</title>
+    <link rel="stylesheet" href="../step-gender/step-gender.css">
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 0%;"></div>
+        </div>
+        
+        <h1 class="title">CHOOSE YOUR GENDER</h1>
+        
+        <div class="gender-selection">
+            <div class="gender-option">
+                <img src="../step-gender/female.png" alt="Female" class="gender-image">
+                <p class="gender-label">female</p>
+            </div>
+            <div class="gender-option">
+                <img src="../step-gender/male.png" alt="Male" class="gender-image">
+                <p class="gender-label">male</p>
+            </div>
+        </div>
+        
+        <!-- כפתורים -->
+        <div class="button-group">
+            <!-- הקצנו לכל כפתור ID תואם לקוד JS -->
+            <button id="back-button" class="button-back">Back</button>
+            <button id="continue-button" class="button-continue">Continue</button>
+        </div>
+    </div>
+    
+    <!-- חיבור לסקריפט -->
+    <script src="../step-gender/step-gender.js"></script>
+</body>
+</html>
