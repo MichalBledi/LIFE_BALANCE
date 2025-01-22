@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (backBtn) {
       backBtn.addEventListener('click', () => {
         saveGender();
-        window.location.href = '../home/home.html';
+        window.location.href = '../../../home/home.html';
       });
     }
     if (continueBtn) {
@@ -41,6 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('gender', genderLabel);
       });
     });
+
+    const cancelBtn = document.getElementById('cancel-button');
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', () => {
+            if (confirm("Are you sure you want to cancel?")) {
+                window.location.href = '../../../home/home.html'; // שנה לכתובת הרצויה
+            }
+        });
+    }
+
   });
   
   /*************************************************************

@@ -3,27 +3,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const noAllergiesOption = document.querySelector('.allergies-option.no-allergies');
     const backBtn = document.getElementById('back-button');
     const continueBtn = document.getElementById('continue-button');
+    const cancelBtn = document.getElementById('cancel-button');
 
     activityOptions.forEach(option => {
         option.addEventListener('click', () => {
             if (option === noAllergiesOption) {
-                // אם נבחר "אין אלרגיות", נבטל את כל הבחירות האחרות
                 activityOptions.forEach(opt => opt.classList.remove('selected'));
                 option.classList.add('selected');
                 localStorage.setItem('allergies', 'None');
             } else {
-                // אם נבחרו אלרגיות אחרות, נסיר את הסימון מ"אין אלרגיות"
                 noAllergiesOption.classList.remove('selected');
                 option.classList.toggle('selected');
-
-                // שמירת הבחירות
+    
                 const selectedAllergies = Array.from(activityOptions)
                     .filter(opt => opt.classList.contains('selected') && opt !== noAllergiesOption)
                     .map(opt => opt.querySelector('.allergies-label').textContent.trim());
                 localStorage.setItem('allergies', selectedAllergies.join(', '));
             }
         });
-    });
+    }); // כאן נסגור את ה-forEach
+    
 
     // טעינת בחירות שמורות (אם קיימות)
 const savedAllergies = localStorage.getItem('allergies');
@@ -68,5 +67,15 @@ if (savedAllergies) {
             }
             window.location.href = '../../register.html';
         });
+    
     }
+
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', () => {
+            if (confirm("Are you sure you want to cancel?")) {
+                window.location.href = '../../../home/home.html';
+            }
+        });
+    }
+
 });

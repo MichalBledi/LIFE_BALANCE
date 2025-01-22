@@ -101,3 +101,27 @@ input:focus {
 .done-button:hover {
     background-color: #78b593; /* צבע ירוק כהה יותר במעט */
 }
+
+.cancel-circle-button {
+    position: fixed; /* מיקום קבוע */
+    top: 20px; /* מרחק מהחלק העליון */
+    left: 20px; /* מרחק מהצד השמאלי */
+    width: 50px; /* גודל רוחב */
+    height: 50px; /* גודל גובה */
+    background-color: #f44336; /* צבע אדום */
+    color: white; /* צבע טקסט לבן */
+    border: none; /* בלי גבול */
+    border-radius: 50%; /* עיגול */
+    font-size: 24px; /* גודל טקסט */
+    font-weight: bold; /* טקסט מודגש */
+    display: flex; /* יישור טקסט */
+    justify-content: center; /* מיקום מרכזי אופקי */
+    align-items: center; /* מיקום מרכזי אנכי */
+    cursor: pointer; /* ידית על עכבר */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* צל */
+    transition: background-color 0.3s ease; /* מעבר צבע חלק */
+}
+
+.cancel-circle-button:hover {
+    background-color: #d32f2f; /* צבע אדום כהה יותר */
+}
