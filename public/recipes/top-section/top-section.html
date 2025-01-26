@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>top section</title>
+    <link rel="stylesheet" href="../../navbar/sidebar.css">
+    <link rel="stylesheet" href="top-section/filterbar.css">
+    <script src="top-section/filterbar.js"></script>
+
+</head>
+<body>
+    <div id="top-section">
+
+        <div class="menu-container">
+            <button id="menu-btn" class="menu-btn" onclick="toggleSidebar()">☰</button>
+        </div>
+        <div id="sidebar-container"></div>
+        
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" placeholder="Search for recipes..." class="search-input">
+                <button type="button" class="search-button">Search</button>
+            </div>
+        </div>
+        
+        <div class="filter-container">
+            <button id="filter-btn" class="filter-btn" onclick="togglefilterBar()">
+                <i class="fa fa-sliders" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div id="filterbar-container"></div>
+    </div>
+</body>
+</html>

@@ -14,6 +14,15 @@ app.get('/', (req, res) => {
 
 app.use('/api', userRoutes);
 
+app.use('/recipes', express.static('path_to_recipes_folder', {
+    setHeaders: (res, path) => {
+        if (path.endsWith('.css')) {
+            res.setHeader('Content-Type', 'text/css');
+        }
+    }
+}));
+
+
 const PORT = 3001;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
