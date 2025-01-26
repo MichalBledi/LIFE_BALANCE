@@ -1,0 +1,87 @@
+#top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.menu-container {
+    flex: 0 0 auto; /* משאיר את כפתור התפריט בצד שמאל */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menu-container .menu-btn {
+    background-color: #6a7a5c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 10px;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+}
+
+.search-container {
+    flex: 1; /* מאפשר לחיפוש לתפוס את המרכז */
+    display: flex;
+    justify-content: center; /* ממרכז את תיבת החיפוש */
+}
+
+.search-box {
+    display: flex; /* שומר על כל הרכיבים בשורה */
+    align-items: center;
+}
+
+.search-input {
+    width: 500px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Arial', sans-serif;
+    margin-right: 10px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #6a7a5c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+}
+
+.search-button:hover {
+    background-color: #556b2f;
+}
+
+.filter-container {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.filter-btn {
+    width: 35px; /* רוחב הכפתור */
+    height: 35px; /* גובה הכפתור */
+    background-color: #6a7a5c; /* צבע רקע הכפתור */
+    border: none; /* גבול דק */
+    border-radius: 10px; /* עיגול הקצוות */
+    display: flex; /* מיישר את התוכן */
+    align-items: center; /* ממרכז אנכית */
+    justify-content: center; /* ממרכז אופקית */
+    cursor: pointer; /* סמן יד בעת ריחוף */
+}
+
+.filter-btn i {
+    font-size: 20px; /* גודל האייקון */
+    color: white; /* צבע האייקון */
+}

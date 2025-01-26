@@ -1,59 +1,77 @@
-// טעינת ה-NAVBAR
-fetch('../navbar/navbar.html')
+/*fetch('../navbar/sidebar.html')
     .then(response => response.text())
-    .then(html => {
-        document.getElementById('navbar').innerHTML = html;
-    })
-    .catch(err => console.error('Failed to load navbar:', err));
+    .then(data => {
+        document.getElementById('sidebar-container').innerHTML = data;
+    });
+*/
 
-// שמירת רשימת מתכונים לכל קטגוריה
-const recipesByCategory = {
-    'Our Best': [
-        {
-            name: 'Chinese Noodles',
-            time: '15 Mins',
-            servings: '2',
-            stars: 4.5,
-            description: 'A quick and delicious noodle recipe perfect for any meal.',
-            image: 'https://via.placeholder.com/300x180?text=Chinese+Noodles'
-        },
-        {
-            name: 'Greek Yogurt Parfait',
-            time: '10 Mins',
-            servings: '1',
-            stars: 4.0,
-            description: 'A healthy and easy breakfast idea loaded with fresh fruits.',
-            image: 'https://via.placeholder.com/300x180?text=Greek+Yogurt+Parfait'
-        }
-    ],
-    Breakfast: [
-        {
-            name: 'Pancakes',
-            time: '20 Mins',
-            servings: '2',
-            stars: 4.7,
-            description: 'Fluffy pancakes perfect for a healthy breakfast.',
-            image: 'https://via.placeholder.com/300x180?text=Pancakes'
-        }
-    ],
-    Lunch: [
-        { name: 'Caesar Salad', url: '#' },
-        { name: 'Grilled Chicken', url: '#' },
-    ],
-    Dinner: [
-        { name: 'Pasta', url: '#' },
-        { name: 'Steak', url: '#' },
-    ],
-    Desserts: [
-        { name: 'Chocolate Cake', url: '#' },
-        { name: 'Ice Cream', url: '#' },
-    ],
-};
+fetch('top-section/top-section.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('top-section').innerHTML = data;
+    });
+
+const recipes = [
+  {
+    name: "Spaghetti Bolognese",
+    cookingTime: "30",
+    calories: 400,
+    servings: 4,
+    rating: 4.5,
+    description: "A classic Italian pasta dish with a rich and savory meat sauce.",
+    imageUrl: "https://example.com/spaghetti-bolognese.jpg",
+    categories: ["Italian", "Pasta", "Lunch", "Dinner"]
+  },
+  {
+    name: "Chicken Caesar Salad",
+    cookingTime: "20",
+    calories: 300,
+    servings: 2,
+    rating: 4.2,
+    description: "A fresh and crispy salad with grilled chicken, Caesar dressing, and croutons.",
+    imageUrl: "https://example.com/chicken-caesar-salad.jpg",
+    categories: ["Salad", "Healthy", "Lunch"]
+  },
+  {
+    name: "Vegetable Stir Fry",
+    cookingTime: "15",
+    calories: 250,
+    servings: 3,
+    rating: 4.0,
+    description: "A quick and easy stir fry loaded with colorful vegetables and a tangy sauce.",
+    imageUrl: "https://example.com/vegetable-stir-fry.jpg",
+    categories: ["Vegetarian", "Asian", "Quick Meals"]
+  },
+  {
+    name: "Chocolate Chip Cookies",
+    cookingTime: "25",
+    calories: 150,
+    servings: 12,
+    rating: 4.8,
+    description: "Classic homemade cookies with gooey chocolate chips.",
+    imageUrl: "https://example.com/chocolate-chip-cookies.jpg",
+    categories: ["Dessert", "Snacks", "Baking"]
+  },
+  {
+    name: "Avocado Toast",
+    cookingTime: "10",
+    calories: 200,
+    servings: 1,
+    rating: 4.7,
+    description: "A simple and nutritious toast topped with creamy avocado and seasonings.",
+    imageUrl: "https://example.com/avocado-toast.jpg",
+    categories: ["Breakfast", "Healthy", "Vegetarian"]
+  }
+];
 
 // בחירת אלמנטים לעדכון
 const categoryTitle = document.querySelector('.category-title');
 const recipeList = document.querySelector('.recipe-list');
 const categoryButtons = document.querySelectorAll('.category-button');
+
+const recipesByCategory = (category) => {
+    return recipes.filter(recipe => recipe.categories.includes(category));
+  };
 
 // פונקציה לעדכון הכותרת והרשימה
 function updateCategory(category) {
@@ -62,7 +80,7 @@ function updateCategory(category) {
 
     // עדכון רשימת מתכונים
     recipeList.innerHTML = ''; // מנקה את הרשימה
-    const recipes = recipesByCategory[category] || [];
+    const recipes = recipesByCategory(category);
     recipes.forEach(recipe => {
         recipeList.insertAdjacentHTML('beforeend', createRecipeCard(recipe));
     });
@@ -89,40 +107,92 @@ function createRecipeCard(recipe) {
     return `
         <li class="recipe-item">
             <div class="card">
-                <div class="header">
-                    <img src="${recipe.image}" alt="${recipe.name}" class="recipe-image">
-                    <div class="icon">
-                        <a href="#"><i class="fa fa-heart-o"></i></a>
+                <img class="card-image" src="${recipe.imageUrl}" alt="${recipe.name}">
+                <div class="card-content">
+                    <h3 class="card-title">${recipe.name}</h3>
+                    <div class = "row-wrapper" ></div>
+                    <div class="card-info">
+                        <div class="info-block">
+                                <div class="icon-value">
+                                    <div class="glyphicon glyphicon-time"></div>
+                                    <div class="value">${recipe.cookingTime}</div>
+                                </div>
+                            <div class="text">Minutes</div>
+                        </div>
+                        <div class="info-block">
+                                <div class="icon-value">
+                                    <div class="glyphicon glyphicon-fire"></div>
+                                    <div class="value">${recipe.calories}</div>
+                                </div>
+                            <div class="text">Calories</div>
+                        </div>
+                        <div class="info-block">
+                                <div class="icon-value">
+                                    <div class="glyphicon glyphicon-user"></div>
+                                    <div class="value">${recipe.servings}</div>
+                                </div>
+                            <div class="text">Servings</div>
+                        </div>
+                    </div>
+                    <div class="card-button">
+                        <button>View Recipe</button>
                     </div>
                 </div>
-                <div class="text">
-                    <h1 class="food">${recipe.name}</h1>
-                    <i class="fa fa-clock-o"> ${recipe.time}</i>
-                    <i class="fa fa-users"> Serves ${recipe.servings}</i>
-                    <div class="stars">
-                        ${renderStars(recipe.stars)}
-                    </div>
-                    <p class="info">${recipe.description}</p>
-                </div>
-                <a href="#" class="btn">Let's Cook!</a>
             </div>
         </li>
     `;
 }
 
-function renderStars(rating) {
-    const fullStars = Math.floor(rating); // כוכבים מלאים
-    const halfStar = rating % 1 !== 0; // חצי כוכב אם יש שארית
-    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+/*
+async function createRecipeCard(recipe) {
+    const recipeCardTemplate = await fetch('recipeCardTemplate.html');
+    let template = await recipeCardTemplate.text();
+    template = template.replace('{{imageUrl}}', recipe.imageUrl)
+                       .replace('{{name}}', recipe.name)
+                       .replace('{{cookingTime}}', recipe.cookingTime)
+                       .replace('{{calories}}', recipe.calories)
+                       .replace('{{servings}}', recipe.servings);
+    return template;
+}
+*/
 
-    return `
-        ${'⭐'.repeat(fullStars)}
-        ${halfStar ? '⭐' : ''}
-        ${'☆'.repeat(emptyStars)}
-    `;
+// פונקציה לעדכון מתכונים מותאמים אישית (Just For You)
+function updateCustomizedRecipes() {
+    const customizedRecipesList = document.querySelector('.customized-recipes-section .recipe-list');
+    const customizedRecipes = getCustomizedRecipes(); // פונקציה שמחזירה מתכונים מותאמים אישית
+    customizedRecipesList.innerHTML = ''; // מנקה את הרשימה הקיימת
+    customizedRecipes.forEach(recipe => {
+        customizedRecipesList.insertAdjacentHTML('beforeend', createRecipeCard(recipe));
+    });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    updateCategory('Our Best'); // קטגוריה ברירת מחדל
-});
+// פונקציה לעדכון המתכונים הפופולריים (Most Popular This Week)
+function updatePopularRecipes() {
+    const popularRecipesList = document.querySelector('.popular-recipes-section .recipe-list');
+    const popularRecipes = getPopularRecipes(); // פונקציה שמחזירה מתכונים פופולריים
+    popularRecipesList.innerHTML = ''; // מנקה את הרשימה הקיימת
+    popularRecipes.forEach(recipe => {
+        popularRecipesList.insertAdjacentHTML('beforeend', createRecipeCard(recipe));
+    });
+}
 
+// פונקציה שמחזירה מתכונים מותאמים אישית (דוגמה)
+function getCustomizedRecipes() {
+    // כאן ניתן להוסיף לוגיקה מותאמת אישית (כגון העדפות משתמש)
+    // כרגע מוחזר מערך לדוגמה
+    return recipes.filter(recipe => recipe.calories < 300); // מתכונים עם פחות מ-300 קלוריות
+}
+
+// פונקציה שמחזירה מתכונים פופולריים (דוגמה)
+function getPopularRecipes() {
+    // ניתן להוסיף לוגיקה מתקדמת (למשל, נתונים מבסיס נתונים)
+    // כרגע מוחזר מערך לדוגמה
+    return recipes.sort((a, b) => b.rating - a.rating).slice(0, 3); // שלושת המתכונים עם הדירוג הגבוה ביותר
+}
+
+// עדכון כל הקטגוריות ברגע שהדף נטען
+document.addEventListener('DOMContentLoaded', () => {
+    updateCategory('Lunch'); // קטגוריית ברירת מחדל לקטגוריה הראשונה
+    updateCustomizedRecipes(); // עדכון מתכונים מותאמים אישית
+    updatePopularRecipes(); // עדכון מתכונים פופולריים
+});

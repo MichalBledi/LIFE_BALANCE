@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #E8E4E2;
+  overflow-x: hidden;
+  transition: width 0.3s ease;
+  padding-top: 60px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 0px 16px;
+}
+
+.sidebar ul li a {
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+  display: block;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.sidebar ul li a:hover {
+  background-color: #6a7a5c;
+}
+
+#content {
+  transition: margin-left 0.3s ease;
+}
+
+.close-btn {
+  font-size: 30px;
+  background-color: transparent;
+  color: black;
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #6a7a5c;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center; /* יישור אנכי של הלוגו והטקסט */
+  justify-content: center; /* ממרכז אופקית בתוך התפריט */
+  gap: 10px; /* ריווח בין הלוגו לטקסט */
+  border-bottom: 2px solid #6a7a5c; /* קו תחתון */
+  width: 90%; /* קו ההפרדה מתאים עצמו לתוכן */
+  margin: 5px auto; /* ממקם את הקטע במרכז */
+}
+
+.logo {
+  width: 50px; /* רוחב הלוגו */
+  height: 50px; /* גובה הלוגו */
+}
+
+.brand {
+  font-size: 20px; /* גודל הטקסט */
+  font-weight: bold; /* משקל גופן */
+  color: #6a7a5c; /* Olive green */
+}
+
+.sidebar .bottom-section {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 20px;
+  width: 95%; 
+  margin: 0 auto;
+}
+
+.sidebar .personal-area {
+  border-radius: 10px;
+  display: inline-flex; 
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  padding: 10px 20px;
+  background-color: #6a7a5c;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar .personal-area:hover {
+  background-color: #4f6047; /* צבע רקע בהיר יותר בריחוף */
+}
+
+.sidebar .personal-area .icon {
+  font-size: 20px; /* גודל האייקון */
+  color: white;
+}
+
