@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #EDDCD2;
+    background-color: #F6ECEA;
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,7 +11,7 @@ body {
 
 .container {
     text-align: center;
-    background: #f3f5ed;
+    background: #F3E3DC;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -32,7 +32,7 @@ body {
 
 .progress-bar {
     height: 100%;
-    background-color: #94c9a8;
+    background-color: #D0B0A3;
     width: 0;
     transition: width 0.3s ease;
 }
@@ -57,7 +57,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background-color: #f8f9fa;
+    background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 10px;
     cursor: pointer;
@@ -81,9 +81,9 @@ body {
 }
 
 .activity-option.selected {
-    border: 2px solid #b2d8c3; /* מסגרת ירוקה עדינה יותר */
+    border: 2px solid #C49A94; /* מסגרת ירוקה עדינה יותר */
     box-shadow: 0 0 5px rgba(148, 201, 168, 0.3); /* אפקט זוהר קל יותר */
-    background-color: #eaf7ed; /* רקע ירקרק עדין */
+    background-color: #ffffff; /* רקע ירקרק עדין */
     transform: scale(1.03); /* הגדלה פחות דרמטית */
     transition: all 0.3s ease; /* מעבר חלק */
 }
@@ -100,7 +100,7 @@ body {
 .button-continue {
     flex: 1;
     padding: 10px 20px;
-    background-color: #94c9a8;
+    background-color: #C49A94;
     color: white;
     border: none;
     border-radius: 5px;
@@ -111,7 +111,7 @@ body {
 
 .button-back:hover,
 .button-continue:hover {
-    background-color: #78b593;
+    background-color: #B47F78;
 }
 
 .cancel-circle-button {
