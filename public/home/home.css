@@ -1,7 +1,7 @@
 /* עיצוב כללי */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f3f5ed; /* צבע רקע כללי */
+    background-color: #F6ECEA; /* צבע רקע כללי */
     color: #333;
     margin: 0;
     padding: 0;
@@ -49,7 +49,7 @@ body {
     padding: 10px 20px;
     font-size: 1rem;
     color: white;
-    background-color: #556b2f; /* צבע ירוק כהה */
+    background-color: #C49A94; /* צבע ירוק כהה */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -57,22 +57,22 @@ body {
 }
 
 .btn-get-started:hover {
-    background-color: #6b8e23; /* צבע ירוק בהיר יותר */
+    background-color: #B47F78; /* צבע ירוק בהיר יותר */
 }
 
 .btn-learn-more {
     padding: 10px 20px;
     font-size: 1rem;
-    color: #556b2f; /* צבע ירוק כהה */
+    color: #B47F78; /* צבע ירוק כהה */
     background-color: white;
-    border: 2px solid #556b2f;
+    border: 2px solid #B47F78;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn-learn-more:hover {
-    background-color: #556b2f;
+    background-color: #B47F78;
     color: white;
 }
 
@@ -82,11 +82,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #eae5df; /* צבע רקע אפור בהיר */
+    background-color: #F3E3DC; /* צבע רקע אפור בהיר */
     padding: 20px;
     border-radius: 10px;
-    height: 300px;
-    max-width: 400px;
+    height: 650px;
+    max-width: 600px;
 }
 
 .home-image {

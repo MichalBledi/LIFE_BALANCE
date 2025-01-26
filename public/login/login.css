@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif; /* שינוי לפונט אריאל */
-    background-color: #f3f5ed; /* התאמת צבע רקע */
+    background-color: #F6ECEA;
     margin: 0;
     padding: 0;
     display: flex;
@@ -14,7 +14,7 @@ body {
     width: 500px;
     height: 350px;
     text-align: center;
-    background: #f3f5ed;
+    background: #F3E3DC;  /* צבע הרקע החדש של הקונטיינר */
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -54,7 +54,7 @@ input[type="password"] {
 button {
     width: 100%;
     padding: 15px; /* התאמת ריווח כפתור */
-    background-color: #94c9a8; /* צבע ירוק */
+    background-color: #C49A94; /* צבע ירוק */
     color: white;
     border: none;
     border-radius: 8px;
@@ -66,9 +66,8 @@ button {
 }
 
 button:hover {
-    background-color: #78b593; /* צבע ירוק כהה יותר במעט */
+    background-color: #B47F78; 
 }
-
 
 .register {
     margin-top: 20px;
