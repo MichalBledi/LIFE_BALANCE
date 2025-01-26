@@ -43,67 +43,61 @@ body {
     color: #333;
 }
 
-.allergies-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-height: 300px; /* מאפשר גלילה לאורך */
-    overflow-y: auto; /* גלילה אנכית בלבד */
-    overflow-x: hidden; /* ביטול גלילה אופקית */
-    padding-right: 10px; /* מוסיף רווח פנימי לגלילה נוחה */
-}
-
 .allergies-option {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 9px;
-    background-color: #f8f9fa;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+    padding: 10px 15px;
+    background-color: #f4f4f4; /* רקע אפור בהיר */
+    border: 1px solid #ddd; /* גבול דק */
+    border-radius: 10px; /* פינות מעוגלות */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .allergies-option:hover {
-    background-color: #e0e0e0; /* שינוי צבע במעבר עכבר */
+    background-color: #e0e0e0; /* צבע רקע במעבר עכבר */
     transform: scale(1.02); /* הגדלה קלה */
 }
 
-.allergies-option.selected {
-    border: 0.5px solid #b2d8c3; /* מסגרת ירוקה עדינה יותר */
-    box-shadow: 0 0 5px rgba(148, 201, 168, 0.3); /* אפקט זוהר קל יותר */
-    background-color: #eaf7ed; /* רקע ירקרק עדין */
-    transform: scale(1.0); /* הגדלה פחות דרמטית */
-    transition: all 0.3s ease; /* מעבר חלק */
+.allergy-icon {
+    width: 30px; /* גודל התמונה */
+    height: 30px;
+    margin-right: 10px; /* רווח בין התמונה לטקסט */
 }
+
+.allergies-option.selected {
+    border: 2px solid #94c9a8; /* מסגרת ירוקה כאשר נבחר */
+    background-color: #eaf7ed; /* רקע ירקרק */
+}
+
 
 
 /* עיצוב עבור כפתור "No Allergies" */
 .allergies-option.no-allergies {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 5px;
-    background-color: #f8f9fa;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+    padding: 10px 15px;
+    background-color: #f4f4f4; /* רקע אפור בהיר */
+    border: 1px solid #ddd; /* גבול דק */
+    border-radius: 10px; /* פינות מעוגלות */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .allergies-option.no-allergies:hover {
-    background-color: #eaeaea; /* רקע אפור בהיר במעבר עכבר */
+    background-color: #e0e0e0; /* רקע אפור בהיר יותר במעבר עכבר */
     transform: scale(1.02); /* הגדלה קלה */
 }
 
 .allergies-option.no-allergies.selected {
-    border: 0.5px solid #b2d8c3; /* מסגרת ירוקה עדינה יותר */
-    box-shadow: 0 0 5px rgba(148, 201, 168, 0.3); /* אפקט זוהר קל יותר */
+    border: 2px solid #b2d8c3; /* מסגרת ירוקה עדינה יותר */
+    box-shadow: 0 0 5px rgba(148, 201, 168, 0.3); /* אפקט זוהר קל */
     background-color: #eaf7ed; /* רקע ירקרק עדין */
-    transform: scale(1.0); /* הגדלה פחות דרמטית */
+    transform: scale(1); /* ללא הגדלה נוספת */
     transition: all 0.3s ease; /* מעבר חלק */
 }
+
+
 
 .button-group {
     display: flex;

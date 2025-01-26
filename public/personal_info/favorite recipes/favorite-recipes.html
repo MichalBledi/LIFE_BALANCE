@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite Recipes</title>
+    <link rel="stylesheet" href="favorite-recipes.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Logo Section -->
+        <header class="header">
+            <h1 class="logo">LIFE BALANCE</h1>
+        </header>
+
+        <!-- Categories Section -->
+        <nav class="categories">
+            <button class="category-button" data-category="all">
+                <img src="all food.png" alt="הכל">
+                <span>all</span>
+            </button>
+            <button class="category-button" data-category="breakfast">
+                <img src="breakfast.png" alt="ארוחת בוקר">
+                <span>breakfast</span>
+            </button>
+            <button class="category-button" data-category="lunch">
+                <img src="lunch.png" alt="ארוחת צהריים">
+                <span>lunch</span>
+            </button>
+            <button class="category-button" data-category="dinner">
+                <img src="dinner.png" alt="ארוחת ערב">
+                <span>dinner</span>
+            </button>
+            <button class="category-button" data-category="dessert">
+                <img src="dessert.png" alt="קינוח">
+                <span>dessert</span>
+            </button>
+            <button class="category-button" data-category="single">
+                <img src="single product.png" alt="מוצר בודד">
+                <span>single product</span>
+            </button>
+        </nav>
+        
+
+        <!-- Recipes Section -->
+        <section class="recipes">
+            <!-- Card Example -->
+            <div class="recipe-card">
+                <img src="images/blueberry-donuts.jpg" alt="Delicious Fancy Glazed Blueberry Donuts">
+                <div class="card-content">
+                    <div class="rating">★★★★★</div>
+                    <h3 class="recipe-title">Delicious Fancy Glazed Blueberry Donuts</h3>
+                    <div class="recipe-author">
+                        <img src="images/author1.jpg" alt="Author">
+                        <span>Tricia Albert</span>
+                    </div>
+                    <div class="recipe-meta">
+                        <span>Yesterday</span>
+                        <span class="likes" onclick="alert('Like functionality coming soon!')">❤️ 456</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more cards here -->
+        </section>        
+    </div>
+
+    <script src="favorite-recipes.js"></script>
+</body>
+</html>

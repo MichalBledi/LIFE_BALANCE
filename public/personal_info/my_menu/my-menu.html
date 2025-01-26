@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Weekly Meal Plans</title>
+    <link rel="stylesheet" href="my-menu.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>What Are You Eating This Week?</h1>
+        </header>
+
+        <div class="weekly-container">
+            <!-- כל עמודה מייצגת יום בשבוע -->
+            <div class="day-column">
+                <div class="day-header">
+                    <div class="date-info">
+                        <h3>MONDAY</h3>
+                    </div>
+                    <div class="calories-summary">
+                        <div class="circle-chart-container">
+                            <canvas id="caloriesChartMonday" width="50" height="50"></canvas>
+                        </div>
+                        <div class="calories-info">
+                            <p><strong>CARBS:</strong> <span style="color: #FFA500;">246.3g</span></p>
+                            <p><strong>FATS:</strong> <span style="color: #FF4500;">163.6g</span></p>
+                            <p><strong>PROTEIN:</strong> <span style="color: #1E90FF;">301.2g</span></p>
+                            <p><strong style="color: #43A047;">TOTAL CALORIES: 3571</strong></p>
+                        </div>
+                    </div>
+                </div>                
+            
+                            <!-- ארוחת בוקר -->
+                <div class="meal-header">
+                    <h4 class="meal-type">Breakfast</h4>
+                    <button class="refresh-button">⟳</button>
+                </div>
+                <div class="meal-card">
+                    <img src="oatmeal.jpg" alt="Oatmeal with fruits" class="meal-image">
+                    <div class="meal-details">
+                        <h4>Oatmeal with fruits</h4>
+                        <p>300 Calories</p>
+                        <div class="meal-info">
+                            <span>Carbs: 55.2g</span>
+                            <span>Fats: 1.0g</span>
+                            <span>Protein: 8g</span>
+                        </div>
+                        <div class="servings">
+                            <button class="add-button">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ארוחת צהריים -->
+                <div class="meal-header">
+                    <h4 class="meal-type">Lunch</h4>
+                    <button class="refresh-button">⟳</button>
+                </div>
+                <div class="meal-card">
+                    <img src="chicken_salad.jpg" alt="Grilled chicken salad" class="meal-image">
+                    <div class="meal-details">
+                        <h4>Grilled chicken salad</h4>
+                        <p>450 Calories</p>
+                        <div class="meal-info">
+                            <span>Carbs: 20.5g</span>
+                            <span>Fats: 12.0g</span>
+                            <span>Protein: 35g</span>
+                        </div>
+                        <div class="servings">
+                            <button class="add-button">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ארוחת ערב -->
+                <div class="meal-header">
+                    <h4 class="meal-type">Dinner</h4>
+                    <button class="refresh-button">⟳</button>
+                </div>
+                <div class="meal-card">
+                    <img src="steamed_salmon.jpg" alt="Steamed salmon" class="meal-image">
+                    <div class="meal-details">
+                        <h4>Steamed salmon</h4>
+                        <p>600 Calories</p>
+                        <div class="meal-info">
+                            <span>Carbs: 5.0g</span>
+                            <span>Fats: 25.0g</span>
+                            <span>Protein: 50g</span>
+                        </div>
+                        <div class="servings">
+                            <button class="add-button">+</button>
+                        </div>
+                    </div>
+                </div>
+
+            
+                <!-- חטיף -->
+                <div class="meal-header">
+                    <h4 class="meal-type">Snack</h4>
+                    <button class="refresh-button">⟳</button>
+                </div>
+                <div class="meal-card">
+                    <img src="mixed_nuts.jpg" alt="Mixed nuts" class="meal-image">
+                    <div class="meal-details">
+                        <h4>Mixed nuts</h4>
+                        <p>200 Calories</p>
+                        <div class="meal-info">
+                            <span>Carbs: 10.0g</span>
+                            <span>Fats: 15.0g</span>
+                            <span>Protein: 5g</span>
+                        </div>
+                        <div class="servings">
+                            <button class="add-button">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- שכפול ליום נוסף -->
+            <div class="day-column">
+                <div class="day-header">
+                    <div class="date-info">
+                        <h3>TUESDAY</h3>
+                    </div>
+                    <div class="calories-summary">
+                        <div class="circle-chart-container">
+                            <canvas id="caloriesChartWednesday" width="50" height="50"></canvas>
+                        </div>
+                        <div class="calories-info">
+                            <p><strong>CARBS:</strong> <span style="color: #FFA500;">246.3g</span></p>
+                            <p><strong>FATS:</strong> <span style="color: #FF4500;">163.6g</span></p>
+                            <p><strong>PROTEIN:</strong> <span style="color: #1E90FF;">301.2g</span></p>
+                            <p><strong style="color: #43A047;">TOTAL CALORIES: 3571</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="meal-header">
+                    <h4 class="meal-type">Breakfast</h4>
+                    <button class="refresh-button">⟳</button>
+                </div>
+                <div class="meal-card">
+                    <img src="oatmeal.jpg" alt="Oatmeal with fruits" class="meal-image">
+                    <div class="meal-details">
+                        <h4>Oatmeal with fruits</h4>
+                        <p>300 Calories</p>
+                        <div class="meal-info">
+                            <span>Carbs: 55.2g</span>
+                            <span>Fats: 1.0g</span>
+                            <span>Protein: 8g</span>
+                        </div>
+                        <div class="servings">
+                            <button class="add-button">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ארוחת צהריים -->
+                <div class="meal-header">
+                    <h4 class="meal-type">Lunch</h4>
+                    <button class="refresh-button">⟳</button>
+                </div>
+                <div class="meal-card">
+                    <img src="chicken_salad.jpg" alt="Grilled chicken salad" class="meal-image">
+                    <div class="meal-details">
+                        <h4>Grilled chicken salad</h4>
+                        <p>450 Calories</p>
+                        <div class="meal-info">
+                            <span>Carbs: 20.5g</span>
+                            <span>Fats: 12.0g</span>
+                            <span>Protein: 35g</span>
+                        </div>
+                        <div class="servings">
+                            <button class="add-button">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ארוחת ערב -->
+                <div class="meal-header">
+                    <h4 class="meal-type">Dinner</h4>
+                    <button class="refresh-button">⟳</button>
+                </div>
+                <div class="meal-card">
+                    <img src="steamed_salmon.jpg" alt="Steamed salmon" class="meal-image">
+                    <div class="meal-details">
+                        <h4>Steamed salmon</h4>
+                        <p>600 Calories</p>
+                        <div class="meal-info">
+                            <span>Carbs: 5.0g</span>
+                            <span>Fats: 25.0g</span>
+                            <span>Protein: 50g</span>
+                        </div>
+                        <div class="servings">
+                            <button class="add-button">+</button>
+                        </div>
+                    </div>
+                </div>
+
+            
+                <!-- חטיף -->
+                <div class="meal-header">
+                    <h4 class="meal-type">Snack</h4>
+                    <button class="refresh-button">⟳</button>
+                </div>
+                <div class="meal-card">
+                    <img src="mixed_nuts.jpg" alt="Mixed nuts" class="meal-image">
+                    <div class="meal-details">
+                        <h4>Mixed nuts</h4>
+                        <p>200 Calories</p>
+                        <div class="meal-info">
+                            <span>Carbs: 10.0g</span>
+                            <span>Fats: 15.0g</span>
+                            <span>Protein: 5g</span>
+                        </div>
+                        <div class="servings">
+                            <button class="add-button">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+                <!-- יום רביעי -->
+                <div class="day-column">
+                    <div class="day-header">
+                        <div class="date-info">
+                            <h3>WEDNESDAY</h3>
+                        </div>
+                        <div class="calories-summary">
+                            <div class="circle-chart-container">
+                                <canvas id="caloriesChartWednesday" width="50" height="50"></canvas>
+                            </div>
+                            <div class="calories-info">
+                                <p><strong>CARBS:</strong> <span style="color: #FFA500;">246.3g</span></p>
+                                <p><strong>FATS:</strong> <span style="color: #FF4500;">163.6g</span></p>
+                                <p><strong>PROTEIN:</strong> <span style="color: #1E90FF;">301.2g</span></p>
+                                <p><strong style="color: #43A047;">TOTAL CALORIES: 3571</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="meal-header">
+                        <h4 class="meal-type">Breakfast</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="oatmeal.jpg" alt="Oatmeal with fruits" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Oatmeal with fruits</h4>
+                            <p>300 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 55.2g</span>
+                                <span>Fats: 1.0g</span>
+                                <span>Protein: 8g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- ארוחת צהריים -->
+                    <div class="meal-header">
+                        <h4 class="meal-type">Lunch</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="chicken_salad.jpg" alt="Grilled chicken salad" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Grilled chicken salad</h4>
+                            <p>450 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 20.5g</span>
+                                <span>Fats: 12.0g</span>
+                                <span>Protein: 35g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- ארוחת ערב -->
+                    <div class="meal-header">
+                        <h4 class="meal-type">Dinner</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="steamed_salmon.jpg" alt="Steamed salmon" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Steamed salmon</h4>
+                            <p>600 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 5.0g</span>
+                                <span>Fats: 25.0g</span>
+                                <span>Protein: 50g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                
+                    <!-- חטיף -->
+                    <div class="meal-header">
+                        <h4 class="meal-type">Snack</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="mixed_nuts.jpg" alt="Mixed nuts" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Mixed nuts</h4>
+                            <p>200 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 10.0g</span>
+                                <span>Fats: 15.0g</span>
+                                <span>Protein: 5g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="day-column">
+                    <div class="day-header">
+                        <div class="date-info">
+                            <h3>THURSDAY</h3>
+                        </div>
+                        <div class="calories-summary">
+                            <div class="circle-chart-container">
+                                <canvas id="caloriesChartWednesday" width="50" height="50"></canvas>
+                            </div>
+                            <div class="calories-info">
+                                <p><strong>CARBS:</strong> <span style="color: #FFA500;">246.3g</span></p>
+                                <p><strong>FATS:</strong> <span style="color: #FF4500;">163.6g</span></p>
+                                <p><strong>PROTEIN:</strong> <span style="color: #1E90FF;">301.2g</span></p>
+                                <p><strong style="color: #43A047;">TOTAL CALORIES: 3571</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="meal-header">
+                        <h4 class="meal-type">Breakfast</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="oatmeal.jpg" alt="Oatmeal with fruits" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Oatmeal with fruits</h4>
+                            <p>300 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 55.2g</span>
+                                <span>Fats: 1.0g</span>
+                                <span>Protein: 8g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- ארוחת צהריים -->
+                    <div class="meal-header">
+                        <h4 class="meal-type">Lunch</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="chicken_salad.jpg" alt="Grilled chicken salad" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Grilled chicken salad</h4>
+                            <p>450 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 20.5g</span>
+                                <span>Fats: 12.0g</span>
+                                <span>Protein: 35g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- ארוחת ערב -->
+                    <div class="meal-header">
+                        <h4 class="meal-type">Dinner</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="steamed_salmon.jpg" alt="Steamed salmon" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Steamed salmon</h4>
+                            <p>600 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 5.0g</span>
+                                <span>Fats: 25.0g</span>
+                                <span>Protein: 50g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                
+                    <!-- חטיף -->
+                    <div class="meal-header">
+                        <h4 class="meal-type">Snack</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="mixed_nuts.jpg" alt="Mixed nuts" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Mixed nuts</h4>
+                            <p>200 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 10.0g</span>
+                                <span>Fats: 15.0g</span>
+                                <span>Protein: 5g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+    
+                <div class="day-column">
+                    <div class="day-header">
+                        <div class="date-info">
+                            <h3>FRIDAY</h3>
+                        </div>
+                        <div class="calories-summary">
+                            <div class="circle-chart-container">
+                                <canvas id="caloriesChartWednesday" width="50" height="50"></canvas>
+                            </div>
+                            <div class="calories-info">
+                                <p><strong>CARBS:</strong> <span style="color: #FFA500;">246.3g</span></p>
+                                <p><strong>FATS:</strong> <span style="color: #FF4500;">163.6g</span></p>
+                                <p><strong>PROTEIN:</strong> <span style="color: #1E90FF;">301.2g</span></p>
+                                <p><strong style="color: #43A047;">TOTAL CALORIES: 3571</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="meal-header">
+                        <h4 class="meal-type">Breakfast</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="oatmeal.jpg" alt="Oatmeal with fruits" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Oatmeal with fruits</h4>
+                            <p>300 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 55.2g</span>
+                                <span>Fats: 1.0g</span>
+                                <span>Protein: 8g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- ארוחת צהריים -->
+                    <div class="meal-header">
+                        <h4 class="meal-type">Lunch</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="chicken_salad.jpg" alt="Grilled chicken salad" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Grilled chicken salad</h4>
+                            <p>450 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 20.5g</span>
+                                <span>Fats: 12.0g</span>
+                                <span>Protein: 35g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- ארוחת ערב -->
+                    <div class="meal-header">
+                        <h4 class="meal-type">Dinner</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="steamed_salmon.jpg" alt="Steamed salmon" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Steamed salmon</h4>
+                            <p>600 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 5.0g</span>
+                                <span>Fats: 25.0g</span>
+                                <span>Protein: 50g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                
+                    <!-- חטיף -->
+                    <div class="meal-header">
+                        <h4 class="meal-type">Snack</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="mixed_nuts.jpg" alt="Mixed nuts" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Mixed nuts</h4>
+                            <p>200 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 10.0g</span>
+                                <span>Fats: 15.0g</span>
+                                <span>Protein: 5g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="day-column">
+                    <div class="day-header">
+                        <div class="date-info">
+                            <h3>SATURDAY</h3>
+                        </div>
+                        <div class="calories-summary">
+                            <div class="circle-chart-container">
+                                <canvas id="caloriesChartWednesday" width="50" height="50"></canvas>
+                            </div>
+                            <div class="calories-info">
+                                <p><strong>CARBS:</strong> <span style="color: #FFA500;">246.3g</span></p>
+                                <p><strong>FATS:</strong> <span style="color: #FF4500;">163.6g</span></p>
+                                <p><strong>PROTEIN:</strong> <span style="color: #1E90FF;">301.2g</span></p>
+                                <p><strong style="color: #43A047;">TOTAL CALORIES: 3571</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="meal-header">
+                        <h4 class="meal-type">Breakfast</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="oatmeal.jpg" alt="Oatmeal with fruits" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Oatmeal with fruits</h4>
+                            <p>300 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 55.2g</span>
+                                <span>Fats: 1.0g</span>
+                                <span>Protein: 8g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- ארוחת צהריים -->
+                    <div class="meal-header">
+                        <h4 class="meal-type">Lunch</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="chicken_salad.jpg" alt="Grilled chicken salad" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Grilled chicken salad</h4>
+                            <p>450 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 20.5g</span>
+                                <span>Fats: 12.0g</span>
+                                <span>Protein: 35g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- ארוחת ערב -->
+                    <div class="meal-header">
+                        <h4 class="meal-type">Dinner</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="steamed_salmon.jpg" alt="Steamed salmon" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Steamed salmon</h4>
+                            <p>600 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 5.0g</span>
+                                <span>Fats: 25.0g</span>
+                                <span>Protein: 50g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                
+                    <!-- חטיף -->
+                    <div class="meal-header">
+                        <h4 class="meal-type">Snack</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="mixed_nuts.jpg" alt="Mixed nuts" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Mixed nuts</h4>
+                            <p>200 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 10.0g</span>
+                                <span>Fats: 15.0g</span>
+                                <span>Protein: 5g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="day-column">
+                    <div class="day-header">
+                        <div class="date-info">
+                            <h3>SUNDAY</h3>
+                        </div>
+                        <div class="calories-summary">
+                            <div class="circle-chart-container">
+                                <canvas id="caloriesChartWednesday" width="50" height="50"></canvas>
+                            </div>
+                            <div class="calories-info">
+                                <p><strong>CARBS:</strong> <span style="color: #FFA500;">246.3g</span></p>
+                                <p><strong>FATS:</strong> <span style="color: #FF4500;">163.6g</span></p>
+                                <p><strong>PROTEIN:</strong> <span style="color: #1E90FF;">301.2g</span></p>
+                                <p><strong style="color: #43A047;">TOTAL CALORIES: 3571</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="meal-header">
+                        <h4 class="meal-type">Breakfast</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="oatmeal.jpg" alt="Oatmeal with fruits" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Oatmeal with fruits</h4>
+                            <p>300 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 55.2g</span>
+                                <span>Fats: 1.0g</span>
+                                <span>Protein: 8g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- ארוחת צהריים -->
+                    <div class="meal-header">
+                        <h4 class="meal-type">Lunch</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="chicken_salad.jpg" alt="Grilled chicken salad" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Grilled chicken salad</h4>
+                            <p>450 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 20.5g</span>
+                                <span>Fats: 12.0g</span>
+                                <span>Protein: 35g</span>
+                            </div>
+                            <div class="servings">
+
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- ארוחת ערב -->
+                    <div class="meal-header">
+                        <h4 class="meal-type">Dinner</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="steamed_salmon.jpg" alt="Steamed salmon" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Steamed salmon</h4>
+                            <p>600 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 5.0g</span>
+                                <span>Fats: 25.0g</span>
+                                <span>Protein: 50g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                
+                    <!-- חטיף -->
+                    <div class="meal-header">
+                        <h4 class="meal-type">Snack</h4>
+                        <button class="refresh-button">⟳</button>
+                    </div>
+                    <div class="meal-card">
+                        <img src="mixed_nuts.jpg" alt="Mixed nuts" class="meal-image">
+                        <div class="meal-details">
+                            <h4>Mixed nuts</h4>
+                            <p>200 Calories</p>
+                            <div class="meal-info">
+                                <span>Carbs: 10.0g</span>
+                                <span>Fats: 15.0g</span>
+                                <span>Protein: 5g</span>
+                            </div>
+                            <div class="servings">
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            </div>
+        </div>
+    
+        <script src="my-menu.js"></script>
+    </body>
+    </html>
+    

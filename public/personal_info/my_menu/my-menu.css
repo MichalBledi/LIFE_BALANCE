@@ -1,0 +1,163 @@
+.weekly-container {
+    display: flex;
+    flex-wrap: nowrap; /* מונע ירידת עמודות לשורה חדשה */
+    gap: 30px; /* רווחים אחידים בין עמודות */
+    overflow-x: auto; /* גלילה אופקית אם צריך */
+    padding: 20px;
+    justify-content: flex-start;
+}
+
+.day-column {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 300px; /* רוחב מינימלי לעמודה */
+    max-width: 400px; /* רוחב מקסימלי */
+    padding: 20px;
+    flex-shrink: 0; /* מונע מהעמודה לקטון */
+    box-sizing: border-box; /* כדי להכליל padding בתוך הרוחב */
+}
+
+.day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.date-info {
+    text-align: left;
+}
+
+.date-info h3 {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.date-info h1 {
+    font-size: 36px;
+    color: #558b2f;
+    margin: 5px 0;
+}
+
+.calories-summary {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.circle-chart-container {
+    width: 60px;
+    height: 60px;
+}
+
+#caloriesChart {
+    width: 100%;
+    height: auto;
+}
+
+.calories-info {
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.calories-info p {
+    margin: 2px 0;
+}
+
+.meal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.refresh-button {
+    background-color: #6a7a5c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.refresh-button:hover {
+    background-color: #558b2f;
+}
+
+
+.meal-card {
+    display: flex;
+    background: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 15px;
+    gap: 15px;
+    align-items: center;
+}
+
+.meal-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.meal-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.meal-details h4 {
+    font-size: 16px;
+    margin: 0;
+    color: #333;
+}
+
+.meal-details p {
+    font-size: 14px;
+    color: #777;
+    margin: 0;
+}
+
+.meal-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #555;
+    margin-top: 5px;
+}
+
+.servings {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.add-button {
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: #606060;
+    transition: color 0.3s ease;
+    border: none;
+    background: none;
+    padding: 5px;
+}
+
+.add-button:hover {
+    color: #333;
+}
+
