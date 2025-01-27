@@ -17,19 +17,20 @@ let isUserLoggedIn = false;
 
 function handleAuthClick() {
     if (isUserLoggedIn) {
-        window.location.href = '/personal-area'; // מפנה לדף האזור האישי
+        window.location.href = '../personal_info/user_info/user_info.html'; // מפנה לדף האזור האישי
     } else {
-        window.location.href = '/login'; // מפנה לדף ההתחברות
+        window.location.href = '../login/login.html'; // מפנה לדף ההתחברות
     }
 }
 
 function updateAuthButton() {
     const authButton = document.querySelector('.personal-area .text');
-    if (isUserLoggedIn) {
-        authButton.textContent = 'Personal Area'; // משנה טקסט לאזור אישי
+    if (authButton) {
+        authButton.textContent = isUserLoggedIn ? 'Personal Area' : 'Log in';
     } else {
-        authButton.textContent = 'Log in'; // משנה טקסט להתחברות
+        console.error('Auth button not found');
     }
 }
+
 
 document.addEventListener('DOMContentLoaded', updateAuthButton);

@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #EDDCD2;
+    background-color:#F6ECEA;
     margin: 0;
     padding: 0;
 }
@@ -16,7 +16,7 @@ body {
 }
 
 .day-column {
-    background: #ffffff;
+    background: #F3E3DC;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     min-width: 300px; /* רוחב מינימלי לעמודה */
@@ -48,7 +48,7 @@ body {
 
 .date-info h1 {
     font-size: 36px;
-    color: #558b2f;
+    color: #C49A94;
     margin: 5px 0;
 }
 
@@ -86,7 +86,7 @@ body {
 }
 
 .refresh-button {
-    background-color: #6a7a5c;
+    background-color: #C49A94;
     color: white;
     border: none;
     border-radius: 5px;
@@ -98,7 +98,7 @@ body {
 }
 
 .refresh-button:hover {
-    background-color: #558b2f;
+    background-color: #B47F78;
 }
 
 
@@ -167,5 +167,27 @@ body {
 
 .add-button:hover {
     color: #333;
+}
+
+/* כפתור "שמור שינויים" */
+.save-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color:#C49A94;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.save-button:hover {
+    background-color: #B47F78;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 

@@ -5,11 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Weekly Meal Plans</title>
     <link rel="stylesheet" href="my-menu.css">
+    <link rel="stylesheet" href="../../navbar/sidebar.css">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../navbar/sidebar.js" defer></script>
+    <script src="my-menu.js"></script>
+
 </head>
 <body>
     <div class="container">
         <header class="header">
             <h1>What Are You Eating This Week?</h1>
+            <button class="save-button">Save Changes</button>
+            <div class="menu-container">
+                <button id="menu-btn" class="menu-btn" onclick="toggleSidebar()">☰</button>
+            </div>
+            <div id="sidebar-container"></div>
         </header>
 
         <div class="weekly-container">
@@ -127,7 +139,7 @@
                     </div>
                     <div class="calories-summary">
                         <div class="circle-chart-container">
-                            <canvas id="caloriesChartWednesday" width="50" height="50"></canvas>
+                            <canvas id="caloriesChartTuesday" width="50" height="50"></canvas>
                         </div>
                         <div class="calories-info">
                             <p><strong>CARBS:</strong> <span style="color: #FFA500;">246.3g</span></p>
@@ -229,18 +241,18 @@
                         <div class="date-info">
                             <h3>WEDNESDAY</h3>
                         </div>
-                        <div class="calories-summary">
-                            <div class="circle-chart-container">
-                                <canvas id="caloriesChartWednesday" width="50" height="50"></canvas>
-                            </div>
-                            <div class="calories-info">
-                                <p><strong>CARBS:</strong> <span style="color: #FFA500;">246.3g</span></p>
-                                <p><strong>FATS:</strong> <span style="color: #FF4500;">163.6g</span></p>
-                                <p><strong>PROTEIN:</strong> <span style="color: #1E90FF;">301.2g</span></p>
-                                <p><strong style="color: #43A047;">TOTAL CALORIES: 3571</strong></p>
+                            <div class="calories-summary">
+                                <div class="circle-chart-container">
+                                    <canvas id="caloriesChartWednesday" width="50" height="50"></canvas>
+                                </div>
+                                <div class="calories-info">
+                                    <p><strong>CARBS:</strong> <span style="color: #FFA500;">246.3g</span></p>
+                                    <p><strong>FATS:</strong> <span style="color: #FF4500;">163.6g</span></p>
+                                    <p><strong>PROTEIN:</strong> <span style="color: #1E90FF;">301.2g</span></p>
+                                    <p><strong style="color: #43A047;">TOTAL CALORIES: 3571</strong></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     
                     <div class="meal-header">
                         <h4 class="meal-type">Breakfast</h4>
@@ -334,7 +346,7 @@
                         </div>
                         <div class="calories-summary">
                             <div class="circle-chart-container">
-                                <canvas id="caloriesChartWednesday" width="50" height="50"></canvas>
+                                <canvas id="caloriesChartThursday" width="50" height="50"></canvas>
                             </div>
                             <div class="calories-info">
                                 <p><strong>CARBS:</strong> <span style="color: #FFA500;">246.3g</span></p>
@@ -438,7 +450,7 @@
                         </div>
                         <div class="calories-summary">
                             <div class="circle-chart-container">
-                                <canvas id="caloriesChartWednesday" width="50" height="50"></canvas>
+                                <canvas id="caloriesChartFriday" width="50" height="50"></canvas>
                             </div>
                             <div class="calories-info">
                                 <p><strong>CARBS:</strong> <span style="color: #FFA500;">246.3g</span></p>
@@ -542,7 +554,7 @@
                         </div>
                         <div class="calories-summary">
                             <div class="circle-chart-container">
-                                <canvas id="caloriesChartWednesday" width="50" height="50"></canvas>
+                                <canvas id="caloriesChartSaturday" width="50" height="50"></canvas>
                             </div>
                             <div class="calories-info">
                                 <p><strong>CARBS:</strong> <span style="color: #FFA500;">246.3g</span></p>
@@ -645,7 +657,7 @@
                         </div>
                         <div class="calories-summary">
                             <div class="circle-chart-container">
-                                <canvas id="caloriesChartWednesday" width="50" height="50"></canvas>
+                                <canvas id="caloriesChartSunday" width="50" height="50"></canvas>
                             </div>
                             <div class="calories-info">
                                 <p><strong>CARBS:</strong> <span style="color: #FFA500;">246.3g</span></p>
@@ -745,8 +757,6 @@
 
             </div>
         </div>
-    
-        <script src="my-menu.js"></script>
     </body>
     </html>
     
