@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F6ECEA;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#calculator-container {
+    background: #F3E3DC;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+}
+
+.hidden {
+    display: none;
+}
+
+input {
+    padding: 10px;
+    width: calc(100% - 20px);
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* עיצוב לחלק התוצאות */
+.results {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+/* עיצוב לכרטיס */
+.nutrient-card {
+    background: #F6ECEA;
+    border: 1px solid #B47F78;
+    border-radius: 10px;
+    padding: 15px;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nutrient-card p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.nutrient-card strong {
+    font-size: 18px;
+    color: #B47F78;
+}
+
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #C49A94;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #B47F78;
+}
+
+/* כפתור חזור */
+.back-btn {
+    position: fixed; /* מקבע את הכפתור במסך */
+    top: 20px; /* מרחק מהחלק העליון */
+    right: 20px; /* מרחק מהחלק הימני */
+    background-color: #C49A94; /* צבע רקע */
+    color: white; /* צבע טקסט */
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1000; /* מעל כל התוכן */
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #B47F78; /* צבע רקע בעת ריחוף */
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutritional Calculator</title>
+    <link rel="stylesheet" href="NutrientsCalc.css">
+</head>
+<body>
+    <!-- כפתור חזרה -->
+    <button class="back-btn" onclick="goBack()">Back →</button>
+
+    <div id="calculator-container">
+        <h1>Nutritional Calculator</h1>
+        <p>Enter a product name to calculate its nutritional values:</p>
+        <input type="text" id="product-name" placeholder="Enter product name">
+        <button id="calculate-btn">Calculate</button>
+        <div id="results" class="results hidden">
+            <h4>Results:</h4>
+            <div class="nutrient-card">
+                <p><strong>Calories:</strong> <span id="calories">0</span> kcal/100g</p>
+            </div>
+            <div class="nutrient-card">
+                <p><strong>Proteins:</strong> <span id="proteins">0</span> g/100g</p>
+            </div>
+            <div class="nutrient-card">
+                <p><strong>Carbs:</strong> <span id="carbs">0</span> g/100g</p>
+            </div>
+        </div>
+        
+    </div>
+    <script src="NutrientsCalc.js"></script>
+</body>
+</html>
