@@ -79,6 +79,7 @@ body {
     flex-direction: column; /* מבנה אנכי */
     justify-content: space-between; /* ריווח התוכן */
     position: relative; /* מאפשר מיקום יחסי לתוכן הפנימי */
+    background-color: #ffffff;
 }
 
 .card:hover {
@@ -138,7 +139,7 @@ body {
 .info-block .value {
     font-size: 16px;
     font-weight: 600;
-    color: #6a7a5c;
+    color: #B47F78;
 }
 
 .info-block .text {
