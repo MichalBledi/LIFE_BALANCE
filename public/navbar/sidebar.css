@@ -15,7 +15,6 @@ body {
   overflow-x: hidden;
   transition: width 0.3s ease;
   padding-top: 60px;
-  z-index: 9999;
 }
 
 .sidebar ul {
@@ -56,7 +55,7 @@ body {
 }
 
 .close-btn:hover {
-  color: #B47F78;
+  color:#B47F78;
 }
 
 .logo-section {
@@ -64,7 +63,7 @@ body {
   align-items: center; /* יישור אנכי של הלוגו והטקסט */
   justify-content: center; /* ממרכז אופקית בתוך התפריט */
   gap: 10px; /* ריווח בין הלוגו לטקסט */
-  border-bottom: 2px solid #B47F78; /* קו תחתון */
+  border-bottom: 2px solid #C49A94; /* קו תחתון */
   width: 90%; /* קו ההפרדה מתאים עצמו לתוכן */
   margin: 5px auto; /* ממקם את הקטע במרכז */
 }
@@ -81,33 +80,35 @@ body {
 }
 
 .sidebar .bottom-section {
-  position: absolute;
-  bottom: 60px; /* התאמה של הגובה כדי להרים את הכפתור */
-  width: 100%; /* הרחבה לרוחב מלא */
   display: flex;
   justify-content: center;
   align-items: center; /* יישור אנכי */
+  position: absolute;
+  bottom: 80px; /* העלינו את הכפתור ב-80px */
+  width: 100%; /* הכפתור יתפוס את הרוחב המקסימלי */
 }
 
 .sidebar .personal-area {
-  margin: 0 auto;
+  border-radius: 10px;
+  display: inline-flex; 
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 20px;
   padding: 10px 20px;
-  font-size: 18px;
-  background-color: #D0B0A3;
+  background-color: #C49A94;
   color: white;
   border: none;
-  border-radius: 10px;
-  text-align: center;
   transition: background-color 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* הוספת צל לכפתור */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* צל לכפתור */
 }
 
 .sidebar .personal-area:hover {
-  background-color: #C49A94; /* צבע רקע כהה יותר בריחוף */
+  background-color: #B47F78; /* צבע רקע בהיר יותר בריחוף */
 }
-
 
 .sidebar .personal-area .icon {
-  font-size: 20px; /* גודל האייקון */
-  color: #B47F78;
+  font-size: 20px;
+  color: white;
 }
+

@@ -37,10 +37,41 @@ label {
     color: #333;
 }
 
+.menu-container {
+    flex: 0 0 auto; /* משאיר את כפתור התפריט בצד שמאל */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menu-container .menu-btn {
+    background-color: #C49A94;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 10px;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+}
+
+.menu-container .menu-btn:hover {
+    background-color: #B47F78;
+}
+
 /* מיכל תיבות Ingredients */
 #ingredientsContainer {
     display: flex;
     flex-direction: column; /* סידור אנכי של התיבות */
+    gap: 20px; /* רווח מסודר בין כל התיבות */
+    margin-top: 10px; /* מרווח כללי מעל המיכל */
+}
+
+/* מיכל תיבות Directions */
+#directionsContainer {
+    display: flex;
+    flex-direction: column; /* מסדר את הקבוצות אנכית */
     gap: 20px; /* רווח מסודר בין כל התיבות */
     margin-top: 10px; /* מרווח כללי מעל המיכל */
 }
@@ -55,7 +86,7 @@ label {
 }
 
 /* תיבות טקסט */
-input[type="text"], textarea {
+input[type="text"], textarea, .ingredient-input, .direction-input {
     flex: 1; /* תופס את שאר המקום */
     padding: 10px;
     font-size: 16px;
@@ -65,12 +96,20 @@ input[type="text"], textarea {
     color: #333; /* צבע טקסט */
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* עומק קל */
     width: 100%; /* תיבות הטקסט יתפרסו על המיכל */
+    transition: border-color 0.3s ease; /* אפקט מעבר חלק */
 }
 
 /* תיבות טקסט גדולות */
 textarea {
     resize: none;
     border-radius: 20px; /* אותו עיצוב לתיבות טקסט גדולות */
+}
+
+/* תיבות טקסט במצב פוקוס */
+input[type="text"]:focus, textarea:focus, .ingredient-input:focus, .direction-input:focus {
+    border: 1px solid #B47F78; /* צבע מסגרת בפוקוס */
+    outline: none; /* ביטול ה-outline הדיפולטי */
+    box-shadow: 0 0 5px rgba(180, 127, 120, 0.5); /* הוספת זוהר קל */
 }
 
 /* עיצוב העיטוף של תיבת הטקסט וכפתור הפלוס */
@@ -86,20 +125,18 @@ textarea {
     gap: 10px; /* רווח בין תיבת הטקסט לכפתור הפלוס */
 }
 
-
 .add-more {
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;
     color: #606060;
     transition: color 0.3s ease;
+    margin-left: 5px; /* ריווח קל מהתיבה */
 }
 
 .add-more:hover {
     color: #333;
 }
-
-
 
 /* רשימת קטגוריות */
 .category-list {
@@ -225,4 +262,23 @@ input[type="file"] {
     object-fit: contain; /* שומר על פרופורציות התמונה */
 }
 
+/* כפתור חזור */
+.back-btn {
+    position: fixed; /* מקבע את הכפתור במסך */
+    top: 20px; /* מרחק מהחלק העליון */
+    right: 20px; /* מרחק מהחלק הימני */
+    background-color: #C49A94; /* צבע רקע */
+    color: white; /* צבע טקסט */
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1000; /* מעל כל התוכן */
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #B47F78; /* צבע רקע בעת ריחוף */
+}
 

@@ -17,7 +17,7 @@ let isUserLoggedIn = false;
 
 function handleAuthClick() {
     if (isUserLoggedIn) {
-        window.location.href = '../personal_info/user_info/user_info.html'; // מפנה לדף האזור האישי
+        window.location.href = '../personal-area'; // מפנה לדף האזור האישי
     } else {
         window.location.href = '../login/login.html'; // מפנה לדף ההתחברות
     }
@@ -25,12 +25,11 @@ function handleAuthClick() {
 
 function updateAuthButton() {
     const authButton = document.querySelector('.personal-area .text');
-    if (authButton) {
-        authButton.textContent = isUserLoggedIn ? 'Personal Area' : 'Log in';
+    if (isUserLoggedIn) {
+        authButton.textContent = 'Personal Area'; // משנה טקסט לאזור אישי
     } else {
-        console.error('Auth button not found');
+        authButton.textContent = 'Log in'; // משנה טקסט להתחברות
     }
 }
-
 
 document.addEventListener('DOMContentLoaded', updateAuthButton);

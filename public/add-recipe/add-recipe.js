@@ -3,11 +3,16 @@ function toggleCategoryButton(event) {
     button.classList.toggle('active');
 }
 
+// פונקציה לחזרה לעמוד הקודם
+function goBack() {
+    window.history.back(); // חזרה לעמוד הקודם בהיסטוריית הדפדפן
+}
+
 function handleDone() {
     const confirmDone = confirm('Are yoe sure you want to publish this recipe?');
     if (confirmDone) {
         alert('Recipe submitted successfully!');
-        window.location.href = '../user_info/user-info.html';
+        window.location.href = '../my recipes/my-recipes.html';
     }
 }
 
@@ -15,7 +20,7 @@ function handleCancel() {
     const confirmExit = confirm('Do you want to leave this page?');
     if (confirmExit) {
         alert('All data cleared. Returning to homepage.');
-        window.location.href = '../user_info/user-info.html';
+        window.location.href = '../my recipes/my-recipes.html';
     }
 }
 
@@ -25,11 +30,7 @@ window.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', toggleCategoryButton);
     });
 
-    fetch('../../navbar/sidebar.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('sidebar-container').innerHTML = data;
-    });
+    
 });
 
 // פונקציה להצגת התמונה שנבחרה
@@ -121,17 +122,9 @@ function addDirectionInput() {
     directionsWrapper.appendChild(inputGroup);
 }
 
-function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar-container');
-    const body = document.body;
 
-    if (sidebar.classList.contains('open')) {
-        // סגירת התפריט
-        sidebar.classList.remove('open');
-        body.classList.remove('sidebar-open');
-    } else {
-        // פתיחת התפריט
-        sidebar.classList.add('open');
-        body.classList.add('sidebar-open');
-    }
-}
+fetch('../../navbar/sidebar.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('sidebar-container').innerHTML = data;
+    });
