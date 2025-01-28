@@ -134,3 +134,14 @@ function updateAuthButton() {
         console.warn('Auth button not found');
     }
 }
+
+// פונקציה לחזרה לעמוד הקודם
+function goBack() {
+    window.history.back(); // חזרה לעמוד הקודם בהיסטוריית הדפדפן
+}
+
+fetch('../../navbar/sidebar.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('sidebar-container').innerHTML = data;
+    });

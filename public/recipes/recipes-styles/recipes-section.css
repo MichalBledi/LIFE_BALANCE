@@ -79,7 +79,7 @@
 .info-block .value {
   font-size: 16px;
   font-weight: 600;
-  color: #6a7a5c;
+  color: #C49A94;
 }
 
 .info-block .text {
@@ -102,7 +102,7 @@
   font-size: 14px;
   font-weight: 600;
   color: #fff;
-  background-color: #6a7a5c;
+  background-color: #C49A94;
   border: none;
   border-radius: 5px;
   padding: 0.8em 2em;
@@ -111,6 +111,6 @@
 }
 
 .card-button button:hover {
-  background-color: #555f4a; /* שינוי צבע במעבר */
-  box-shadow: 0 4px 8px #555f4a; /* הוספת הצללה */
+  background-color: #B47F78; /* שינוי צבע במעבר */
+  box-shadow: 0 4px 8px #D0B0A3; /* הוספת הצללה */
 }

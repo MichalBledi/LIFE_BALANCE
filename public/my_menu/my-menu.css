@@ -6,6 +6,29 @@ body {
     padding: 0;
 }
 
+.menu-container {
+    flex: 0 0 auto; /* משאיר את כפתור התפריט בצד שמאל */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menu-container .menu-btn {
+    background-color: #C49A94;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 10px;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+}
+
+.menu-container .menu-btn:hover {
+    background-color: #B47F78;
+}
+
 .weekly-container {
     display: flex;
     flex-wrap: nowrap; /* מונע ירידת עמודות לשורה חדשה */
@@ -169,19 +192,41 @@ body {
     color: #333;
 }
 
+/* כפתור חזור */
+.back-btn {
+    position: fixed; /* מקבע את הכפתור במסך */
+    top: 20px; /* מרחק מהחלק העליון */
+    right: 20px; /* מרחק מהחלק הימני */
+    background-color: #C49A94; /* צבע רקע */
+    color: white; /* צבע טקסט */
+    border: none;
+    border-radius: 10px; /* להפוך את הכפתור למלבני */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1000; /* מעל כל התוכן */
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px; /* רווח מתחת לכפתור */
+}
+
+.back-btn:hover {
+    background-color: #B47F78; /* צבע רקע בעת ריחוף */
+}
+
 /* כפתור "שמור שינויים" */
 .save-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    position: fixed; /* מקבע את הכפתור במסך */
+    top: 70px; /* מרחק מהחלק העליון (מתחת לכפתור Back) */
+    right: 20px; /* מרחק מהחלק הימני */
     background-color:#C49A94;
     color: white;
     border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
+    border-radius: 10px; /* להפוך את הכפתור למלבני */
+    padding: 10px 20px;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
+    z-index: 1000; /* מעל כל התוכן */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -190,4 +235,3 @@ body {
     background-color: #B47F78;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
-

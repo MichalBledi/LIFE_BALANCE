@@ -1,23 +1,62 @@
+// מאזין לאירוע לחיצה על כפתור "Calculate"
 document.getElementById("calculate-btn").addEventListener("click", () => {
-    const productName = document.getElementById("product-name").value;
+    const productName = document.getElementById("product-name").value.trim().toLowerCase(); // קלט המשתמש
 
-    // נתוני דוגמה לחישוב
+    // נתוני דוגמה
     const data = {
-        apple: { calories: 52, proteins: 0.3, carbs: 14 },
-        banana: { calories: 89, proteins: 1.1, carbs: 23 },
-        rice: { calories: 130, proteins: 2.7, carbs: 28 }
+        apple: {
+            caloric_value: 52,
+            fat: 0.2,
+            saturated_fats: 0.0,
+            carbohydrates: 14,
+            sugars: 10,
+            protein: 0.3,
+            dietary_fiber: 2.4,
+            cholesterol: 0,
+            sodium: 1,
+            water: 85.6,
+            calcium: 6,
+            iron: 0.1,
+            potassium: 107,
+            vitamin_c: 4.6,
+            vitamin_d: 0,
+            nutrition_density: 35
+        },
+        banana: {
+            caloric_value: 89,
+            fat: 0.3,
+            saturated_fats: 0.1,
+            carbohydrates: 23,
+            sugars: 12,
+            protein: 1.1,
+            dietary_fiber: 2.6,
+            cholesterol: 0,
+            sodium: 1,
+            water: 74.9,
+            calcium: 5,
+            iron: 0.3,
+            potassium: 358,
+            vitamin_c: 8.7,
+            vitamin_d: 0,
+            nutrition_density: 45
+        }
     };
 
-    const product = data[productName.toLowerCase()];
+    // חיפוש המוצר בנתונים
+    const product = data[productName];
 
+    // אם נמצא המוצר
     if (product) {
-        document.getElementById("calories").textContent = product.calories;
-        document.getElementById("proteins").textContent = product.proteins;
-        document.getElementById("carbs").textContent = product.carbs;
-        document.getElementById("results").classList.remove("hidden");
+        Object.keys(product).forEach((key) => {
+            const element = document.getElementById(key);
+            if (element) {
+                element.textContent = product[key]; // עדכון הערכים בעמוד
+            }
+        });
+        document.getElementById("results").classList.remove("hidden"); // הצגת התוצאות
     } else {
-        alert("Product not found! Try 'apple', 'banana', or 'rice'.");
-        document.getElementById("results").classList.add("hidden");
+        alert("Product not found! Try 'apple' or 'banana'."); // הודעת שגיאה
+        document.getElementById("results").classList.add("hidden"); // הסתרת התוצאות
     }
 });
 

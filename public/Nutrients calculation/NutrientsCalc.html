@@ -10,25 +10,67 @@
     <!-- כפתור חזרה -->
     <button class="back-btn" onclick="goBack()">Back →</button>
 
+    <!-- קונטיינר המחשבון -->
     <div id="calculator-container">
-        <h1>Nutritional Calculator</h1>
-        <p>Enter a product name to calculate its nutritional values:</p>
         <input type="text" id="product-name" placeholder="Enter product name">
         <button id="calculate-btn">Calculate</button>
+
+        <!-- תוצאות המחשבון בתוך הקונטיינר -->
         <div id="results" class="results hidden">
             <h4>Results:</h4>
-            <div class="nutrient-card">
-                <p><strong>Calories:</strong> <span id="calories">0</span> kcal/100g</p>
-            </div>
-            <div class="nutrient-card">
-                <p><strong>Proteins:</strong> <span id="proteins">0</span> g/100g</p>
-            </div>
-            <div class="nutrient-card">
-                <p><strong>Carbs:</strong> <span id="carbs">0</span> g/100g</p>
+            <div class="results-grid">
+                <div class="nutrient-card">
+                    <p><strong>Caloric Value:</strong> <span id="caloric_value">0</span> kcal/100g</p>
+                </div>
+                <div class="nutrient-card">
+                    <p><strong>Fat:</strong> <span id="fat">0</span> g/100g</p>
+                </div>
+                <div class="nutrient-card">
+                    <p><strong>Saturated Fats:</strong> <span id="saturated_fats">0</span> g/100g</p>
+                </div>
+                <div class="nutrient-card">
+                    <p><strong>Carbohydrates:</strong> <span id="carbohydrates">0</span> g/100g</p>
+                </div>
+                <div class="nutrient-card">
+                    <p><strong>Sugars:</strong> <span id="sugars">0</span> g/100g</p>
+                </div>
+                <div class="nutrient-card">
+                    <p><strong>Protein:</strong> <span id="protein">0</span> g/100g</p>
+                </div>
+                <div class="nutrient-card">
+                    <p><strong>Dietary Fiber:</strong> <span id="dietary_fiber">0</span> g/100g</p>
+                </div>
+                <div class="nutrient-card">
+                    <p><strong>Cholesterol:</strong> <span id="cholesterol">0</span> mg/100g</p>
+                </div>
+                <div class="nutrient-card">
+                    <p><strong>Sodium:</strong> <span id="sodium">0</span> mg/100g</p>
+                </div>
+                <div class="nutrient-card">
+                    <p><strong>Water:</strong> <span id="water">0</span> g/100g</p>
+                </div>
+                <div class="nutrient-card">
+                    <p><strong>Calcium:</strong> <span id="calcium">0</span> mg/100g</p>
+                </div>
+                <div class="nutrient-card">
+                    <p><strong>Iron:</strong> <span id="iron">0</span> mg/100g</p>
+                </div>
+                <div class="nutrient-card">
+                    <p><strong>Potassium:</strong> <span id="potassium">0</span> mg/100g</p>
+                </div>
+                <div class="nutrient-card">
+                    <p><strong>Vitamin C:</strong> <span id="vitamin_c">0</span> mg/100g</p>
+                </div>
+                <div class="nutrient-card">
+                    <p><strong>Vitamin D:</strong> <span id="vitamin_d">0</span> IU/100g</p>
+                </div>
+                <div class="nutrient-card">
+                    <p><strong>Nutrition Density:</strong> <span id="nutrition_density">0</span> %</p>
+                </div>
             </div>
         </div>
-        
     </div>
+
     <script src="NutrientsCalc.js"></script>
 </body>
 </html>

@@ -4,26 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Weekly Meal Plans</title>
+    <link rel="stylesheet" href="../navbar/sidebar.css">
     <link rel="stylesheet" href="my-menu.css">
-    <link rel="stylesheet" href="../../navbar/sidebar.css">
-
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="../../navbar/sidebar.js" defer></script>
     <script src="my-menu.js"></script>
-
+    <script src="../navbar/sidebar.js" defer></script>
 </head>
 <body>
+
+    <!-- כפתור לפתיחת התפריט צד -->
+    <div class="menu-container">
+        <button id="menu-btn" class="menu-btn">☰</button>
+    </div>
+    <div id="sidebar-container" class="sidebar"></div>
+
+    <!-- כפתור חזור -->
+    <button class="back-btn" onclick="goBack()">Back →</button>
+
     <div class="container">
         <header class="header">
             <h1>What Are You Eating This Week?</h1>
             <button class="save-button">Save Changes</button>
-            <div class="menu-container">
-                <button id="menu-btn" class="menu-btn" onclick="toggleSidebar()">☰</button>
-            </div>
-            <div id="sidebar-container"></div>
-        </header>
-
+            
         <div class="weekly-container">
             <!-- כל עמודה מייצגת יום בשבוע -->
             <div class="day-column">

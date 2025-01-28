@@ -23,13 +23,21 @@ function handleAuthClick() {
     }
 }
 
+document.addEventListener('DOMContentLoaded', updateAuthButton);
+
 function updateAuthButton() {
     const authButton = document.querySelector('.personal-area .text');
+    if (!authButton) { // אם האלמנט לא נמצא
+        console.warn('אלמנט הכפתור לא נמצא בדף.');
+        return;
+    }
+
     if (isUserLoggedIn) {
-        authButton.textContent = 'Personal Area'; // משנה טקסט לאזור אישי
+        authButton.textContent = 'Personal Area'; // עדכון טקסט כשמשתמש מחובר
     } else {
-        authButton.textContent = 'Log in'; // משנה טקסט להתחברות
+        authButton.textContent = 'Log in'; // עדכון טקסט כשמשתמש לא מחובר
     }
 }
 
-document.addEventListener('DOMContentLoaded', updateAuthButton);
+
+// document.addEventListener('DOMContentLoaded', updateAuthButton);

@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F6ECEA;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    background-color: #F3E3DC;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.recipe-layout {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.recipe-text {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-text h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.recipe-text p,
+.recipe-text ul {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.recipe-text ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.recipe-text section {
+    margin-bottom: 20px;
+}
+
+.recipe-text h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.recipe-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F3E3DC;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.recipe-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+/* כפתור חזור */
+.back-btn {
+    position: fixed; /* מקבע את הכפתור במסך */
+    top: 20px; /* מרחק מהחלק העליון */
+    right: 20px; /* מרחק מהחלק הימני */
+    background-color: #C49A94; /* צבע רקע */
+    color: white; /* צבע טקסט */
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1000; /* מעל כל התוכן */
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #B47F78; /* צבע רקע בעת ריחוף */
+}
