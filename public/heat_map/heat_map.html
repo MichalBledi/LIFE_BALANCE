@@ -5,23 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rotatable Heatmap</title>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <link rel="stylesheet" href="heat_map.css">
+  <link rel="stylesheet" href="/heat_map.css">
 </head>
 <body>
   <div class="container">
     <h1>Rotatable Heatmap</h1>
-    <label for="year">Select Year:</label>
-    <select id="year"></select>
-    <label for="gender">Select Gender:</label>
-    <select id="gender">
+    <!-- Filter Section -->
+    <div class="filters">
+      <label for="year">Select Year:</label>
+      <select id="year"></select>
+      <label for="gender">Select Gender:</label>
+      <select id="gender">
         <option value="Both">Both</option>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
-    </select>
+      </select>
+    </div>
+    <!-- Heatmap Section -->
     <div id="heatmap"></div>
   </div>
-  <script src="heat_map.js"></script>
+  <script src="/heat_map/heat_map.js"></script>
 </body>
 </html>
-
-

@@ -127,3 +127,28 @@ body {
     text-align: center;
     font-weight: bold;
 }
+
+.bmi-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.bmi-table th, .bmi-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.bmi-table th {
+    background-color: #C49A94;
+    color: white;
+}
+
+#progressGraph {
+    width: 100%;
+    max-width: 700px;
+    height: 400px;
+    margin: 20px auto;
+    display: block;
+}

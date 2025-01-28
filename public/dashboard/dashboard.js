@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchRecipeCount();
     fetchIngredientsCount();
     fetchSuccessRate();
+    fetchAndRenderBMIData();
     // Load the heatmap HTML dynamically
     fetch("../heat_map/heat_map.html")
         .then(response => response.text())
@@ -123,6 +124,45 @@ async function fetchSuccessRate() {
     } catch (error) {
         console.error('Failed to fetch success rate:', error);
         document.getElementById('success-rate').textContent = 'Error';
+    }
+}
+
+async function fetchAndRenderBMIData() {
+    try {
+        const response = await fetch('/api/bmi/bmi-data'); 
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Transform data for Plotly
+        const groupedData = {};
+        data.forEach(row => {
+            const key = `${row.country}-${row.gender}`;
+            if (!groupedData[key]) {
+                groupedData[key] = { x: [], y: [], name: `${row.country} (${row.gender})` };
+            }
+            groupedData[key].x.push(row.year);
+            groupedData[key].y.push(row.avg_bmi);
+        });
+
+        // Prepare traces for Plotly
+        const traces = Object.values(groupedData);
+
+        // Render the chart
+        Plotly.newPlot('bmi-chart-container', traces, {
+            title: 'Average BMI Trends by Country and Gender (1996-2016)',
+            xaxis: { title: 'Year', dtick: 2 },
+            yaxis: { title: 'Average BMI' },
+            margin: { t: 50, l: 50, r: 50, b: 50 }
+        }, 
+        {
+            displayModeBar: false // This hides the toolbar
+        });
+        
+    } catch (error) {
+        console.error('Failed to fetch or render BMI data:', error);
     }
 }
 

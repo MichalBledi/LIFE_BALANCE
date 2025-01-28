@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="../navbar/navbar.css">
     <link rel="stylesheet" href="user-info.css">
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+
     <script src="../navbar/navbar.js" defer></script>
     <script src="user-info.js" defer></script>
 
@@ -25,23 +28,35 @@
         <div class="details-progress-container">
             <div class="card">
                 <h3>My Details</h3>
-                <p><strong>User name:</strong> [User Name]</p>
-                <p><strong>Email:</strong> [Email Address]</p>
-                <p><strong>Age:</strong> [Age]</p>
-                
+                <p><strong>User name:</strong> <span id="user-name">[User Name]</span></p>
+                <p><strong>Email:</strong> <span id="email">[Email Address]</span></p>
+                <p><strong>Age:</strong> <span id="age">[Age]</span></p>
             </div>
+            
             
 
             <div class="card">
                 <h3>My Progress</h3>
-                <p><strong>Current BMI:</strong> [BMI]</p>
-                <p><strong>Height:</strong> [Height]</p>
-                <p><strong>Weight:</strong> [Weight]</p>
-                <p><strong>Activity Level:</strong> [Activity Level]</p>
-                <p><strong>Goal:</strong> [Goal]</p>
+                <p><strong>Current BMI:</strong> <span id="bmi-display">[BMI]</span></p>
+                <p><strong>Height:</strong> <input type="number" id="height-input" value="[Height]" min="50" max="250"> cm</p>
+                <p><strong>Weight:</strong> <input type="number" id="weight-input" value="[Weight]" min="20" max="300"> kg</p>
+                <p><strong>Activity Level:</strong> <span id="activity-display">[Activity Level]</span></p>
+                <p><strong>Goal:</strong> <span id="goal-display">[Goal]</span></p>
+                <button id="save-changes-btn">Save Changes</button>
             </div>
             
+            
         </div>
+        <h2 class="progress-title">My BMI Progress</h2>
+
+<table class="bmi-table">
+    <tbody id="bmi-history-body">
+        <!-- Data will be inserted dynamically -->
+    </tbody>
+</table>
+
+<canvas id="progressGraph"></canvas>
+
 
         <!-- Let's Talk Food Section -->
         <h2 class="food-title">Let's Talk Food!</h2>

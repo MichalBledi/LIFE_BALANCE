@@ -37,16 +37,53 @@ const router = express.Router();
     }
 });
 
-// Route to get the number of ingredients
-router.get('/ingredients/count', async (req, res) => {
+router.get('/bmi-data', async (req, res) => {
     try {
-        const [result] = await db.query('SELECT COUNT(*) AS ingredientCount FROM food');
-        res.json({ ingredientCount: result.ingredientCount });
+        const query = `
+            SELECT 
+                country,
+                gender,
+                year,
+                AVG(bmi) AS avg_bmi
+            FROM 
+                global_bmi_data
+            WHERE 
+                year BETWEEN 1996 AND 2016
+            GROUP BY 
+                country, gender, year
+            ORDER BY 
+                country, gender, year;
+        `;
+        const [rows] = await db.execute(query);
+        res.json(rows);
     } catch (error) {
-        console.error('Error fetching ingredient count:', error);
-        res.status(500).send('Server Error');
+        console.error('Error fetching BMI data:', error);
+        res.status(500).json({ error: 'Failed to fetch BMI data' });
     }
 });
 
+// Fetch BMI history for a specific user
+router.get('/bmi-history/:userId', async (req, res) => {
+    const { userId } = req.params;
+
+    try {
+        const query = `
+            SELECT date, bmi 
+            FROM bmi_history
+            WHERE user_id = ?
+            ORDER BY date ASC;
+        `;
+        const [rows] = await db.query(query, [userId]);
+
+        if (!rows.length) {
+            return res.status(404).json({ error: 'No BMI history found for this user' });
+        }
+
+        res.json(rows);
+    } catch (error) {
+        console.error('Error fetching BMI history:', error);
+        res.status(500).json({ error: 'Failed to fetch BMI history' });
+    }
+});
 
 export default router;

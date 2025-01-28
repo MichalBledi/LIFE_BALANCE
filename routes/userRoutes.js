@@ -176,6 +176,43 @@ router.get('/users/:username', async (req, res) => {
     }
 });
 
+// Update user's height & weight
+router.put("/users/update/:userId", async (req, res) => {
+    const { userId } = req.params;
+    const { height, weight } = req.body;
+
+    if (!height || !weight) {
+        return res.status(400).json({ error: "Height and weight are required." });
+    }
+
+    try {
+        // Step 1: Update height & weight in the users table
+        await db.query(
+            "UPDATE users SET height = ?, weight = ? WHERE id = ?",
+            [height, weight, userId]
+        );
+
+        // Step 2: Calculate new BMI
+        const heightInMeters = height / 100;
+        const newBMI = (weight / (heightInMeters ** 2)).toFixed(2);
+
+        // Step 3: Insert or update the latest BMI record for today
+        const today = new Date().toISOString().split("T")[0];
+
+        await db.query(`
+            INSERT INTO bmi_history (user_id, date, bmi)
+            VALUES (?, ?, ?)
+            ON DUPLICATE KEY UPDATE bmi = ?;
+        `, [userId, today, newBMI, newBMI]);
+
+        res.json({ message: "User updated successfully", newBMI });
+
+    } catch (error) {
+        console.error("Error updating user:", error);
+        res.status(500).json({ error: "Failed to update user data." });
+    }
+});
+
 
 
 
