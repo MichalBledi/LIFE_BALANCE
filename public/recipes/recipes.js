@@ -1,10 +1,3 @@
-/*fetch('../navbar/sidebar.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('sidebar-container').innerHTML = data;
-    });
-*/
-
 fetch('top-section/top-section.html')
     .then(response => response.text())
     .then(data => {
@@ -142,19 +135,6 @@ function createRecipeCard(recipe) {
         </li>
     `;
 }
-
-/*
-async function createRecipeCard(recipe) {
-    const recipeCardTemplate = await fetch('recipeCardTemplate.html');
-    let template = await recipeCardTemplate.text();
-    template = template.replace('{{imageUrl}}', recipe.imageUrl)
-                       .replace('{{name}}', recipe.name)
-                       .replace('{{cookingTime}}', recipe.cookingTime)
-                       .replace('{{calories}}', recipe.calories)
-                       .replace('{{servings}}', recipe.servings);
-    return template;
-}
-*/
 
 // פונקציה לעדכון מתכונים מותאמים אישית (Just For You)
 function updateCustomizedRecipes() {
