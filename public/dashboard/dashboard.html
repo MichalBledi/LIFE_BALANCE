@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>Health Dashboard</h1>
+            </header>
+
+           <!-- Health Overview -->
+           <section class="overview">
+            <div class="card users">
+                <span id="user-count">Loading...</span>
+                <span>Number of Users</span>
+            </div>
+            <div class="card recipes">
+                <span id="recipe-count">Loading...</span>
+                <span>Number of Recipes</span>
+            </div>
+            <div class="card ingredients">
+                <span id="ingredients-count">Loading...</span>
+                <span>Number of Ingredients</span>
+            </div>
+            <div class="card success-rate">
+                <span id="success-rate">Loading...</span>
+                <span>Success Rate</span>
+            </div>
+            
+        </section>
+            <!--
+<section class="overview">
+    <div class="card users">Loading... <span>Users</span></div>
+
+    <div class="card recipes">Loading... <span>Recipes</span></div>
+    <div class="card ingredients">Loading... <span>Ingredients</span></div>
+    <div class="card success-rate">Loading... <span>Success Rate</span></div>
+-->
+</section>
+
+
+            <!-- Placeholder for Heatmap -->
+            <section id="heatmap-container"></section>
+
+            <!-- Fitness & Nutrition -->
+            <section class="fitness-nutrition">
+                <div class="nutrition">
+                    <h3>Nutrition Stats</h3>
+                    <ul>
+                        <li>Protein: 120g</li>
+                        <li>Carbs: 250g</li>
+                        <li>Fats: 70g</li>
+                    </ul>
+                </div>
+
+                <div class="fitness">
+                    <h3>Workout Summary</h3>
+                    <ul>
+                        <li>Cardio: 30 mins</li>
+                        <li>Strength: 45 mins</li>
+                        <li>Yoga: 20 mins</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,74 +1,62 @@
-async function fetchDataAndPlotMap() {
-    try {
-        // Fetch obesity data for 'Both' gender in 2016
-        const response = await fetch('/api/bmi-data/2016'); // Fetching for year 2016
-        const data = await response.json();
+const yearSelect = document.getElementById("year");
+const genderSelect = document.getElementById("gender").value;;
+const heatmapDiv = document.getElementById("heatmap");
 
-        // Extract the data for 'Both' gender
-        const bothSexesData = data.bothSexes;
-
-        // Extract necessary fields for the map
-        const countries = bothSexesData.map(entry => entry.country);
-        const bmiValues = bothSexesData.map(entry => entry.bmi);
-
-        // Now you can use `countries` and `bmiValues` for your map
-        console.log(countries, bmiValues);
-
-        /*
-        // Fetch obesity data from the server
-        const response = await fetch('/api/global-bmi-data');
-        const data = await response.json();
-
-        // Extract necessary fields for the map
-        const countries = data.map(entry => entry.country);
-        const obesityRates = data.map(entry => entry.obesity_rate);
-        
-        
-        // Prepare Plotly data
-        const plotData = [{
-            type: 'choropleth',
-            locationmode: 'country names',
-            locations: countries,
-            z: obesityRates,
-            //text: countries,
-            colorscale: 'Reds',
-            colorbar: { title: 'Obesity Rates (%)' },
-        }];
-        */
-
-        // Prepare Plotly data
-        const plotData = [{
-            type: 'choropleth',
-            locationmode: 'country names',
-            locations: countries,
-            z: bmiValues,
-            //text: countries,
-            colorscale: 'Reds',
-            colorbar: { title: 'Obesity Rates (%)' },
-        }];
-
-        // Layout settings for the globe heatmap
-        const layout = {
-            title: 'Global Obesity Heatmap',
-            geo: {
-                projection: {
-                    type: 'orthographic', // Globe-like projection
-                },
-                showcoastlines: true,
-                coastlinecolor: 'gray',
-                showland: true,
-                landcolor: 'lightgray',
-                oceancolor: '#a4c0e9',
-                showocean: true,
-            },
-        };
-
-        // Render the map
-        Plotly.newPlot('heatmap', plotData, layout);
-    } catch (error) {
-        console.error('Error fetching or rendering data:', error);
-    }
+// Populate year dropdown
+for (let year = 1975; year <= 2016; year++) {
+  const option = document.createElement("option");
+  option.value = year;
+  option.textContent = year;
+  yearSelect.appendChild(option);
 }
 
-// Initialize the map
-fetchDataAndPlotMap();
+// Fetch data and render heatmap
+async function fetchAndRender(year) {
+  try {
+    const response = await fetch(`/api/bmi/heatmap?year=${year}&gender=${gender.value}`);
+    const data = await response.json();
+
+    // Extract locations and BMI data
+    const countries = data.map((row) => row.country);
+    const bmiValues = data.map((row) => row.avg_bmi);
+
+    // Plotly data for the heatmap
+    const plotData = [{
+        type: 'choropleth',
+        locationmode: 'country names',
+        locations: countries,
+        z: bmiValues,
+        colorscale: 'Reds',
+        colorbar: { title: 'BMI Value' },
+    }];
+
+    // Layout for the map
+    const layout = {
+        title: `Global BMI Heatmap (${year})`,
+        geo: {
+            projection: { type: 'orthographic' },
+            showcoastlines: true,
+            coastlinecolor: 'gray',
+            showland: true,
+            landcolor: 'lightgray',
+            oceancolor: '#FFFFFF',
+            showocean: true,
+        },
+    };
+    Plotly.newPlot('heatmap', plotData, layout, { displayModeBar: false });
+
+    // Render the updated heatmap
+    //Plotly.newPlot('heatmap', plotData, layout);
+  } catch (error) {
+    console.error("Error fetching heatmap data:", error);
+  }
+}
+
+// Add event listener for year selection
+yearSelect.addEventListener("change", () => {
+  const selectedYear = yearSelect.value;
+  fetchAndRender(selectedYear);
+});
+
+// Initial render
+fetchAndRender(1975);
