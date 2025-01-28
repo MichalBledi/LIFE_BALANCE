@@ -3,6 +3,30 @@ import db from '../database/db.js';
 
 const router = express.Router();
 
+// Route to search for ingredients
+router.get('/search-ingredient', async (req, res) => {
+    const query = req.query.query;
+
+    if (!query) {
+        return res.status(400).json({ error: 'Query parameter is required' });
+    }
+
+    try {
+        const [rows] = await db.query(`
+            SELECT name
+            FROM ingredients
+            WHERE name LIKE ?
+            LIMIT 5
+        `, [`%${query}%`]);
+
+        res.json(rows); // Send the matching ingredients back as JSON
+    } catch (err) {
+        console.error('Error fetching ingredients:', err);
+        res.status(500).json({ error: 'Failed to fetch ingredients.' });
+    }
+});
+export default router;
+/*
 // 🔍 חיפוש חכם של מצרכים לפי שם
 router.get('/search', async (req, res) => {
     const searchTerm = req.query.q || ''; // קבלת הפרמטר מהבקשה
@@ -46,6 +70,4 @@ router.get('/search', async (req, res) => {
         console.error('❌ Error searching for ingredient:', err);
         res.status(500).json({ error: 'Failed to search ingredient.' });
     }
-});
-
-export default router;
+});*/

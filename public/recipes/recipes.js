@@ -163,7 +163,6 @@ function initializeFilters() {
     });
 }
 
-
 async function fetchPopularRecipes() {
     const response = await fetch('/api/recipes/popular');
     if (!response.ok) {
@@ -245,9 +244,6 @@ function createRecipeCard(recipe) {
         </li>
     `;
 }
-
-
-
 
 async function applyFilters() {
     console.log('Apply Filters button clicked');
