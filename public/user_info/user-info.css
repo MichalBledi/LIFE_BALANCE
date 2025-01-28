@@ -1,20 +1,17 @@
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #F6ECEA;
+    font-family: Arial, sans-serif;
+    background-color: #F6ECEA; /* צבע רקע כללי */
+    color: #333;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    color: #333;
 }
-
 .container {
     text-align: center;
+    align-items: center;
     width: 100%;
     max-width: 1200px;
     padding: 20px;
+    margin: 0 auto;
 }
 
 .header {

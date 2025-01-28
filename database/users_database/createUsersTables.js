@@ -65,10 +65,12 @@ async function createSavedRecipesTable(connection) {
     CREATE TABLE IF NOT EXISTS saved_recipes (
   user_id INT NOT NULL,
   recipe_id INT NOT NULL,
+  saved_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (user_id, recipe_id),
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-  FOREIGN KEY (recipe_id) REFERENCES food(id) ON DELETE CASCADE
+  FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
+
   `);
   console.log('`saved_recipes` table created successfully.');
 }

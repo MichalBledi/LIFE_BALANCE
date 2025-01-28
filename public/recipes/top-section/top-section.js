@@ -11,18 +11,23 @@ fetch('top-section/filterbar.html')
         const filterbarContainer = document.getElementById('filterbar-container');
         filterbarContainer.innerHTML = data;
 
-        // Dynamically load the CSS for the filter bar
+        // Load the CSS for the filter bar
         const filterbarCss = document.createElement('link');
         filterbarCss.rel = 'stylesheet';
-        filterbarCss.href = 'top-section/filterbar.css'; // Path to your CSS file
+        filterbarCss.href = 'top-section/filterbar.css';
         document.head.appendChild(filterbarCss);
 
-        // Dynamically load the JavaScript for the filter bar
+        // Load the JavaScript for the filter bar and wait for it to be executed
         const filterbarScript = document.createElement('script');
-        filterbarScript.src = 'top-section/filterbar.js'; // Path to your JS file
+        filterbarScript.src = 'top-section/filterbar.js';
+        filterbarScript.onload = () => {
+            console.log('filterbar.js loaded successfully.');
+            document.dispatchEvent(new Event('filterbarLoaded'));
+        };
         document.body.appendChild(filterbarScript);
     })
     .catch(error => {
         console.error('Error loading filter bar:', error);
     });
+
     

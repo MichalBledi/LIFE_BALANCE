@@ -2,83 +2,205 @@ fetch('top-section/top-section.html')
     .then(response => response.text())
     .then(data => {
         document.getElementById('top-section').innerHTML = data;
+        console.log('Top section loaded.');
+
+        // Initialize search functionality after top-section is loaded
+        initializeSearch();
+
+        // Load the filter bar after top-section is loaded
+        return fetch('top-section/filterbar.html');
+    })
+    .then(response => response.text())
+    .then(data => {
+        const filterbarContainer = document.getElementById('filterbar-container');
+        if (filterbarContainer) {
+            filterbarContainer.innerHTML = data;
+            console.log('Filter bar loaded successfully.');
+
+            // Initialize the filter functionality after filterbar is loaded
+            initializeFilters();
+        } else {
+            console.error('Filter bar container not found.');
+        }
+    })
+    .catch(error => {
+        console.error('Error loading top-section or filterbar:', error);
     });
 
-const recipes = [
-  {
-    name: "Spaghetti Bolognese",
-    cookingTime: "30",
-    calories: 400,
-    servings: 4,
-    rating: 4.5,
-    description: "A classic Italian pasta dish with a rich and savory meat sauce.",
-    imageUrl: "https://example.com/spaghetti-bolognese.jpg",
-    categories: ["Italian", "Pasta", "Lunch", "Dinner"]
-  },
-  {
-    name: "Chicken Caesar Salad",
-    cookingTime: "20",
-    calories: 300,
-    servings: 2,
-    rating: 4.2,
-    description: "A fresh and crispy salad with grilled chicken, Caesar dressing, and croutons.",
-    imageUrl: "https://example.com/chicken-caesar-salad.jpg",
-    categories: ["Salad", "Healthy", "Lunch"]
-  },
-  {
-    name: "Vegetable Stir Fry",
-    cookingTime: "15",
-    calories: 250,
-    servings: 3,
-    rating: 4.0,
-    description: "A quick and easy stir fry loaded with colorful vegetables and a tangy sauce.",
-    imageUrl: "https://example.com/vegetable-stir-fry.jpg",
-    categories: ["Vegetarian", "Asian", "Quick Meals"]
-  },
-  {
-    name: "Chocolate Chip Cookies",
-    cookingTime: "25",
-    calories: 150,
-    servings: 12,
-    rating: 4.8,
-    description: "Classic homemade cookies with gooey chocolate chips.",
-    imageUrl: "https://example.com/chocolate-chip-cookies.jpg",
-    categories: ["Dessert", "Snacks", "Baking"]
-  },
-  {
-    name: "Avocado Toast",
-    cookingTime: "10",
-    calories: 200,
-    servings: 1,
-    rating: 4.7,
-    description: "A simple and nutritious toast topped with creamy avocado and seasonings.",
-    imageUrl: "https://example.com/avocado-toast.jpg",
-    categories: ["Breakfast", "Healthy", "Vegetarian"]
-  }
-];
-
-// בחירת אלמנטים לעדכון
 const categoryTitle = document.querySelector('.category-title');
 const recipeList = document.querySelector('.recipe-list');
 const categoryButtons = document.querySelectorAll('.category-button');
+const popularRecipesList = document.querySelector('.popular-recipes-section .recipe-list');
 
-const recipesByCategory = (category) => {
-    return recipes.filter(recipe => recipe.categories.includes(category));
-  };
 
-// פונקציה לעדכון הכותרת והרשימה
-function updateCategory(category) {
-    // עדכון כותרת
+// Function to initialize search functionality
+function initializeSearch() {
+    const searchInput = document.querySelector('.search-input');
+    const searchButton = document.querySelector('.search-button');
+
+    async function fetchSearchResults(searchTerm) {
+        const response = await fetch(`/api/recipes/search?q=${encodeURIComponent(searchTerm)}`);
+        if (!response.ok) {
+            console.error('Failed to fetch search results:', response.statusText);
+            return [];
+        }
+        return await response.json();
+    }
+
+    async function updateSearchResults(searchTerm) {
+        categoryTitle.textContent = `Search Results for "${searchTerm}"`; // Update the title
+        recipeList.innerHTML = ''; // Clear the current recipes
+
+        const searchResults = await fetchSearchResults(searchTerm);
+        if (searchResults.length === 0) {
+            recipeList.innerHTML = '<p>No recipes found. Try a different search term.</p>';
+            return;
+        }
+
+        searchResults.forEach(recipe => {
+            recipeList.insertAdjacentHTML('beforeend', createRecipeCard(recipe));
+        });
+    }
+
+    searchButton.addEventListener('click', () => {
+        const searchTerm = searchInput.value.trim();
+        if (searchTerm) {
+            updateSearchResults(searchTerm);
+        }
+    });
+
+    // Optional: Trigger search on Enter key press
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            const searchTerm = searchInput.value.trim();
+            if (searchTerm) {
+                updateSearchResults(searchTerm);
+            }
+        }
+    });
+}
+
+// Function to update the recipe list with filtered recipes
+function updateFilteredRecipes(recipes) {
+    console.log('Updating filtered recipes on the page:', recipes);
+    const recipeList = document.querySelector('.recipe-list');
+    recipeList.innerHTML = ''; // Clear existing recipes
+    if (recipes.length === 0) {
+        recipeList.innerHTML = '<p>No recipes match your filters.</p>';
+        return;
+    }
+
+    recipes.forEach(recipe => {
+        recipeList.insertAdjacentHTML('beforeend', createRecipeCard(recipe));
+    });
+    console.log('Updated recipes list with filtered results.');
+}
+
+// Function to initialize filter functionality
+function initializeFilters() {
+    const applyFiltersButton = document.querySelector('.apply-filters-btn');
+    const clearFiltersButton = document.querySelector('.clear-filters-btn');
+    const filterInputs = document.querySelectorAll('.filter-content input[type="checkbox"]');
+    const prepTimeInput = document.querySelector('#prep-time-input');
+    const caloriesInput = document.querySelector('#calories-input');
+
+    async function applyFilters() {
+        const selectedAllergies = Array.from(filterInputs)
+            .filter(input => input.checked)
+            .map(input => input.value);
+
+        const maxPrepTime = prepTimeInput ? parseInt(prepTimeInput.value, 10) : null;
+        const maxCalories = caloriesInput ? parseInt(caloriesInput.value, 10) : null;
+        
+         // Build a title based on filters
+    let title = 'Filtered Recipes';
+    if (selectedAllergies.length > 0) {
+        title += ` (Allergies: ${selectedAllergies.join(', ')})`;
+    }
+    if (maxPrepTime) {
+        title += ` (Prep Time: <= ${maxPrepTime} mins)`;
+    }
+    if (maxCalories) {
+        title += ` (Calories: <= ${maxCalories})`;
+    }
+    categoryTitle.textContent = title; // Update the category title dynamically
+
+        const response = await fetch('/api/recipes/filter', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ allergies: selectedAllergies, maxPrepTime, maxCalories }),
+        });
+
+        if (!response.ok) {
+            console.error('Failed to fetch filtered recipes:', response.statusText);
+            return;
+        }
+
+        const filteredRecipes = await response.json();
+        updateFilteredRecipes(filteredRecipes);
+    }
+
+    function updateFilteredRecipes(recipes) {
+        const recipeList = document.querySelector('.recipe-list');
+        recipeList.innerHTML = ''; // Clear existing recipes
+        if (recipes.length === 0) {
+            recipeList.innerHTML = '<p>No recipes match your filters.</p>';
+            return;
+        }
+
+        recipes.forEach(recipe => {
+            recipeList.insertAdjacentHTML('beforeend', createRecipeCard(recipe));
+        });
+    }
+
+    applyFiltersButton.addEventListener('click', applyFilters);
+
+    clearFiltersButton.addEventListener('click', () => {
+        filterInputs.forEach(input => (input.checked = false));
+        if (prepTimeInput) prepTimeInput.value = '';
+        if (caloriesInput) caloriesInput.value = '';
+        updateCategory('lunch');
+    });
+}
+
+
+async function fetchPopularRecipes() {
+    const response = await fetch('/api/recipes/popular');
+    if (!response.ok) {
+        console.error('Failed to fetch popular recipes:', response.statusText);
+        return [];
+    }
+    return await response.json();
+}
+
+async function updatePopularRecipes() {
+    popularRecipesList.innerHTML = ''; // Clear the list
+
+    const popularRecipes = await fetchPopularRecipes();
+    popularRecipes.forEach(recipe => {
+        popularRecipesList.insertAdjacentHTML('beforeend', createRecipeCard(recipe));
+    });
+}
+
+async function fetchRecipes(category = '') {
+    const response = await fetch(`/api/recipes?category=${category}`);
+    if (!response.ok) {
+        console.error('Failed to fetch recipes:', response.statusText);
+        return [];
+    }
+    return await response.json();
+}
+
+async function updateCategory(category) {
     categoryTitle.textContent = category;
 
-    // עדכון רשימת מתכונים
-    recipeList.innerHTML = ''; // מנקה את הרשימה
-    const recipes = recipesByCategory(category);
+    recipeList.innerHTML = '';
+    const recipes = await fetchRecipes(category);
+
     recipes.forEach(recipe => {
         recipeList.insertAdjacentHTML('beforeend', createRecipeCard(recipe));
     });
 
-    // עדכון כפתור פעיל
     categoryButtons.forEach(button => {
         if (button.dataset.category === category) {
             button.setAttribute('aria-selected', 'true');
@@ -88,19 +210,21 @@ function updateCategory(category) {
     });
 }
 
-// הוספת מאזין אירועים לכפתורי הקטגוריות
 categoryButtons.forEach(button => {
     button.addEventListener('click', () => {
-        const category = button.dataset.category; // מקבל את שם הקטגוריה
+        const category = button.dataset.category;
         updateCategory(category);
     });
 });
 
 function createRecipeCard(recipe) {
+    console.log('Creating recipe card for:', recipe); // Debugging
+
     return `
         <li class="recipe-item">
             <div class="card">
-                <img class="card-image" src="${recipe.imageUrl}" alt="${recipe.name}">
+                <img class="card-image" src="${recipe.photo}" alt="${recipe.name}" 
+                    onerror="this.onerror=null; this.src='./default-photo.png';">
                 <div class="card-content">
                     <h3 class="card-title">${recipe.name}</h3>
                     <div class="row-wrapper"></div>
@@ -111,13 +235,6 @@ function createRecipeCard(recipe) {
                                 <div class="value">${recipe.cookingTime}</div>
                             </div>
                             <div class="text">Minutes</div>
-                        </div>
-                        <div class="info-block">
-                            <div class="icon-value">
-                                <div class="glyphicon glyphicon-fire"></div>
-                                <div class="value">${recipe.calories}</div>
-                            </div>
-                            <div class="text">Calories</div>
                         </div>
                     </div>
                     <div class="card-button">
@@ -130,56 +247,43 @@ function createRecipeCard(recipe) {
 }
 
 
-/*
-async function createRecipeCard(recipe) {
-    const recipeCardTemplate = await fetch('recipeCardTemplate.html');
-    let template = await recipeCardTemplate.text();
-    template = template.replace('{{imageUrl}}', recipe.imageUrl)
-                       .replace('{{name}}', recipe.name)
-                       .replace('{{cookingTime}}', recipe.cookingTime)
-                       .replace('{{calories}}', recipe.calories)
-                       .replace('{{servings}}', recipe.servings);
-    return template;
-}
-*/
 
-// פונקציה לעדכון מתכונים מותאמים אישית (Just For You)
-function updateCustomizedRecipes() {
-    const customizedRecipesList = document.querySelector('.customized-recipes-section .recipe-list');
-    const customizedRecipes = getCustomizedRecipes(); // פונקציה שמחזירה מתכונים מותאמים אישית
-    customizedRecipesList.innerHTML = ''; // מנקה את הרשימה הקיימת
-    customizedRecipes.forEach(recipe => {
-        customizedRecipesList.insertAdjacentHTML('beforeend', createRecipeCard(recipe));
-    });
-}
 
-// פונקציה לעדכון המתכונים הפופולריים (Most Popular This Week)
-function updatePopularRecipes() {
-    const popularRecipesList = document.querySelector('.popular-recipes-section .recipe-list');
-    const popularRecipes = getPopularRecipes(); // פונקציה שמחזירה מתכונים פופולריים
-    popularRecipesList.innerHTML = ''; // מנקה את הרשימה הקיימת
-    popularRecipes.forEach(recipe => {
-        popularRecipesList.insertAdjacentHTML('beforeend', createRecipeCard(recipe));
-    });
-}
+async function applyFilters() {
+    console.log('Apply Filters button clicked');
 
-// פונקציה שמחזירה מתכונים מותאמים אישית (דוגמה)
-function getCustomizedRecipes() {
-    // כאן ניתן להוסיף לוגיקה מותאמת אישית (כגון העדפות משתמש)
-    // כרגע מוחזר מערך לדוגמה
-    return recipes.filter(recipe => recipe.calories < 300); // מתכונים עם פחות מ-300 קלוריות
+    const selectedAllergies = Array.from(document.querySelectorAll('.filter-content input[type="checkbox"]'))
+        .filter(input => input.checked)
+        .map(input => input.value);
+
+    const maxPrepTime = document.querySelector('#prep-time-input') ? parseInt(document.querySelector('#prep-time-input').value, 10) : null;
+    const maxCalories = document.querySelector('#calories-input') ? parseInt(document.querySelector('#calories-input').value, 10) : null;
+
+    console.log('Selected Allergies:', selectedAllergies);
+    console.log('Max Preparation Time:', maxPrepTime);
+    console.log('Max Calories:', maxCalories);
+
+    try {
+        const response = await fetch('/api/recipes/filter', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ allergies: selectedAllergies, maxPrepTime, maxCalories }),
+        });
+
+        if (!response.ok) {
+            console.error('Failed to fetch filtered recipes:', response.statusText);
+            return;
+        }
+
+        const filteredRecipes = await response.json();
+        console.log('Filtered Recipes:', filteredRecipes);
+        updateFilteredRecipes(filteredRecipes);
+    } catch (error) {
+        console.error('Error fetching recipes:', error);
+    }
 }
 
-// פונקציה שמחזירה מתכונים פופולריים (דוגמה)
-function getPopularRecipes() {
-    // ניתן להוסיף לוגיקה מתקדמת (למשל, נתונים מבסיס נתונים)
-    // כרגע מוחזר מערך לדוגמה
-    return recipes.sort((a, b) => b.rating - a.rating).slice(0, 3); // שלושת המתכונים עם הדירוג הגבוה ביותר
-}
-
-// עדכון כל הקטגוריות ברגע שהדף נטען
 document.addEventListener('DOMContentLoaded', () => {
-    updateCategory('Lunch'); // קטגוריית ברירת מחדל לקטגוריה הראשונה
-    updateCustomizedRecipes(); // עדכון מתכונים מותאמים אישית
-    updatePopularRecipes(); // עדכון מתכונים פופולריים
+    updateCategory('Lunch'); 
+    updatePopularRecipes();
 });

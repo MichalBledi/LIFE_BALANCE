@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1 class="title">Login</h1>
-        <form action="#" method="post">
+        <form id="loginForm">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" placeholder="Enter your username">
             
@@ -18,8 +18,11 @@
             
             <button type="submit">Log In</button>
         </form>
-        <button type="submit" class="done-button">Done!</button>
+        <div class="register-link">
+            <button id="register-btn">Don't have a username? Click here</button>
+        </div>
     </div>
+    
     <script src="login.js"></script>
 </body>
 </html>

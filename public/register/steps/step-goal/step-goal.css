@@ -109,26 +109,34 @@ body {
 }
 
 .cancel-circle-button {
-    position: fixed; /* מיקום קבוע */
-    top: 20px; /* מרחק מהחלק העליון */
-    left: 20px; /* מרחק מהצד השמאלי */
-    width: 50px; /* גודל רוחב */
-    height: 50px; /* גודל גובה */
-    background-color: #f44336; /* צבע אדום */
-    color: white; /* צבע טקסט לבן */
-    border: none; /* בלי גבול */
-    border-radius: 50%; /* עיגול */
-    font-size: 24px; /* גודל טקסט */
-    font-weight: bold; /* טקסט מודגש */
-    display: flex; /* יישור טקסט */
-    justify-content: center; /* מיקום מרכזי אופקי */
-    align-items: center; /* מיקום מרכזי אנכי */
-    cursor: pointer; /* ידית על עכבר */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* צל */
-    transition: background-color 0.3s ease; /* מעבר צבע חלק */
+    position: fixed; /* Keep button fixed on the screen */
+    top: 20px; /* Distance from top */
+    left: 20px; /* Distance from left */
+    width: 50px; /* Width */
+    height: 50px; /* Height */
+    background-color: #C49A94; /* Red color */
+    color: white; /* White text */
+    text-decoration: none; /* Remove underline */
+    border-radius: 50%; /* Circle shape */
+    font-size: 26px; /* Bigger size */
+    font-weight: bold; /* Bold text */
+    display: flex; /* Flexbox for alignment */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    cursor: pointer; /* Pointer on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Soft shadow */
+    transition: all 0.3s ease; /* Smooth transitions */
 }
 
+/* Hover Effect */
 .cancel-circle-button:hover {
-    background-color: #d32f2f; /* צבע אדום כהה יותר */
+    background-color: #B47F78; /* Darker red on hover */
+    transform: scale(1.1); /* Slightly enlarge */
+    box-shadow: 0 6px 12px #D0B0A3; /* More shadow */
+}
+
+/* Click Effect */
+.cancel-circle-button:active {
+    transform: scale(0.95); /* Shrink when clicked */
 }
 

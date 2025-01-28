@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cancelBtn) {
         cancelBtn.addEventListener('click', () => {
             if (confirm("Are you sure you want to cancel?")) {
-                window.location.href = '../../../home/home.html'; // שנה לכתובת הרצויה
+                window.location.href = '../../../home/home.html';
             }
         });
     }

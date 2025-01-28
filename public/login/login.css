@@ -9,7 +9,6 @@ body {
     height: 100vh;
 }
 
-
 .container {
     width: 500px;
     height: 350px;
@@ -62,28 +61,29 @@ button {
     cursor: pointer;
     font-weight: bold;
     font-family: Arial, sans-serif;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 button:hover {
     background-color: #B47F78; 
 }
 
-.register {
-    margin-top: 20px;
+.register-link {
     text-align: center;
-    font-size: 14px;
-    font-family: Arial, sans-serif;
 }
 
-.register a {
-    color: #615ae7;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: 10px;
-}
-
-.register a:hover {
+.register-link button {
+    background: none;
+    border: none;
+    color: #B47F78;
+    font-size: 1em;
+    cursor: pointer;
     text-decoration: underline;
+    font-weight: bold;
+    display: inline-block; /* Ensure proper alignment */
 }
+
+.register-link button:hover {
+    color: black;
+}
+

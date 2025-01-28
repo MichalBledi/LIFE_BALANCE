@@ -119,25 +119,33 @@ input[type="number"] {
 }
 
 .cancel-circle-button {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 24px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
+    position: fixed; /* Keep button fixed on the screen */
+    top: 20px; /* Distance from top */
+    left: 20px; /* Distance from left */
+    width: 50px; /* Width */
+    height: 50px; /* Height */
+    background-color: #C49A94; /* Red color */
+    color: white; /* White text */
+    text-decoration: none; /* Remove underline */
+    border-radius: 50%; /* Circle shape */
+    font-size: 26px; /* Bigger size */
+    font-weight: bold; /* Bold text */
+    display: flex; /* Flexbox for alignment */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    cursor: pointer; /* Pointer on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Soft shadow */
+    transition: all 0.3s ease; /* Smooth transitions */
 }
 
+/* Hover Effect */
 .cancel-circle-button:hover {
-    background-color: #d32f2f;
+    background-color: #B47F78; /* Darker red on hover */
+    transform: scale(1.1); /* Slightly enlarge */
+    box-shadow: 0 6px 12px #D0B0A3; /* More shadow */
+}
+
+/* Click Effect */
+.cancel-circle-button:active {
+    transform: scale(0.95); /* Shrink when clicked */
 }
