@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutritional Calculator</title>
+    <link rel="stylesheet" href="NutrientsCalc.css">
+</head>
+<body>
+    <!-- כפתור חזרה -->
+    <button class="back-btn" onclick="goBack()">Back →</button>
+
+    <!-- קונטיינר המחשבון -->
+    <div id="calculator-container">
+        <input type="text" id="product-name" placeholder="Enter product name">
+        <button id="calculate-btn">Calculate</button>
+
+        <!-- תוצאות המחשבון בתוך הקונטיינר -->
+        <div id="results" class="results hidden">
+            <h4>Results:</h4>
+            <div id="nutrition-results"></div>
+        </div>
+    </div>
+
+    <script src="NutrientsCalc.js"></script>
+</body>
+</html>

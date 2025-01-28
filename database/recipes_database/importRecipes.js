@@ -5,12 +5,12 @@ import xlsx from 'xlsx';
 const dbConfig = {
   host: 'localhost',
   user: 'root',
-  password: '0908',
+  password: 'OANCZfamily825131423!',
   database: 'life_balance_web',
 };
 
 // File path to the Excel file
-const excelFilePath = './database/recipes.xlsx';
+const excelFilePath = './database/recipes_database/recipes.xlsx';
 //const excelFilePath = './database/testt.xlsx';
 
 // Default photo for recipes

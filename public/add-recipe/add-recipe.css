@@ -37,28 +37,6 @@ label {
     color: #333;
 }
 
-.menu-container {
-    flex: 0 0 auto; /* משאיר את כפתור התפריט בצד שמאל */
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.menu-container .menu-btn {
-    background-color: #C49A94;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin: 10px;
-    border-radius: 10px;
-    width: 35px;
-    height: 35px;
-    font-size: 20px;
-}
-
-.menu-container .menu-btn:hover {
-    background-color: #B47F78;
-}
 
 /* מיכל תיבות Ingredients */
 #ingredientsContainer {
@@ -67,6 +45,106 @@ label {
     gap: 20px; /* רווח מסודר בין כל התיבות */
     margin-top: 10px; /* מרווח כללי מעל המיכל */
 }
+
+/* 📌 עיצוב תיבת החיפוש */
+.ingredient-search-container {
+    position: relative;
+    width: 100%;
+}
+
+#ingredientSearch {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    transition: border-color 0.3s ease;
+}
+
+#ingredientSearch:focus {
+    border: 1px solid #B47F78;
+    outline: none;
+    box-shadow: 0 0 5px rgba(180, 127, 120, 0.5);
+}
+
+/* 📌 רשימת תוצאות חיפוש */
+#ingredientResults {
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    position: absolute;
+    z-index: 1000;
+}
+
+#ingredientResults li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+}
+
+#ingredientResults li:hover {
+    background-color: #C49A94;
+    color: white;
+}
+
+/* 📌 רשימת מצרכים שנבחרו */
+#selectedIngredients {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#selectedIngredients li {
+    background: #C49A94;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+}
+
+#selectedIngredients button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#selectedIngredients button:hover {
+    color: red;
+}
+
+/* 📌 אנימציה להצגת תוצאות */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#ingredientResults li {
+    animation: fadeIn 0.2s ease-in-out;
+}
+
 
 /* מיכל תיבות Directions */
 #directionsContainer {

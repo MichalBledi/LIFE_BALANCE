@@ -10,28 +10,39 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-
-        const response = await fetch('/api/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password })
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            localStorage.setItem('user', JSON.stringify(data.user));
-            window.location.href = '../home/home.html';
-        } else {
-            alert(data.message);
+    
+        try {
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+    
+            const text = await response.text(); // קבלת התגובה כדי לבדוק אם היא JSON תקין
+            console.log("🔍 Server Response:", text);
+    
+            let data;
+            try {
+                data = JSON.parse(text); // ניסיון לפענח JSON
+            } catch (err) {
+                console.error("❌ JSON Parsing Error:", err);
+                alert("Server error. Please try again.");
+                return;
+            }
+    
+            if (response.ok) {
+                console.log("✅ Login Successful:", data);
+                localStorage.setItem('user', JSON.stringify(data.user));
+                sessionStorage.setItem("username", data.user.username);
+                window.location.href = '../home/home.html';
+            } else {
+                console.warn("⚠ Login Failed:", data.message);
+                alert(data.message);
+            }
+        } catch (error) {
+            console.error("❌ Fetch Error:", error);
+            alert("Network error. Please check your connection.");
         }
     });
-
-    // Handle register button
-    const registerBtn = document.getElementById('register-btn');
-    if (registerBtn) {
-        registerBtn.addEventListener('click', () => {
-            window.location.href = '../register/register.html';
-        });
-    }
+    
 });

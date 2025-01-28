@@ -80,6 +80,8 @@ import userRoutes from './routes/userRoutes.js';
 import bmiRoutes from './routes/bmiRoutes.js';
 import recipeRoutes from './routes/recipeRoutes.js';
 import ingredientsRoutes from './routes/ingredientsRoutes.js';
+import nutritionCalcRoutes from './routes/nutritionCalcRoutes.js';
+
 
 const app = express();
 
@@ -114,6 +116,8 @@ app.use('/api', userRoutes);
 app.use('/api/recipes', recipeRoutes);
 app.use("/api/bmi", bmiRoutes);
 app.use('/api/ingredients', ingredientsRoutes);
+app.use('/api/nutrition', nutritionCalcRoutes); // חיבור לראוטר שלנו
+
 
 // Start the server
 const PORT = 3001;
