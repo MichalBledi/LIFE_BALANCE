@@ -1,10 +1,3 @@
-/*fetch('../navbar/sidebar.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('sidebar-container').innerHTML = data;
-    });
-*/
-
 fetch('top-section/top-section.html')
     .then(response => response.text())
     .then(data => {
