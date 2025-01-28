@@ -4,7 +4,7 @@ import mysql from 'mysql2/promise';
 const dbConfig = {
   host: 'localhost',
   user: 'root',
-  password: '0908',
+  password: 'OANCZfamily825131423!',
   database: 'life_balance_web',
 };
 

@@ -6,7 +6,7 @@ import { faker } from '@faker-js/faker';
   const connection = await mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '0908',
+    password: 'OANCZfamily825131423!',
     database: 'life_balance_web',
   });
 

@@ -22,7 +22,7 @@ function initializeNavbar() {
         // User is logged in: Show "Personal Area" and redirect to personal area
         personalAreaBtn.textContent = 'Personal Area';
         personalAreaBtn.addEventListener('click', () => {
-            window.location.href = '../personal_area/personal-area.html';
+            window.location.href = '../user_info/user-info.html';
         });
     } else {
         // No user logged in: Show "Log In" and redirect to login page

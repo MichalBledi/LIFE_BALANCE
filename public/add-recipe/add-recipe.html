@@ -4,18 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Recipe</title>
-    <link rel="stylesheet" href="../navbar/sidebar.css">
     <link rel="stylesheet" href="add-recipe.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="../navbar/sidebar.js" defer></script>
     <script src="add-recipe.js" defer></script>
 </head>
 <body>
-    <!-- כפתור לפתיחת התפריט צד -->
-    <div class="menu-container">
-        <button id="menu-btn" class="menu-btn">☰</button>
-    </div>
-    <div id="sidebar-container" class="sidebar"></div>
 
     <!-- כפתור חזור -->
     <button class="back-btn" onclick="goBack()">Back →</button>
@@ -37,7 +29,8 @@
                     <label>Ingredients:</label>
                     <div class="inputs-wrapper">
                         <div class="input-group">
-                            <input type="text" name="ingredients" placeholder="Enter ingredient" class="ingredient-input">
+                            <input type="text" name="ingredients" placeholder="Search for ingredient.." class="ingredient-input">
+                            <button type="button" class="search-button">Search</button>
                             <span class="add-more" onclick="addIngredientInput()">+</span>
                         </div>
                     </div>
