@@ -201,4 +201,57 @@ router.get('/:recipeId', async (req, res) => {
     }
 });
 
+
+// 📌 API להוספת מתכון חדש (ללא העלאת תמונה)
+router.post('/add', async (req, res) => {
+    try {
+        const {
+            name,
+            minutes,
+            tags,
+            nutrition,
+            steps,
+            ingredients,
+            uploader
+        } = req.body;
+
+        // הגדרת ערכי ברירת מחדל
+        const defaultName = "Default Recipe Name";
+        const defaultIngredient = JSON.stringify(["Apple"]);
+        const defaultSteps = JSON.stringify(["Wash the apple"]);
+        const defaultCategory = "Breakfast";
+        const defaultTime = 40;
+        const defaultNutrition = JSON.stringify({
+            calories: 50,
+            fat: "50 g",
+            sugar: "50 g",
+            sodium: "50 mg",
+            protein: "50 g",
+            saturatedFat: "50 g",
+            carbohydrates: "50 g"
+        });
+
+        // השמת ערכים אם חסרים
+        const recipeName = name || defaultName;
+        const recipeTime = minutes || defaultTime;
+        const recipeTags = tags || defaultCategory;
+        const recipeSteps = steps || defaultSteps;
+        const recipeIngredients = ingredients || defaultIngredient;
+        const recipeNutrition = nutrition || defaultNutrition;
+
+        // הוספת מתכון לטבלה
+        const [recipeResult] = await db.query(
+            `INSERT INTO recipes (name, minutes, tags, nutrition, steps, ingredients, uploader) 
+             VALUES (?, ?, ?, ?, ?, ?, ?)`,
+            [recipeName, recipeTime, recipeTags, recipeNutrition, recipeSteps, recipeIngredients, uploader || "Anonymous"]
+        );
+
+        res.json({ success: true, message: "Recipe added successfully", recipeId: recipeResult.insertId });
+    } catch (error) {
+        console.error("❌ Error adding recipe:", error);
+        res.status(500).json({ error: 'Database error' });
+    }
+});
+
+
 export default router;
