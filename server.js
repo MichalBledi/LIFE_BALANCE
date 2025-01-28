@@ -1,4 +1,4 @@
-import express from 'express';
+/*import express from 'express';
 import cors from 'cors';
 import userRoutes from './routes/userRoutes.js';
 
@@ -37,22 +37,6 @@ app.get('/heatmap', (req, res) => {
     res.sendFile('heat_map/heat_map.html', { root: 'public' });
 });
 
-/*
-// Route: Fetch obesity rates data
-app.get('/api/obesity-rates', async (req, res) => {
-    try {
-        const [rows] = await db.query(`
-            SELECT country, obesity_rate, obesity_rate_females, obesity_rate_males, bmi_females, bmi_males, bmi_both, data_year
-            FROM obesity_rates
-        `);
-        res.json(rows);
-    } catch (err) {
-        console.error('Error fetching obesity data:', err);
-        res.status(500).json({ error: 'Failed to fetch data.' });
-    }
-});
-*/
-
 // Route: Fetch global BMI data by year and split into gender-specific tables
 app.get('/api/global-bmi-data/:year', async (req, res) => {
     const { year } = req.params; // Get the year from the URL parameter
@@ -83,6 +67,53 @@ app.get('/api/global-bmi-data/:year', async (req, res) => {
 });
 
 
+const PORT = 3001;
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+*/
+
+import express from 'express';
+import cors from 'cors';
+import userRoutes from './routes/userRoutes.js';
+import bmiRoutes from './routes/bmiRoutes.js';
+import recipeRoutes from './routes/recipeRoutes.js';
+
+const app = express();
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Static files
+app.use(express.static('public'));
+
+// Homepage
+app.get('/', (req, res) => {
+    res.sendFile('home.html', { root: 'public/home' });
+});
+
+// Recipes folder
+app.use('/recipes', express.static('public/recipes', {
+    setHeaders: (res, path) => {
+        if (path.endsWith('.css')) {
+            res.setHeader('Content-Type', 'text/css');
+        }
+    }
+}));
+
+// Heatmap page
+app.get('/heatmap', (req, res) => {
+    res.sendFile('heat_map/heat_map.html', { root: 'public' });
+});
+
+// API Routes
+app.use('/api', userRoutes);
+app.use('/api', bmiRoutes);
+app.use('/api/recipes', recipeRoutes);
+
+// Start the server
 const PORT = 3001;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
