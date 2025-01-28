@@ -87,7 +87,6 @@ function addIngredientInput() {
     inputsWrapper.appendChild(inputGroup);
 }
 
-
 function addDirectionInput() {
     const directionsWrapper = document.querySelector('#directionsContainer');
 
@@ -122,6 +121,29 @@ function addDirectionInput() {
     directionsWrapper.appendChild(inputGroup);
 }
 
+async function submitRecipe(event) {
+    event.preventDefault();
+
+    const formData = new FormData(document.getElementById('recipeForm'));
+
+    try {
+        const response = await fetch('submit-recipe.php', {
+            method: 'POST',
+            body: formData,
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+            alert('Recipe added successfully!');
+            window.location.href = '../my recipes/my-recipes.html';
+        } else {
+            alert('Error: ${result.message}');
+        }
+    } catch (error) {
+        alert('An error occurred: ${error.message}');
+    }
+}
 
 fetch('../../navbar/sidebar.html')
     .then(response => response.text())

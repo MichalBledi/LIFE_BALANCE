@@ -9,121 +9,121 @@ const dbConfig = {
 };
 
 (async () => {
-    let connection;
-  
-    try {
-      console.log('Connecting to the database...');
-      connection = await mysql.createConnection(dbConfig);
-      console.log('Connected to the database.');
-  
-      // Step 1: Insert a fictitious user into the `users` table
-      console.log('--- Inserting a fictitious user into the `users` table ---');
-      const userId = await insertFictitiousUser(connection);
-  
-      // Step 2: Insert fictitious BMI records for the user into the `bmi_history` table
-      console.log('--- Inserting fictitious BMI records into the `bmi_history` table ---');
-      await insertFictitiousBmiRecords(connection, userId);
-  
-      console.log('Fictitious user and BMI records added successfully.');
-    } catch (error) {
-      console.error('An error occurred:', error);
-    } finally {
-      if (connection) {
-        await connection.end();
-        console.log('Database connection closed.');
-      }
+  let connection;
+
+  try {
+    console.log('Connecting to the database...');
+    connection = await mysql.createConnection(dbConfig);
+    console.log('Connected to the database.');
+
+    // Step 1: Generate multiple fictitious users
+    const users = generateFakeUsers(10); // Adjust the number of users as needed
+
+    // Step 2: Insert all users into the `users` table
+    console.log('--- Inserting multiple fictitious users into the `users` table ---');
+    for (const user of users) {
+      const userId = await insertUser(connection, user);
+
+      // Step 3: Insert BMI records for each user
+      console.log(`--- Inserting BMI records for user ID ${userId} ---`);
+      await insertFictitiousBmiRecords(connection, userId, user.height);
     }
-  })();
-  
-  // Function to insert a fictitious user into the `users` table
-  async function insertFictitiousUser(connection) {
-    const user = {
-      username: 'RoyCohen',
-      date_of_birth: '1995-08-15', // Roy's birthdate
-      email: 'roy.cohen@example.com',
-      password: 'hashed_password', // Replace with a securely hashed password in real use
-      height: 180.0, // Roy's height in cm
-      weight: 75.0, // Roy's initial weight in kg
-      gender: 'male',
-      activity_index: 1.55, // Moderately active
-      purpose: 'maintenance', // Fitness goal
-      allergies: 'peanuts, shellfish', // Example allergies
-    };
-  
-    const result = await connection.query(
+
+    console.log('All fictitious users and BMI records added successfully.');
+  } catch (error) {
+    console.error('An error occurred:', error);
+  } finally {
+    if (connection) {
+      await connection.end();
+      console.log('Database connection closed.');
+    }
+  }
+})();
+
+// Function to generate multiple fake users
+function generateFakeUsers(count, offset = 0) {
+  const users = [];
+  for (let i = 0; i < count; i++) {
+    const uniqueId = i + offset; // Offset כדי למנוע כפילויות
+    users.push({
+      username: `User${uniqueId + 30}`, // שם משתמש ייחודי
+      date_of_birth: `19${90 + (uniqueId % 10)}-0${(uniqueId % 12) + 1}-15`,
+      email: `user${uniqueId + 13}@example.com`, // דוא"ל ייחודי
+      password: `password${uniqueId + 1}`,
+      height: 160 + Math.random() * 40, // גובה אקראי בין 160 ל-200 ס"מ
+      weight: 50 + Math.random() * 50, // משקל אקראי בין 50 ל-100 ק"ג
+      gender: uniqueId % 2 === 0 ? 'male' : 'female',
+      activity_index: 1.2 + Math.random() * 1.3, // אינדקס פעילות בין 1.2 ל-2.5
+      purpose: uniqueId % 3 === 0 ? 'weight_gain' : uniqueId % 3 === 1 ? 'weight_loss' : 'maintenance',
+      allergies: uniqueId % 2 === 0 ? 'none' : 'peanuts',
+    });
+  }
+  return users;
+}
+
+
+// Function to insert a user into the `users` table
+async function insertUser(connection, user) {
+  const result = await connection.query(
+    `
+    INSERT INTO users (
+      username, date_of_birth, email, password, height, weight, gender, activity_index, purpose, allergies
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `,
+    [
+      user.username,
+      user.date_of_birth,
+      user.email,
+      user.password,
+      user.height,
+      user.weight,
+      user.gender,
+      user.activity_index,
+      user.purpose,
+      user.allergies,
+    ]
+  );
+
+  console.log(`Fictitious user "${user.username}" inserted successfully with ID: ${result[0].insertId}`);
+  return result[0].insertId; // Return the ID of the newly inserted user
+}
+
+// Function to insert BMI records for a user
+async function insertFictitiousBmiRecords(connection, userId, heightCm) {
+  const bmiRecords = generateBmiRecords(24, heightCm); // Generate 24 months of BMI records
+
+  for (const record of bmiRecords) {
+    await connection.query(
       `
-      INSERT INTO users (
-        username, date_of_birth, email, password, height, weight, gender, activity_index, purpose, allergies
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO bmi_history (user_id, date, bmi)
+      VALUES (?, ?, ?)
       `,
-      [
-        user.username,
-        user.date_of_birth,
-        user.email,
-        user.password,
-        user.height,
-        user.weight,
-        user.gender,
-        user.activity_index,
-        user.purpose,
-        user.allergies,
-      ]
+      [userId, record.date, record.bmi]
     );
-  
-    console.log(`Fictitious user "${user.username}" inserted successfully with ID: ${result[0].insertId}`);
-    return result[0].insertId; // Return the ID of the newly inserted user
+    console.log(`BMI record for user ID ${userId} on ${record.date} inserted successfully.`);
   }
-  
-  // Function to insert fictitious BMI records into the `bmi_history` table
-  async function insertFictitiousBmiRecords(connection, userId) {
-    const bmiRecords = [
-        { date: '2025-01-01', weight: 75.0 },
-        { date: '2025-02-01', weight: 74.5 },
-        { date: '2025-03-01', weight: 74.0 },
-        { date: '2025-04-01', weight: 73.8 },
-        { date: '2025-05-01', weight: 73.5 },
-        { date: '2025-06-01', weight: 73.8 },
-        { date: '2025-07-01', weight: 73.0 },
-        { date: '2025-08-01', weight: 72.8 },
-        { date: '2025-09-01', weight: 72.5 },
-        { date: '2025-10-01', weight: 72.2 },
-        { date: '2025-11-01', weight: 72.0 },
-        { date: '2025-12-01', weight: 71.8 },
-        { date: '2026-01-01', weight: 71.5 },
-        { date: '2026-02-01', weight: 71.3 },
-        { date: '2026-03-01', weight: 71.0 },
-        { date: '2026-04-01', weight: 71.2 },
-        { date: '2026-05-01', weight: 70.8 },
-        { date: '2026-06-01', weight: 70.5 },
-        { date: '2026-07-01', weight: 70.2 },
-        { date: '2026-08-01', weight: 70.0 },
-        { date: '2026-09-01', weight: 69.8 },
-        { date: '2026-10-01', weight: 69.5 },
-        { date: '2026-11-01', weight: 69.3 },
-        { date: '2026-12-01', weight: 69.0 },
-        { date: '2027-01-01', weight: 68.8 },
-        { date: '2027-02-01', weight: 68.5 },
-        { date: '2027-03-01', weight: 68.2 },
-        { date: '2027-04-01', weight: 68.0 }
-      ];
-      
-  
-    for (const record of bmiRecords) {
-      const bmi = calculateBmi(record.weight, 180.0); // Height is constant at 180 cm
-      await connection.query(
-        `
-        INSERT INTO bmi_history (user_id, date, bmi)
-        VALUES (?, ?, ?)
-        `,
-        [userId, record.date, bmi]
-      );
-      console.log(`BMI record for user ID ${userId} on ${record.date} inserted successfully.`);
-    }
+}
+
+// Function to generate BMI records
+function generateBmiRecords(months, heightCm) {
+  const bmiRecords = [];
+  const currentDate = new Date();
+  let weight = 70 + Math.random() * 30; // Start weight between 70 and 100 kg
+
+  for (let i = 0; i < months; i++) {
+    const date = new Date(currentDate.getFullYear(), currentDate.getMonth() - i, 1);
+    const formattedDate = date.toISOString().split('T')[0];
+    const bmi = calculateBmi(weight, heightCm);
+
+    bmiRecords.push({ date: formattedDate, bmi });
+    weight += (Math.random() - 0.5) * 2; // Simulate weight fluctuations
   }
-  
-  // Function to calculate BMI
-  function calculateBmi(weight, heightCm) {
-    const heightMeters = heightCm / 100; // Convert height to meters
-    return (weight / (heightMeters * heightMeters)).toFixed(2); // BMI formula: weight (kg) / height^2 (m^2)
-  }
-  
+
+  return bmiRecords;
+}
+
+// Function to calculate BMI
+function calculateBmi(weight, heightCm) {
+  const heightMeters = heightCm / 100; // Convert height to meters
+  return (weight / (heightMeters * heightMeters)).toFixed(2); // BMI formula: weight (kg) / height^2 (m^2)
+}
