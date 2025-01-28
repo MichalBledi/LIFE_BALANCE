@@ -40,4 +40,4 @@ function updateAuthButton() {
 }
 
 
-// document.addEventListener('DOMContentLoaded', updateAuthButton);
+document.addEventListener('DOMContentLoaded', updateAuthButton);
