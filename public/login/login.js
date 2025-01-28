@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (response.ok) {
             localStorage.setItem('user', JSON.stringify(data.user));
-            window.location.href = 'home.html';
+            window.location.href = '../home/home.html';
         } else {
             alert(data.message);
         }
