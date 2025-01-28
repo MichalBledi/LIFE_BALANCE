@@ -110,38 +110,32 @@ function createRecipeCard(recipe) {
                 <img class="card-image" src="${recipe.imageUrl}" alt="${recipe.name}">
                 <div class="card-content">
                     <h3 class="card-title">${recipe.name}</h3>
-                    <div class = "row-wrapper" ></div>
+                    <div class="row-wrapper"></div>
                     <div class="card-info">
                         <div class="info-block">
-                                <div class="icon-value">
-                                    <div class="glyphicon glyphicon-time"></div>
-                                    <div class="value">${recipe.cookingTime}</div>
-                                </div>
+                            <div class="icon-value">
+                                <div class="glyphicon glyphicon-time"></div>
+                                <div class="value">${recipe.cookingTime}</div>
+                            </div>
                             <div class="text">Minutes</div>
                         </div>
                         <div class="info-block">
-                                <div class="icon-value">
-                                    <div class="glyphicon glyphicon-fire"></div>
-                                    <div class="value">${recipe.calories}</div>
-                                </div>
+                            <div class="icon-value">
+                                <div class="glyphicon glyphicon-fire"></div>
+                                <div class="value">${recipe.calories}</div>
+                            </div>
                             <div class="text">Calories</div>
-                        </div>
-                        <div class="info-block">
-                                <div class="icon-value">
-                                    <div class="glyphicon glyphicon-user"></div>
-                                    <div class="value">${recipe.servings}</div>
-                                </div>
-                            <div class="text">Servings</div>
                         </div>
                     </div>
                     <div class="card-button">
-                        <button>View Recipe</button>
+                        <a href="../display recipe/display-recipe.html?recipeId=${recipe.id}" class="view-recipe-button">View Recipe</a>
                     </div>
                 </div>
             </div>
         </li>
     `;
 }
+
 
 /*
 async function createRecipeCard(recipe) {

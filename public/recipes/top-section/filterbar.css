@@ -5,7 +5,7 @@
   right: -250px; /* Initially hidden */
   width: 250px;
   height: 100%;
-  background-color: #E8E4E2;
+  background-color: #F3E3DC;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -55,7 +55,7 @@
 .clear-filters-btn {
   padding: 10px 20px;
   border: none;
-  background-color: #007bff;
+  background-color: #C49A94;
   color: white;
   border-radius: 5px;
   cursor: pointer;
@@ -64,7 +64,7 @@
 
 .apply-filters-btn:hover,
 .clear-filters-btn:hover {
-  background-color: #0056b3;
+  background-color: #B47F78;
 }
 
 .close-filter-btn {
@@ -79,5 +79,5 @@
 }
 
 .close-filter-btn:hover {
-  color: #6a7a5c;
+  color: #B47F78;
 }

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite Recipes</title>
+    <link rel="stylesheet" href="my-recipes.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Logo Section -->
+        <header class="header">
+            <h1 class="logo">MY RECIPES</h1>
+        </header>
+
+        <!-- Categories Section -->
+        <nav class="categories">
+            <button class="category-button" data-category="all">
+                <img src="all.png" alt="הכל">
+                <span>all</span>
+            </button>
+            <button class="category-button" data-category="breakfast">
+                <img src="breakfast.png" alt="ארוחת בוקר">
+                <span>breakfast</span>
+            </button>
+            <button class="category-button" data-category="lunch">
+                <img src="lunch.png" alt="ארוחת צהריים">
+                <span>lunch</span>
+            </button>
+            <button class="category-button" data-category="dinner">
+                <img src="dinner.png" alt="ארוחת ערב">
+                <span>dinner</span>
+            </button>
+            <button class="category-button" data-category="dessert">
+                <img src="dessert.png" alt="קינוח">
+                <span>dessert</span>
+            </button>
+            <button class="category-button" data-category="single">
+                <img src="single.png" alt="מוצר בודד">
+                <span>single product</span>
+            </button>
+        </nav>
+
+        <!-- Recipes Section -->
+        <div class="recipes-section">
+            <div class="recipe-carousel">
+                <ul class="favorite-recipe-list"></ul>
+            </div>
+        </div> 
+        
+        <div class="button-container">
+            <a href="../add-recipe/add-recipe.html" class="add-recipe-button">Add New Recipe</a>
+        </div>
+
+    </div>
+
+    <script src="my-recipes.js"></script>
+</body>
+</html>

@@ -16,7 +16,7 @@
         <!-- Categories Section -->
         <nav class="categories">
             <button class="category-button" data-category="all">
-                <img src="all food.png" alt="הכל">
+                <img src="all.png" alt="הכל">
                 <span>all</span>
             </button>
             <button class="category-button" data-category="breakfast">
@@ -36,32 +36,17 @@
                 <span>dessert</span>
             </button>
             <button class="category-button" data-category="single">
-                <img src="single product.png" alt="מוצר בודד">
+                <img src="single.png" alt="מוצר בודד">
                 <span>single product</span>
             </button>
         </nav>
-        
 
         <!-- Recipes Section -->
-        <section class="recipes">
-            <!-- Card Example -->
-            <div class="recipe-card">
-                <img src="images/blueberry-donuts.jpg" alt="Delicious Fancy Glazed Blueberry Donuts">
-                <div class="card-content">
-                    <div class="rating">★★★★★</div>
-                    <h3 class="recipe-title">Delicious Fancy Glazed Blueberry Donuts</h3>
-                    <div class="recipe-author">
-                        <img src="images/author1.jpg" alt="Author">
-                        <span>Tricia Albert</span>
-                    </div>
-                    <div class="recipe-meta">
-                        <span>Yesterday</span>
-                        <span class="likes" onclick="alert('Like functionality coming soon!')">❤️ 456</span>
-                    </div>
-                </div>
+        <div class="recipes-section">
+            <div class="recipe-carousel">
+                <ul class="favorite-recipe-list"></ul>
             </div>
-            <!-- Add more cards here -->
-        </section>        
+        </div>   
     </div>
 
     <script src="favorite-recipes.js"></script>

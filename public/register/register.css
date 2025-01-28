@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f3f5ed;
+    background-color: #F6ECEA;
     margin: 0;
     padding: 0;
     display: flex;
@@ -13,7 +13,7 @@ body {
     width: 660px;
     height: 592px;
     text-align: center;
-    background: #f3f5ed;
+    background: #F3E3DC;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -32,7 +32,7 @@ body {
 
 .progress-bar {
     height: 100%;
-    background-color: #94c9a8;
+    background-color: #D0B0A3;
     width: 0;
     transition: width 0.3s ease;
 }
@@ -82,14 +82,14 @@ input {
 
 input:focus {
     outline: none;
-    border-color: #94c9a8; /* צבע ירוק עדין */
+    border-color: #C49A94; /* צבע ירוק עדין */
     box-shadow: 0 0 5px rgba(148, 201, 168, 0.5);
 }
 
 /* עיצוב כפתור סיום */
 .done-button {
     padding: 10px 20px;
-    background-color: #94c9a8; /* צבע ירוק */
+    background-color: #C49A94; /* צבע ירוק */
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -99,7 +99,7 @@ input:focus {
 }
 
 .done-button:hover {
-    background-color: #78b593; /* צבע ירוק כהה יותר במעט */
+    background-color: #B47F78; /* צבע ירוק כהה יותר במעט */
 }
 
 .cancel-circle-button {

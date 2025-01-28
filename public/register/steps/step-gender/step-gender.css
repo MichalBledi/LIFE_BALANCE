@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f3f5ed;
+    background-color:#F6ECEA;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +11,7 @@ body {
 
 .container {
     text-align: center;
-    background: #f3f5ed;
+    background: #F3E3DC;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -31,7 +31,7 @@ body {
 
 .progress-bar {
     height: 100%;
-    background-color: #94c9a8;
+    background-color: #D0B0A3;
     width: 0;
     transition: width 0.3s ease;
 }
@@ -60,7 +60,7 @@ body {
 }
 
 .gender-option.selected .gender-image {
-    border: 3px solid #94c9a8; /* צבע ירוק עדין למסגרת */
+    border: 3px solid #C49A94; /* צבע ירוק עדין למסגרת */
     border-radius: 50%; /* מסגרת עגולה */
     padding: 5px; /* ריווח קטן בתוך המסגרת */
     box-shadow: 0 0 5px rgba(148, 201, 168, 0.3); /* אפקט זוהר קל יותר */
@@ -94,7 +94,7 @@ body {
 .button-continue {
     flex: 1;
     padding: 10px 20px;
-    background-color: #94c9a8;
+    background-color: #C49A94;
     color: white;
     border: none;
     border-radius: 5px;
@@ -105,7 +105,7 @@ body {
 
 .button-back:hover,
 .button-continue:hover {
-    background-color: #78b593;
+    background-color: #B47F78;
 }
 
 .cancel-circle-button {

@@ -1,0 +1,134 @@
+/* עיצוב כללי לגוף העמוד */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F6ECEA;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* עיצוב לכותרת העמוד */
+.page-header {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.page-header h1 {
+    font-size: 2.5em;
+    color: #C49A94;
+    margin: 0;
+}
+
+/* מכולת המחשבון */
+#calculator-container {
+    background: #F3E3DC;
+    padding: 30px; /* יותר ריווח פנימי */
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px; /* יותר מקום לתוצאות */
+    margin: 20px auto; /* ריווח מהקצוות */
+}
+
+/* מחלקת הסתרה */
+.hidden {
+    display: none;
+}
+
+/* עיצוב לשדות הזנה */
+input {
+    padding: 10px;
+    width: calc(100% - 20px);
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* גריד לתוצאות */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* התאמה דינמית של עמודות */
+    gap: 35px; /* ריווח מוגדל בין הכרטיסיות */
+    justify-content: center; /* ממרכז את הגריד */
+    margin-top: 20px; /* ריווח מעל הגריד */
+    width: 100%; /* תופס את כל רוחב הקונטיינר */
+    max-width: 750px; /* מגביל את הרוחב המקסימלי של הגריד */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* כרטיסיות לתוצאות */
+.nutrient-card {
+    background: #F6ECEA;
+    border: 1px solid #B47F78;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    width: 100%; /* מתאים לרוחב העמודה הדינמית */
+    max-width: 250px; /* מגביל את הרוחב המקסימלי */
+    color: #333;
+    margin: 2px; /* ריווח פנימי נוסף */
+}
+
+
+/* עיצוב טקסט בתוך כרטיסיות */
+.nutrient-card p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.nutrient-card strong {
+    font-size: 15px;
+    color: #B47F78;
+}
+
+/* כפתורים */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #C49A94;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #B47F78;
+}
+
+/* כפתור חזרה */
+.back-btn {
+    position: fixed; /* מקבע את הכפתור במסך */
+    top: 20px; /* מרחק מהחלק העליון */
+    right: 20px; /* מרחק מהחלק הימני */
+    background-color: #C49A94; /* צבע רקע */
+    color: white; /* צבע טקסט */
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1000; /* מעל כל התוכן */
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #B47F78; /* צבע רקע בעת ריחוף */
+}
+
+/* כותרת תוצאות */
+#results h4 {
+    font-size: 1.5em;
+    color: #C49A94;
+    margin-bottom: 10px;
+}

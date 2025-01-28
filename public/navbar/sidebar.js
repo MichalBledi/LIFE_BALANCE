@@ -17,19 +17,27 @@ let isUserLoggedIn = false;
 
 function handleAuthClick() {
     if (isUserLoggedIn) {
-        window.location.href = '/personal-area'; // מפנה לדף האזור האישי
+        window.location.href = '../personal-area'; // מפנה לדף האזור האישי
     } else {
-        window.location.href = '/login'; // מפנה לדף ההתחברות
+        window.location.href = '../login/login.html'; // מפנה לדף ההתחברות
     }
 }
 
+document.addEventListener('DOMContentLoaded', updateAuthButton);
+
 function updateAuthButton() {
     const authButton = document.querySelector('.personal-area .text');
+    if (!authButton) { // אם האלמנט לא נמצא
+        console.warn('אלמנט הכפתור לא נמצא בדף.');
+        return;
+    }
+
     if (isUserLoggedIn) {
-        authButton.textContent = 'Personal Area'; // משנה טקסט לאזור אישי
+        authButton.textContent = 'Personal Area'; // עדכון טקסט כשמשתמש מחובר
     } else {
-        authButton.textContent = 'Log in'; // משנה טקסט להתחברות
+        authButton.textContent = 'Log in'; // עדכון טקסט כשמשתמש לא מחובר
     }
 }
+
 
 document.addEventListener('DOMContentLoaded', updateAuthButton);

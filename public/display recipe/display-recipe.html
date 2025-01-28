@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Details</title>
+    <link rel="stylesheet" href="display-recipe.css">
+</head>
+<body>
+    <div class="container">
+        <!-- כפתור חזור -->
+        <button class="back-btn" onclick="goBack()">Back →</button>
+
+        <!-- חלוקה לטקסט ולתמונה -->
+        <div class="recipe-layout">
+            <div class="recipe-text">
+                <h1 id="recipe-name">Recipe Name</h1>
+                <p class="prep-time"><strong>Preparation Time:</strong> <span id="prep-time"></span></p>
+                <section>
+                    <h2>Ingredients</h2>
+                    <ul id="ingredients-list"></ul>
+                </section>
+                <section>
+                    <h2>Instructions</h2>
+                    <p id="instructions"></p>
+                </section>
+                <section>
+                    <h2>Allergies</h2>
+                    <p id="allergies"></p>
+                </section>
+                <section>
+                    <h2>Nutritional Values</h2>
+                    <p id="nutritional-values"></p>
+                </section>
+            </div>
+            <div class="recipe-image">
+                <img id="recipe-img" src="" alt="Recipe Image">
+            </div>
+        </div>
+    </div>
+
+    <script src="display-recipe.js"></script>
+</body>
+</html>
