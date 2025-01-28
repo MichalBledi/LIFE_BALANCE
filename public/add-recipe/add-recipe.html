@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,12 +9,11 @@
 </head>
 <body>
 
-    <!-- כפתור חזור -->
+
     <button class="back-btn" onclick="goBack()">Back →</button>
 
 
 
-    <!-- תוכן העמוד -->
     <div id="content">
         <div class="title">My New Healthy Recipe</div>
         <p>Fill the information about your new recipe</p>
@@ -69,6 +68,89 @@
             
             <div class="action-buttons">
                 <button type="button" class="done-btn" onclick="handleDone()">Done</button>
+                <button type="button" class="cancel-btn" onclick="handleCancel()">Cancel</button>
+            </div>        
+        </form>
+    </div>
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Recipe</title>
+    <link rel="stylesheet" href="add-recipe.css">
+    <script src="add-recipe.js" defer></script>
+</head>
+<body>
+
+    <!-- Button to go back -->
+    <button class="back-btn" onclick="goBack()">Back →</button>
+
+    <!-- Page content -->
+    <div id="content">
+        <div class="title">My New Healthy Recipe</div>
+        <p>Fill the information about your new recipe</p>
+        <form id="recipeForm" enctype="multipart/form-data">
+            <!-- Recipe Name -->
+            <div class="form-group">
+                <label for="recipeName">Recipe name:</label>
+                <input type="text" id="recipeName" name="recipeName" placeholder="Enter recipe name">
+            </div>
+
+            <!-- Ingredients Section -->
+            <div id="ingredientsContainer">
+                <div class="form-group">
+                    <label>Ingredients:</label>
+                    <div class="inputs-wrapper">
+                        <div class="input-group">
+                            <input type="text" name="ingredients" placeholder="Search for ingredient.." class="ingredient-input" oninput="searchIngredient(this)">
+                            <button type="button" class="search-button">Search</button>
+                            <span class="add-more" onclick="addIngredientInput()">+</span>
+                            <div class="results-container"></div>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+
+            <!-- Directions Section -->
+            <div class="form-group">
+                <label>Directions:</label>
+                <div id="directionsContainer">
+                    <div class="input-group">
+                        <input type="text" name="directions[]" placeholder="Enter preparation step" class="direction-input">
+                        <span class="add-more" onclick="addDirectionInput()">+</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Section -->
+            <div class="form-group">
+                <label>Category:</label>
+                <ul class="category-list">
+                    <li class="category-item"><button type="button" class="category-button">Breakfast</button></li>
+                    <li class="category-item"><button type="button" class="category-button">Lunch</button></li>
+                    <li class="category-item"><button type="button" class="category-button">Dinner</button></li>
+                    <li class="category-item"><button type="button" class="category-button">Dessert</button></li>
+                    <li class="category-item"><button type="button" class="category-button">Single Product</button></li>
+                </ul>
+            </div>
+
+            <!-- Image Upload Section -->
+            <div class="form-group">
+                <label>Add picture:</label>
+                <div class="file-upload-wrapper">
+                    <label for="addPicture" class="custom-file-button">Choose File</label>
+                    <input type="file" id="addPicture" name="addPicture" accept="image/*">
+                </div>
+                <img id="previewImage" src="" alt="No image selected" style="display: none; margin-top: 10px; max-width: 100%; border-radius: 10px;">
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button type="button" class="done-btn">Done</button>
                 <button type="button" class="cancel-btn" onclick="handleCancel()">Cancel</button>
             </div>        
         </form>
