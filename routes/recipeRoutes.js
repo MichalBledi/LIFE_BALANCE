@@ -101,7 +101,6 @@ const allergyKeywords = {
     fishfree: ['fish', 'salmon', 'tuna', 'cod', 'sardines']
 };
 
-
 router.post('/filter', async (req, res) => {
     const { allergies = [], maxPrepTime, maxCalories } = req.body;
 
@@ -158,6 +157,25 @@ router.post('/filter', async (req, res) => {
     }
 });
 
+// Route to fetch the count of recipes
+router.get('/count', async (req, res) => {
+    console.log("Received request to /api/recipes/count");
+    try {
+        const [result] = await db.query('SELECT COUNT(*) AS count FROM recipes');
+
+        console.log('Recipe count result:', result); // Log the result
+
+        if (!result || result.length === 0) {
+            return res.status(404).json({ error: 'Recipe not found' });
+        }
+
+        res.json({ count: result[0].count });
+    } catch (error) {
+        console.error('Database error:', error);
+        res.status(500).json({ error: 'Database query failed' });
+    }
+});
+
 router.get('/:recipeId', async (req, res) => {
     const { recipeId } = req.params;
 
@@ -182,10 +200,5 @@ router.get('/:recipeId', async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch recipe details' });
     }
 });
-
-
-
-
-
 
 export default router;

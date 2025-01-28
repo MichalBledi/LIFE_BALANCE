@@ -58,7 +58,9 @@ function addIngredientInput() {
     ingredientsContainer.appendChild(newInputGroup);
 }
 
+
 // Add new direction input field
+
 function addDirectionInput() {
     const directionsContainer = document.getElementById('directionsContainer');
     const newInputGroup = document.createElement('div');
@@ -121,6 +123,38 @@ function handleSubmit(event) {
     });
 }
 
+
+async function submitRecipe(event) {
+    event.preventDefault();
+
+    const formData = new FormData(document.getElementById('recipeForm'));
+
+    try {
+        const response = await fetch('submit-recipe.php', {
+            method: 'POST',
+            body: formData,
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+            alert('Recipe added successfully!');
+            window.location.href = '../my recipes/my-recipes.html';
+        } else {
+            alert('Error: ${result.message}');
+        }
+    } catch (error) {
+        alert('An error occurred: ${error.message}');
+    }
+}
+
+fetch('../../navbar/sidebar.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('sidebar-container').innerHTML = data;
+    });
+
 // Add event listener for the form submission
 const submitButton = document.querySelector('.done-btn');
 submitButton.addEventListener('click', handleSubmit);
+
