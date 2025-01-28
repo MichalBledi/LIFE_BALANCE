@@ -1,4 +1,7 @@
+let ingredients = []; // הגדרת משתנה גלובלי לרשימת הרכיבים
+
 // Function to handle ingredient search
+
 function searchIngredient(inputElement) {
     const query = inputElement.value.trim(); // Get the value of the input field
 
@@ -72,57 +75,79 @@ function addDirectionInput() {
     directionsContainer.appendChild(newInputGroup);
 }
 
-// Function to handle form submission
-function handleSubmit(event) {
-    event.preventDefault(); // Prevent default form submission
-
-    const form = document.getElementById('recipeForm');
-    const formData = new FormData(form);
-
-    // Gather the ingredients and directions arrays manually
-    const ingredients = [];
-    const directions = [];
-    document.querySelectorAll('.ingredient-input').forEach(input => {
-        if (input.value.trim() !== '') {
-            ingredients.push(input.value.trim());
-        }
-    });
+// Function to collect all preparation steps
+function getRecipeSteps() {
+    const steps = [];
     document.querySelectorAll('.direction-input').forEach(input => {
         if (input.value.trim() !== '') {
-            directions.push(input.value.trim());
+            steps.push(input.value.trim());
         }
     });
 
-    // Add custom fields to formData
-    formData.append('ingredients', JSON.stringify(ingredients));
-    formData.append('directions', JSON.stringify(directions));
+    // If no steps were provided, use a default step
+    return steps.length > 0 ? steps : ["Wash the apple"];
+}
 
-    // Handle image upload (optional)
-    const pictureInput = document.getElementById('addPicture');
-    if (pictureInput.files.length > 0) {
-        formData.append('picture', pictureInput.files[0]);
-    }
 
-    // Send the data to the server using Fetch API
-    fetch('/api/recipes', {
+// Function to handle form submission
+function handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData();
+
+    // ברירת מחדל
+    const defaultName = "Default Recipe Name";
+    const defaultIngredient = ["Apple"];
+    const defaultSteps = getRecipeSteps();
+    const defaultCategory = "Breakfast";
+    const defaultTime = 40;
+    const defaultNutrition = {
+        calories: 50,
+        fat: "50 g",
+        sugar: "50 g",
+        sodium: "50 mg",
+        protein: "50 g",
+        saturatedFat: "50 g",
+        carbohydrates: "50 g"
+    };
+
+    // איסוף נתונים
+    const recipeName = document.getElementById("recipeName")?.value || defaultName;
+    const recipeTime = document.getElementById("recipeTime")?.value || defaultTime;
+    const recipeTags = document.getElementById("recipeTags")?.value || defaultCategory;
+    const recipeIngredients = ingredients.length ? ingredients : defaultIngredient;
+
+    formData.append("name", recipeName);
+    formData.append("minutes", recipeTime);
+    formData.append("tags", recipeTags);
+    formData.append("steps", JSON.stringify(defaultSteps));
+    formData.append("ingredients", JSON.stringify(recipeIngredients));
+    formData.append("nutrition", JSON.stringify(defaultNutrition));
+
+    fetch('/api/recipes/add', {
         method: 'POST',
-        body: formData,
+        body: formData
     })
     .then(response => response.json())
     .then(data => {
+        console.log("✅ Recipe saved:", data);
         if (data.success) {
-            alert('Recipe added successfully!');
-            form.reset(); // Reset the form after successful submission
+            alert("Recipe added successfully!");
+            window.location.href = "../user_info/user-info.html"; 
         } else {
-            alert('Error adding recipe.');
+            alert("Error saving recipe: " + data.error);
         }
     })
-    .catch(error => {
-        console.error('Error submitting the form:', error);
-        alert('Error submitting the recipe.');
-    });
+    .catch(error => console.error("❌ Error saving recipe:", error));
 }
 
+// הוספת מאזין ללחיצה על הכפתור
+document.querySelector('.done-btn').addEventListener('click', handleSubmit);
+
+
+// Add event listener for the form submission
+const submitButton = document.querySelector('.done-btn');
+submitButton.addEventListener('click', handleSubmit);
 
 async function submitRecipe(event) {
     event.preventDefault();
@@ -147,14 +172,3 @@ async function submitRecipe(event) {
         alert('An error occurred: ${error.message}');
     }
 }
-
-fetch('../../navbar/sidebar.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('sidebar-container').innerHTML = data;
-    });
-
-// Add event listener for the form submission
-const submitButton = document.querySelector('.done-btn');
-submitButton.addEventListener('click', handleSubmit);
-
