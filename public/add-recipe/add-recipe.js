@@ -1,22 +1,28 @@
 // Function to handle ingredient search
 function searchIngredient(inputElement) {
-    const query = inputElement.value.trim();
+    const query = inputElement.value.trim(); // Get the value of the input field
 
+    // Check if query is not empty before making the request
     if (query.length > 0) {
         fetch(`/api/ingredients/search-ingredient?query=${query}`)
             .then(response => response.json())
             .then(data => {
+                console.log(data);  // Log the response to see what you're getting
                 const resultsContainer = inputElement.closest('.input-group').querySelector('.results-container');
                 resultsContainer.innerHTML = ''; // Clear previous results
 
-                // Show the first 5 matching ingredients
-                data.forEach(ingredient => {
-                    const resultItem = document.createElement('div');
-                    resultItem.classList.add('result-item');
-                    resultItem.textContent = ingredient.name; // Assuming ingredient has a 'name' property
-                    resultItem.onclick = () => selectIngredient(inputElement, ingredient.name);
-                    resultsContainer.appendChild(resultItem);
-                });
+                // Check if data is an array
+                if (Array.isArray(data)) {
+                    data.forEach(ingredient => {
+                        const resultItem = document.createElement('div');
+                        resultItem.classList.add('result-item');
+                        resultItem.textContent = ingredient.food_name; // Use 'food_name' returned by the API
+                        resultItem.onclick = () => selectIngredient(inputElement, ingredient.food_name);
+                        resultsContainer.appendChild(resultItem);
+                    });
+                } else {
+                    console.error('Data is not an array:', data);
+                }
             })
             .catch(error => console.error('Error fetching ingredients:', error));
     }
@@ -24,8 +30,18 @@ function searchIngredient(inputElement) {
 
 // Function to handle ingredient selection
 function selectIngredient(inputElement, ingredientName) {
-    inputElement.value = ingredientName; // Set the ingredient name in the input field
-    inputElement.closest('.input-group').querySelector('.results-container').innerHTML = ''; // Clear results
+    // Create a new div with the selected ingredient
+    const selectedIngredientDiv = document.createElement('div');
+    selectedIngredientDiv.classList.add('selected-ingredient');
+    selectedIngredientDiv.textContent = ingredientName;
+
+    // Replace the input field with the selected ingredient
+    const inputGroup = inputElement.closest('.input-group');
+    inputGroup.innerHTML = ''; // Clear the input field
+    inputGroup.appendChild(selectedIngredientDiv);
+
+    // Add a new search input field below the selected ingredient
+    addIngredientInput();
 }
 
 // Add new ingredient input field

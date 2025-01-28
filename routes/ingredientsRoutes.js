@@ -13,10 +13,10 @@ router.get('/search-ingredient', async (req, res) => {
 
     try {
         const [rows] = await db.query(`
-            SELECT name
-            FROM ingredients
-            WHERE name LIKE ?
-            LIMIT 5
+            SELECT food_name
+            FROM food
+            WHERE food_name LIKE ?
+            LIMIT 100
         `, [`%${query}%`]);
 
         res.json(rows); // Send the matching ingredients back as JSON
