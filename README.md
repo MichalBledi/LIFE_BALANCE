@@ -60,7 +60,7 @@ Life Balance is a web platform designed for users who aim to maintain a healthy 
 **Description:**
 The home page provides an introduction to the platform, highlighting the key features and services. Users can easily navigate to various sections such as recipes, BMI analysis, and their personal dashboard.
 
---
+---
 
 ### About Us
 
