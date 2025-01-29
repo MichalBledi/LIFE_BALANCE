@@ -226,7 +226,10 @@ async function fetchAndRenderRecipeCategoryChart() {
     }
 }
 
-
+// Function to navigate back to the previous page
+function goBack() {
+    window.history.back();
+}
 
 
 
