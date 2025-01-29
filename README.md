@@ -323,6 +323,6 @@ Life Balance provides a comprehensive health and nutrition tracking experience f
 
 ---
 
-**Developed by:** [Michal Beldi, Noy Shani]\
+**Developed by:** [Michal Beldi, Noy Shani, chatGPT]\
 **Year:** 2025\
 **Technologies Used:** MySQL, JavaScript, HTML/CSS, Node.js
