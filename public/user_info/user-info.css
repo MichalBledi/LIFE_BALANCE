@@ -66,68 +66,6 @@ body {
     color: #555;
 }
 
-.button-container {
-    position: absolute;
-    bottom: 10px; /* מיקום הכפתור בתחתית המלבן */
-    right: 10px; /* מיקום בפינה הימנית */
-}
-
-.change-button {
-    background-color: #C49A94;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px; /* קצוות מעוגלות */
-    font-size: 16px;
-    text-decoration: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.change-button:hover {
-    background-color: #B47F78;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-}
-
-
-
-.recipe-links {
-    margin-top: 40px;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.recipe-links a {
-    text-decoration: none;
-    color: #C49A94;
-    font-size: 18px;
-    padding: 10px 30px;
-    border: 2px solid #C49A94;
-    border-radius: 30px;
-    transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.recipe-links a:hover {
-    color: white;
-    background-color: #B47F78;
-}
-
-.footer {
-    margin-top: 50px;
-    text-align: center;
-    font-size: 14px;
-    color: #777;
-}
-
-/* Existing CSS... */
-
-.food-title {
-    margin-top: 30px;
-    font-size: 24px;
-    color: #C49A94;
-    text-align: center;
-    font-weight: bold;
-}
-
 .bmi-table {
     width: 100%;
     border-collapse: collapse;
