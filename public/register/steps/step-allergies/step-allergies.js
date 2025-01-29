@@ -14,8 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 noAllergiesOption.classList.remove('selected');
                 option.classList.toggle('selected');
-    
-                alert('Working');
+
                 const selectedAllergies = Array.from(activityOptions)
                     .filter(opt => opt.classList.contains('selected') && opt !== noAllergiesOption)
                     .map(opt => opt.querySelector('.allergies-label').textContent.trim());

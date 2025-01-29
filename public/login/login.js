@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
+    const registerButton = document.getElementById('register-btn');
 
     if (!loginForm) {
         console.error("Error: 'loginForm' not found in the DOM.");
@@ -44,5 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Network error. Please check your connection.");
         }
     });
+
+    // טיפול בלחיצה על כפתור ההרשמה
+    if (registerButton) {
+        registerButton.addEventListener('click', () => {
+            window.location.href = '../register/steps/step-gender/step-gender.html'; // ודאי שהנתיב נכון
+        });
+    } else {
+        console.warn("⚠ 'register-btn' not found in the DOM.");
+    }
     
 });
