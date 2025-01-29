@@ -1,6 +1,5 @@
 import mysql from 'mysql2/promise';
 
-// יצירת חיבור למסד הנתונים
 const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
@@ -8,7 +7,6 @@ const pool = mysql.createPool({
     database: 'life_balance_web',
 });
 
-// בדיקת חיבור
 pool.getConnection()
     .then((connection) => {
         console.log('✅ MySQL connected successfully!');

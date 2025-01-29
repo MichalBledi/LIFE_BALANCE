@@ -1,13 +1,4 @@
-import mysql from 'mysql2/promise';
 import xlsx from 'xlsx';
-
-// Database configuration
-const dbConfig = {
-  host: 'localhost',
-  user: 'root',
-  password: 'OANCZfamily825131423!',
-  database: 'life_balance_web',
-};
 
 // Paths to the Excel files
 const excelFiles = [
@@ -18,50 +9,21 @@ const excelFiles = [
   './database/nutrition_database/FOOD-DATA-GROUP5.xlsx',
 ];
 
-/*
-const excelFiles = [
-  './database/nutrition_database/test.xlsx',
-];
-*/
-
-
-(async () => {
-  let connection;
-
+export async function createNutritionsTables(connection) {
   try {
-    console.log('Connecting to the database...');
-    connection = await mysql.createConnection(dbConfig);
-    console.log('Connected to the database.');
-
-    // Step 1: Create the tables
-    console.log('--- Step 1: Creating tables ---');
     await createFoodTable(connection);
     await createNutritionDescriptionsTable(connection);
-
-    // Step 2: Insert nutrient descriptions
-    console.log('--- Step 2: Inserting nutrient descriptions ---');
     await insertNutritionDescriptions(connection);
-
-    // Step 3: Insert food data from Excel files
-    console.log('--- Step 3: Inserting food data from Excel files ---');
     for (const file of excelFiles) {
       console.log(`Processing file: ${file}`);
       const data = readExcelFile(file);
       console.log(`File read successfully. Found ${data.length} rows.`);
       await insertFoodData(connection, data);
     }
-
-    console.log('All operations completed successfully.');
   } catch (error) {
-    console.error('An error occurred:', error);
-  } finally {
-    if (connection) {
-      await connection.end();
-      console.log('Database connection closed.');
-    }
+    console.error('❌ Error creating users-related tables:', error);
   }
-})();
-
+}
 // Function to create the `food` table
 async function createFoodTable(connection) {
   console.log('Creating the `food` table...');
@@ -147,50 +109,50 @@ function readExcelFile(filePath) {
 
 // Function to insert food data into the `food` table
 async function insertFoodData(connection, data) {
-    for (const row of data) {
-      try {
-        const {
-          food: food_name,
-          'Caloric Value': caloric_value,
-          Fat: fat,
-          'Saturated Fats': saturated_fats,
-          Carbohydrates: carbohydrates,
-          Sugars: sugars,
-          Protein: protein,
-          'Dietary Fiber': dietary_fiber,
-          Cholesterol: cholesterol,
-          Sodium: sodium,
-          Water: water,
-          Calcium: calcium,
-          Iron: iron,
-          Potassium: potassium,
-          'Vitamin C': vitamin_c,
-          'Vitamin D': vitamin_d,
-          'Nutrition Density': nutrition_density,
-        } = row;
-  
-        if (!food_name) {
-          console.log('Skipping row with missing food name.');
-          continue; // Skip rows without a food name
-        }
-  
-        await connection.query(
-          `INSERT INTO food (
+  for (const row of data) {
+    try {
+      const {
+        food: food_name,
+        'Caloric Value': caloric_value,
+        Fat: fat,
+        'Saturated Fats': saturated_fats,
+        Carbohydrates: carbohydrates,
+        Sugars: sugars,
+        Protein: protein,
+        'Dietary Fiber': dietary_fiber,
+        Cholesterol: cholesterol,
+        Sodium: sodium,
+        Water: water,
+        Calcium: calcium,
+        Iron: iron,
+        Potassium: potassium,
+        'Vitamin C': vitamin_c,
+        'Vitamin D': vitamin_d,
+        'Nutrition Density': nutrition_density,
+      } = row;
+
+      if (!food_name) {
+        console.log('Skipping row with missing food name.');
+        continue; // Skip rows without a food name
+      }
+
+      await connection.query(
+        `INSERT INTO food (
             food_name, caloric_value, fat, saturated_fats, carbohydrates, sugars, protein,
             dietary_fiber, cholesterol, sodium, water, calcium, iron, potassium, vitamin_c,
             vitamin_d, nutrition_density
           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-          [
-            food_name, caloric_value, fat, saturated_fats, carbohydrates, sugars, protein,
-            dietary_fiber, cholesterol, sodium, water, calcium, iron, potassium, vitamin_c,
-            vitamin_d, nutrition_density,
-          ]
-        );
-        console.log(`Inserted food: ${food_name}`);
-      } catch (error) {
-        console.error(`Failed to insert row for "${row.food || 'Unnamed'}": ${error.message}`);
-      }
+        [
+          food_name, caloric_value, fat, saturated_fats, carbohydrates, sugars, protein,
+          dietary_fiber, cholesterol, sodium, water, calcium, iron, potassium, vitamin_c,
+          vitamin_d, nutrition_density,
+        ]
+      );
+      console.log(`Inserted food: ${food_name}`);
+    } catch (error) {
+      console.error(`Failed to insert row for "${row.food || 'Unnamed'}": ${error.message}`);
     }
-    console.log('Food data inserted successfully.');
+  }
+  console.log('Food data inserted successfully.');
 }
-  
+
