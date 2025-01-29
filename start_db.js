@@ -19,11 +19,11 @@ async function createDatabase() {
     } catch (error) {
         console.error('❌ Error creating database:', error);
         process.exit(1); // Stop execution if database creation fails
-    } finally {
+    } /*finally {
         if (db) {
             await db.end();
         }
-    }
+    }*/
 }
 
 /* Function to run all table creation and data import scripts */
@@ -46,7 +46,7 @@ async function runScripts() {
     } catch (error) {
         console.error('❌ Error running scripts:', error);
     } finally {
-        await connection.end();
+        await db.end();
         console.log('✅ All database scripts executed successfully!');
     }
 }

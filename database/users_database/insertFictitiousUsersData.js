@@ -3,8 +3,9 @@ import mysql from 'mysql2/promise';
 /** Function to run all table creation scripts */
 export async function createFictitiousUser(connection) {
   try {
+    const numOfUsers = 30; // Adjust the number of users as needed
     // Generate multiple fictitious users
-    const users = generateFakeUsers(30); // Adjust the number of users as needed
+    const users = generateFakeUsers(numOfUsers); 
 
     // Insert all users into the users table
     for (const user of users) {
@@ -15,6 +16,10 @@ export async function createFictitiousUser(connection) {
     }
 
     console.log('All fictitious users and BMI records added successfully.');
+
+    await createExampleUser(connection);
+    console.log('Demo user added successfully.');
+
   } catch (error) {
       console.error('❌ Error creating users-related tables:', error);
   }
@@ -105,4 +110,32 @@ function generateBmiRecords(months, heightCm) {
 function calculateBmi(weight, heightCm) {
   const heightMeters = heightCm / 100;
   return (weight / (heightMeters * heightMeters)).toFixed(2);
+}
+
+async function createExampleUser(connection) {
+  try {
+    // Define example user details
+    const exampleUser = {
+      username: 'JohnDoe',
+      date_of_birth: '1992-06-25',
+      email: 'johndoe@example.com',
+      password: 'SecurePass123', // Will be hashed
+      height: 178.5, // cm
+      weight: 75.0, // kg
+      gender: 'male',
+      activity_index: 1.75,
+      purpose: 'maintenance',
+      allergies: 'none',
+    };
+
+    // Insert the example user into the database
+    const userId = await insertUser(connection, exampleUser);
+
+    // Insert BMI records for the example user
+    await insertFictitiousBmiRecords(connection, userId, exampleUser.height);
+
+    console.log("Example user and BMI records added successfully.");
+  } catch (error) {
+    console.error("❌ Error creating the example user:", error);
+  }
 }
