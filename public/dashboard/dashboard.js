@@ -185,20 +185,37 @@ async function fetchAndRenderRecipeCategoryChart() {
             return;
         }
 
-        // הכנת הנתונים ל-Plotly
+        // רשימת צבעים מותאמת אישית לדיאגרמה
+        const colors = [
+            "#1E90FF", "#FF6347", "#32CD32", "#FFD700", "#8A2BE2", 
+            "#FF69B4", "#20B2AA", "#FF4500", "#4682B4", "#D2691E"
+        ];
+
         const trace = {
             labels: data.labels,
             values: data.counts,
             type: "pie",
-            textinfo: "label+percent",
+            textinfo: "percent+label",
             hoverinfo: "label+value",
-            hole: 0.3 // יצירת אפקט של דונאט
+            hole: 0.4, // יצירת אפקט "דונאט"
+            marker: { colors: colors }
         };
 
         const layout = {
-            title: "Recipe Category Distribution",
-            margin: { t: 50, l: 50, r: 50, b: 50 }
+            title: {
+                text: "Recipe Category Distribution",
+                font: { size: 22, color: "#333", family: "Arial, sans-serif" }
+            },
+            margin: { t: 50, l: 30, r: 30, b: 50 },
+            legend: {
+                font: { size: 14, color: "#333" },
+                orientation: "h", // שים את המקרא בשורה אחת אופקית
+                x: 0.5,
+                y: -0.3,
+                xanchor: "center"
+            }
         };
+        
 
         // יצירת הגרף עם Plotly
         Plotly.newPlot('recipesChart', [trace], layout, { displayModeBar: false });
