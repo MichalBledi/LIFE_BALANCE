@@ -96,3 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+function goBack() {
+    window.history.back(); // חזרה לעמוד הקודם בהיסטוריית הדפדפן
+}

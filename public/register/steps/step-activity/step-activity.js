@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
           alert('Please select your activity level before continuing.');
           return;
         }
-        alert('Working');
         saveActivity();
         // מעבר לעמוד הבא, למשל 'register.html'
         window.location.href = '../step-allergies/step-allergies.html';
