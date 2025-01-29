@@ -1,8 +1,50 @@
 # Life Balance - Health & Nutrition Website
 
+## Table of Contents
+1. [Overview](#overview)
+2. [How to Run the Project](#how-to-run-the-project)
+3. [Website Pages](#website-pages)
+4. [Database Structure](#database-structure)
+5. [Complex SQL Queries](#complex-sql-queries)
+6. [Conclusion](#conclusion)
+
+---
+
 ## Overview
 
 Life Balance is a web platform designed for users who aim to maintain a healthy lifestyle. The website provides personalized health tracking, access to a vast collection of nutritious recipes, and tools to help users achieve their fitness and dietary goals. Users can monitor their progress, receive personalized recommendations, and explore global BMI trends. The intuitive and engaging user interface ensures a seamless experience while supporting users on their health journey.
+
+---
+
+## How to Run the Project
+
+### Prerequisites
+
+- Node.js installed on your system
+- MySQL database setup with the required tables
+
+### Installation Steps
+
+1. Open the project in your preferred code editor (e.g., VS Code).
+2. Navigate to the `database` folder.
+3. Open the `db.js` file.
+4. In the first section, replace the MySQL username and password with your own credentials to allow the application to sync with your database.
+5. Save the changes.
+6. Open a terminal and run the following command:
+   ```sh
+   node db_start.js
+   ```
+   This script checks if the database exists, creates it if necessary, and initializes all required tables.
+7. After completing the database setup, start the server:
+   ```sh
+   node server.js
+   ```
+8. Hover over the displayed `localhost://..` URL in the terminal, click `Follow link`, and access the website.
+9. You can register a new account or log in using the predefined test user:
+   **Username:** JohnDoe  
+   **Password:** SecurePass123  
+   This user has updated their progress multiple times, so you can view their BMI history in the personal area.
+10. Enjoy exploring the platform!
 
 ---
 
