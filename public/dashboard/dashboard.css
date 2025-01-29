@@ -166,4 +166,22 @@ button:active {
     padding: 20px 0; /* Add vertical padding to create spacing */
 }
 
+/* כפתור חזרה */
+.back-btn {
+    position: fixed; /* מקבע את הכפתור במסך */
+    top: 20px; /* מרחק מהחלק העליון */
+    right: 20px; /* מרחק מהחלק הימני */
+    background-color: #C49A94; /* צבע רקע */
+    color: white; /* צבע טקסט */
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1000; /* מעל כל התוכן */
+    transition: background-color 0.3s ease;
+}
 
+.back-btn:hover {
+    background-color: #B47F78; /* צבע רקע בעת ריחוף */
+}
