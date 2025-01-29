@@ -1,12 +1,3 @@
-import mysql from 'mysql2/promise';
-
-const db = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'OANCZfamily825131423!',
-    database: 'life_balance_web',
-});
-
 // Allergy keyword mapping
 const allergyKeywords = {
     vegan: ['meat', 'fish', 'eggs', 'dairy', 'honey', 'gelatin'],
@@ -19,16 +10,13 @@ const allergyKeywords = {
     fishFree: ['fish', 'salmon', 'tuna', 'cod', 'sardines'],
 };
 
-async function createAndPopulateIndexTables() {
+async function createAndPopulateIndexTables(connection) {
     try {
         for (const [allergy, keywords] of Object.entries(allergyKeywords)) {
             const tableName = `index_allergy_${allergy.replace(/-/g, '_')}`;
 
-            console.log(`Dropping existing table (if exists): ${tableName}`);
-            await db.query(`DROP TABLE IF EXISTS ${tableName}`);
-
             console.log(`Creating table: ${tableName}`);
-            await db.query(`
+            await connection.query(`
                 CREATE TABLE ${tableName} (
                     id INT PRIMARY KEY,
                     name VARCHAR(255),
@@ -51,14 +39,19 @@ async function createAndPopulateIndexTables() {
                 LIMIT 30
             `;
 
-            await db.query(query, keywords.map(keyword => `%${keyword}%`));
+            await connection.query(query, keywords.map(keyword => `%${keyword}%`));
             console.log(`Table ${tableName} populated.`);
         }
     } catch (error) {
         console.error('Error creating or populating index tables:', error);
-    } finally {
-        await db.end();
     }
 }
 
-createAndPopulateIndexTables();
+/** Function to run all table creation scripts */
+export async function createAllergiesIndex(connection) {
+  try {
+    await createAndPopulateIndexTables(connection);
+  } catch (error) {
+      console.error('❌ Error creating users-related tables:', error);
+  }
+}

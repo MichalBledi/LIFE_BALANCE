@@ -1,4 +1,4 @@
-import mysql from 'mysql2/promise';
+/*import mysql from 'mysql2/promise';
 
 // Database configuration
 const dbConfig = {
@@ -88,4 +88,47 @@ async function createBmiHistoryTable(connection) {
   `);
   console.log('`bmi_history` table created successfully.');
 }
+*/
 
+// Function to create the `users` table
+async function createUsersTable(connection) {
+  await connection.query(`
+    CREATE TABLE IF NOT EXISTS users (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      username VARCHAR(50) NOT NULL UNIQUE,
+      date_of_birth DATE NOT NULL,
+      email VARCHAR(100) NOT NULL UNIQUE,
+      password VARCHAR(255) NOT NULL,
+      height DECIMAL(5,2) NOT NULL,
+      weight DECIMAL(5,2) NOT NULL,
+      gender ENUM('male', 'female', 'other') NOT NULL,
+      activity_index DECIMAL(4,2) NOT NULL COMMENT 'Activity level index (e.g., 1.2 for sedentary)',
+      purpose ENUM('weight_loss', 'weight_gain', 'maintenance') NOT NULL COMMENT 'User’s fitness purpose',
+      allergies TEXT COMMENT 'Comma-separated list of allergies'
+    ) ENGINE=InnoDB;
+  `);
+  console.log('`users` table created successfully.');
+}
+
+// Function to create the `bmi_history` table
+async function createBmiHistoryTable(connection) {
+  await connection.query(`
+    CREATE TABLE IF NOT EXISTS bmi_history (
+      user_id INT NOT NULL,
+      date DATE NOT NULL,
+      bmi DECIMAL(5,2) NOT NULL,
+      PRIMARY KEY (user_id, date), -- Composite primary key
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB;
+  `);
+  console.log('`bmi_history` table created successfully.');
+}
+/** Function to run all table creation scripts */
+export async function createUsersTables(connection) {
+  try {
+      await createUsersTable(connection);
+      await createBmiHistoryTable(connection);
+  } catch (error) {
+      console.error('❌ Error creating users-related tables:', error);
+  }
+}

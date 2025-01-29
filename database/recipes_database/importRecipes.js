@@ -1,13 +1,4 @@
-import mysql from 'mysql2/promise';
 import xlsx from 'xlsx';
-
-// Database configuration
-const dbConfig = {
-  host: 'localhost',
-  user: 'root',
-  password: 'OANCZfamily825131423!',
-  database: 'life_balance_web',
-};
 
 // File path to the Excel file
 const excelFilePath = './database/recipes_database/recipes.xlsx';
@@ -17,41 +8,9 @@ const excelFilePath = './database/recipes_database/recipes.xlsx';
 const defaultPhoto = 'default_recipe_photo.png';
 
 // Maximum number of records to process
-const MAX_RECORDS = 50000;
+const MAX_RECORDS = 100000;
 
-(async () => {
-  let connection;
-
-  try {
-    // Step 1: Connect to the database
-    connection = await connectToDatabase();
-
-    // Step 2: Create recipes table
-    await createRecipesTable(connection);
-
-    // Step 3: Process and insert data
-    await processAndInsertData(connection, excelFilePath, MAX_RECORDS);
-
-    console.log('All operations completed successfully.');
-  } catch (error) {
-    console.error('An error occurred:', error);
-  } finally {
-    if (connection) {
-      await connection.end();
-      console.log('Database connection closed.');
-    }
-  }
-})();
-
-/** Step 1: Connect to the database */
-async function connectToDatabase() {
-  console.log('Connecting to the database...');
-  const connection = await mysql.createConnection(dbConfig);
-  console.log('Connected to the database.');
-  return connection;
-}
-
-/** Step 2: Create the `recipes` table */
+//Create the `recipes` table 
 async function createRecipesTable(connection) {
   console.log('Step 2:Creating the `recipes` table...');
   await connection.query(`
@@ -70,7 +29,7 @@ async function createRecipesTable(connection) {
   console.log('`recipes` table created successfully.');
 }
 
-/** Step 3: Process and insert data into tables */
+// Process and insert data into tables 
 async function processAndInsertData(connection, filePath, maxRecords) {
   console.log(`Step 3: Reading data from the Excel file: ${filePath}`);
   const data = readExcelFile(filePath);
@@ -85,7 +44,7 @@ async function processAndInsertData(connection, filePath, maxRecords) {
   console.log(`Finished inserting recipes. Total inserted: ${insertedCount}/${limitedData.length}`);
 }
 
-/** Read data from an Excel file */
+// Read data from an Excel file 
 function readExcelFile(filePath) {
   console.log(`Loading Excel file: ${filePath}`);
   const workbook = xlsx.readFile(filePath);
@@ -115,7 +74,7 @@ function validateRecord(record) {
     return true; // Record is valid
 }
 
-/** Insert recipes into the `recipes` table */
+// Insert recipes into the `recipes` table 
 async function insertRecipes(connection, recipes) {
     let insertedCount = 0;
   
@@ -155,4 +114,14 @@ async function insertRecipes(connection, recipes) {
   
     console.log(`Finished inserting records. Successfully inserted: ${insertedCount}/${recipes.length}`);
     return insertedCount;
+}
+
+/** Function to run all table creation scripts */
+export async function createRecipesTables(connection) {
+  try {
+    await createRecipesTable(connection);
+    await processAndInsertData(connection, excelFilePath, MAX_RECORDS);
+  } catch (error) {
+      console.error('❌ Error creating users-related tables:', error);
+  }
 }
