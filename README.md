@@ -20,6 +20,7 @@ Life Balance is a web platform designed for users who aim to maintain a healthy 
 
 ### Prerequisites
 
+- Link to the github: https://github.com/MichalBledi/LIFE_BALANCE.git
 - Node.js installed on your system
 - MySQL database setup with the required tables
 
@@ -323,6 +324,6 @@ Life Balance provides a comprehensive health and nutrition tracking experience f
 
 ---
 
-**Developed by:** [Michal Beldi, Noy Shani, chatGPT]\
+**Developed by:** [Michal Beldi, Noy Shani]\
 **Year:** 2025\
 **Technologies Used:** MySQL, JavaScript, HTML/CSS, Node.js
