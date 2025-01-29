@@ -10,7 +10,7 @@ Life Balance is a web platform designed for users who aim to maintain a healthy 
 
 ### Home Page
 
-**Screenshot:**
+
 
 ![image](https://github.com/user-attachments/assets/bdd5a0d1-d7c7-4cc2-bec9-96805471fb73)
 
@@ -22,7 +22,9 @@ The home page provides an introduction to the platform, highlighting the key fea
 
 ### About Us
 
-**Screenshot:**![image](https://github.com/user-attachments/assets/b6ba6ad1-33fe-42e8-b578-bbe3815f3e00)
+
+
+![image](https://github.com/user-attachments/assets/b6ba6ad1-33fe-42e8-b578-bbe3815f3e00)
 
 
 **Description:**
@@ -32,7 +34,7 @@ The About Us page provides an overview of the mission and vision of Life Balance
 
 ### User Registration
 
-**Screenshot:**
+
 
 ![image](https://github.com/user-attachments/assets/d101b799-6744-411e-b38d-410fb93f01ed)
 
@@ -58,7 +60,7 @@ New users go through a simple step-by-step registration process, where they inpu
 
 ### User Login
 
-**Screenshot:** 
+ 
 
 ![image](https://github.com/user-attachments/assets/77997f24-1802-49a0-8327-9b2f3129ac73)
 
@@ -70,7 +72,7 @@ Existing users can securely log in to access their personalized dashboard.
 
 ### Personal Area
 
-**Screenshot:**
+
 
 ![image](https://github.com/user-attachments/assets/3c28788c-2e96-4935-95d2-f32ea3bda264)
 
@@ -88,7 +90,7 @@ Users can view their BMI trends, personal progress, and update their health-rela
 
 ### Recipes;
 
-**Screenshot:**
+
 
 ![image](https://github.com/user-attachments/assets/2214eaa9-59e1-473a-9471-83a485a16739)
 
@@ -112,7 +114,7 @@ Users can browse a variety of healthy recipes, filter them based on nutritional 
 
 ### Nutrient Calculator
 
-**Screenshot:**
+
 
 ![image](https://github.com/user-attachments/assets/95a531e9-3879-41ec-b36a-0e19b8913942)
 
@@ -129,7 +131,7 @@ Users can calculate their daily caloric intake and macronutrient needs based on 
 
 ### Learn More
 
-**Screenshot:**
+
 
 ![image](https://github.com/user-attachments/assets/8cb1f818-1de1-4299-b9d6-c6409162be4e)
 
@@ -234,7 +236,7 @@ Below is an overview of the tables used in the project:
 
 ### 1. Recipe Filtering Based on User Preferences
 
-**Screenshot:** 
+ 
 
 ![image](https://github.com/user-attachments/assets/adb4c273-212c-43b2-b218-a40cf426ee78)
 
@@ -244,7 +246,7 @@ Below is an overview of the tables used in the project:
 
 ### 2. Most Popular Recipes
 
-**Screenshot:**
+
 
 ![image](https://github.com/user-attachments/assets/08a7d759-efe9-4784-ba9e-71a89e949c45)
 
@@ -254,7 +256,7 @@ Below is an overview of the tables used in the project:
 
 ### 3. User Success Calculation
 
-**Screenshot:**
+
 
 ![image](https://github.com/user-attachments/assets/6f91c69e-fd75-40af-a2e7-a9251bd3d298)
 
@@ -264,7 +266,7 @@ Below is an overview of the tables used in the project:
 
 ### 4. Recipe Category Distribution
 
-**Screenshot:**
+
 
 ![image](https://github.com/user-attachments/assets/64c9e098-6459-4c3a-b0d7-49a7fc4c1fd6)
 
