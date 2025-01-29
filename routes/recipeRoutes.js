@@ -3,6 +3,55 @@ import db from '../database/db.js';
 
 const router = express.Router();
 
+
+router.get('/categories-count', async (req, res) => {
+    try {
+        console.log("📡 Received request to /api/recipes/categories-count");
+
+        const query = `
+            SELECT TRIM(BOTH '"' FROM TRIM(tag)) AS tag, COUNT(*) AS count 
+            FROM (
+                SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(tags, ',', n.n), ',', -1) AS tag
+                FROM recipes
+                JOIN (
+                    SELECT 1 AS n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 
+                    UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10
+                ) n ON CHAR_LENGTH(tags) - CHAR_LENGTH(REPLACE(tags, ',', '')) >= n.n - 1
+                WHERE tags IS NOT NULL AND tags != ''
+            ) tag_table
+            WHERE tag IS NOT NULL AND tag != ''
+            GROUP BY tag
+            ORDER BY count DESC
+            LIMIT 10;
+        `;
+
+        const [results] = await db.query(query);
+
+        if (!results || results.length === 0) {
+            console.log("❌ No category data found in the database.");
+            return res.status(404).json({ error: "No recipe categories found. Make sure recipes have tags!" });
+        }
+
+        console.log("📊 Raw Query Results:", results);
+
+        const categories = results
+            .map(row => row.tag ? row.tag.replace(/\[|\]|'/g, "").trim() : null)
+            .filter(tag => tag && tag.length > 0);
+
+        const counts = results
+            .map(row => row.count !== undefined ? row.count : 0);
+
+        console.log("✅ Final Data:", { labels: categories, counts: counts });
+
+        res.json({ labels: categories, counts: counts });
+    } catch (error) {
+        console.error('❌ Error fetching category count:', error);
+        res.status(500).json({ error: 'Failed to fetch category count.' });
+    }
+});
+
+
+
 // Fetch recipes with a hard limit of 15
 router.get('/', async (req, res) => {
     const category = req.query.category || null; // Optional category filter

@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchIngredientsCount();
     fetchSuccessRate();
     fetchAndRenderBMIData();
+    fetchAndRenderRecipeCategoryChart();
     // Load the heatmap HTML dynamically
     fetch("../heat_map/heat_map.html")
         .then(response => response.text())
@@ -165,6 +166,51 @@ async function fetchAndRenderBMIData() {
         console.error('Failed to fetch or render BMI data:', error);
     }
 }
+
+async function fetchAndRenderRecipeCategoryChart() {
+    try {
+        console.log("📡 Fetching recipe categories data...");
+
+        const response = await fetch('/api/recipes/categories-count'); 
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("📊 Fetched Data:", data);
+
+        if (!data || !data.labels || !data.counts || data.labels.length === 0) {
+            console.error("❌ Invalid or empty data from API:", data);
+            document.getElementById("recipesChart").innerHTML = "No data available";
+            return;
+        }
+
+        // הכנת הנתונים ל-Plotly
+        const trace = {
+            labels: data.labels,
+            values: data.counts,
+            type: "pie",
+            textinfo: "label+percent",
+            hoverinfo: "label+value",
+            hole: 0.3 // יצירת אפקט של דונאט
+        };
+
+        const layout = {
+            title: "Recipe Category Distribution",
+            margin: { t: 50, l: 50, r: 50, b: 50 }
+        };
+
+        // יצירת הגרף עם Plotly
+        Plotly.newPlot('recipesChart', [trace], layout, { displayModeBar: false });
+
+        console.log("✅ Recipe category chart rendered successfully.");
+    } catch (error) {
+        console.error("❌ Failed to fetch or render recipe category data:", error);
+    }
+}
+
+
+
 
 
 
