@@ -75,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
     genderOptions.forEach(option => {
         const label = option.querySelector('.gender-label').textContent.toLowerCase().trim();
         if (label === savedGender) {
-          alert('Working');
             option.classList.add('selected');
         }
     });

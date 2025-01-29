@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Please fill in Height and Weight.');
         return;
       }
-      alert('Working');
       saveData();
       // מעבר ישיר לעמוד הבא (למשל step-activity.html)
       window.location.href = '../step-activity/step-activity.html';

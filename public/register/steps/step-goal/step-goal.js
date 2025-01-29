@@ -7,7 +7,7 @@
  *************************************************************/
 document.addEventListener('DOMContentLoaded', () => {
     loadGoal();
-    alert('loadGoa Working');
+
     // updateProgressBar(); // אופציונלי
   
     const backBtn = document.getElementById('back-button');
@@ -38,11 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // האזנה לבחירת מטרה (אם יש אלמנטים עם .goal-option)
     const goalOptions = document.querySelectorAll('.goal-option');
     goalOptions.forEach(option => {
-      alert('41 Working');
       option.addEventListener('click', () => {
         // הסרת selected מכולם
         goalOptions.forEach(opt => opt.classList.remove('selected'));
-        alert('45 Working');
         // סימון הנוכחי
         option.classList.add('selected');
   
@@ -50,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // נניח שיש אלמנט עם class="goal-label" שבתוכו הטקסט
         const goalLabel = option.querySelector('.goal-label')?.textContent.trim();
         if (goalLabel) {
-          alert('52 Working');
           localStorage.setItem('goal', goalLabel);
         }
       });
@@ -71,13 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
    * פונקציה: שמירת הבחירה
    *************************************************************/
   function saveGoal() {
-    alert('74 Working');
     const selectedOption = document.querySelector('.goal-option.selected');
-    alert('76 Working');
     if (selectedOption) {
-      alert('78 Working');
       const label = selectedOption.querySelector('.goal-label')?.textContent.trim();
-      if (label)alert('80 Working'); {
+      if (label) {
         localStorage.setItem('goal', label);
       }
     }
