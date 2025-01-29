@@ -258,7 +258,8 @@ Below is an overview of the tables used in the project:
 
 
 
-![image](https://github.com/user-attachments/assets/6f91c69e-fd75-40af-a2e7-a9251bd3d298)
+![image](https://github.com/user-attachments/assets/76597e2c-230b-4616-b44c-3dbb0e673646)
+
 
 **Purpose:** Calculates how many users successfully achieved their weight goal (weight loss, gain, or maintenance).
 
